@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  teamok.workfrontend.facade:
+    image: user/teamok.workfrontend.facade${TAG}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80"
