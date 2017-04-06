@@ -1,5 +1,7 @@
 TeamOk.WorkFrontend/.vs/
 TeamOk.Backend/.vs/
+#SQL Server data directory
+TeamOk.Backend/data/
 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 

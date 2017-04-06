@@ -3498,6 +3498,19 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "TeamOk.Backend.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v1.0",
+        "dependencies": {
+          "Microsoft.NETCore.App": "1.0.1"
+        },
+        "compile": {
+          "netcoreapp1.0/TeamOk.Backend.Domain.dll": {}
+        },
+        "runtime": {
+          "netcoreapp1.0/TeamOk.Backend.Domain.dll": {}
+        }
       }
     }
   },
@@ -9326,6 +9339,11 @@
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
       ]
+    },
+    "TeamOk.Backend.Domain/1.0.0": {
+      "type": "project",
+      "path": "../TeamOk.Backend.Domain/project.json",
+      "msbuildProject": "../TeamOk.Backend.Domain/TeamOk.Backend.Domain.xproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -9342,7 +9360,8 @@
       "Microsoft.Extensions.Logging.Console >= 1.0.0",
       "Microsoft.Extensions.Logging.Debug >= 1.0.0",
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 1.0.0",
-      "Microsoft.NETCore.App >= 1.0.1"
+      "Microsoft.NETCore.App >= 1.0.1",
+      "TeamOk.Backend.Domain >= 1.0.0-*"
     ],
     ".NETCoreApp,Version=v1.0": []
   },

@@ -1,10 +1,24 @@
 version: '2'
 
 services:
+  teamok.backend.db:
+    image: microsoft/mssql-server-linux
+    container_name: teamok-backend-db
+    environment:
+      SA_PASSWORD: "Pass_w0rd"
+      ACCEPT_EULA: "Y"
+    volumes:
+      - ../../data:/var/opt/mssql/
   teamok.backend.facade:
-    image: user/teamok.backend.facade${TAG}
+    image: teamok/backend${TAG}
     build:
       context: .
       dockerfile: Dockerfile
+    depends_on:
+      - teamok.backend.db
+    environment:
+      'ConnectionStrings:SQLServer': 'Server=database;Database=database;User Id=sa;Password=Pass_w0rd;'
+    links:
+      - "teamok.backend.db:database"
     ports:
       - "80"
