@@ -8,7 +8,8 @@ export class LocatiesService {
 
   getLocaties() {
     var locaties =[
-      {'naam': 'Daltonlaan 200 (tijdelijke locatie)',
+      {'id':1,
+        'naam': 'Daltonlaan 200 (tijdelijke locatie)',
       'adress':'Daltonlaan 200',
       'postcode':'3584 BJ',
       'plaats':'Utrecht28',
@@ -17,7 +18,7 @@ export class LocatiesService {
       'cafetaria':false,
       'parkeerMogelijkheden': 'Ja, genoeg'
       },
-      {'naam': 'Daltonlaan 200 (tijdelijke locatie)',
+      {'id':2,'naam': 'Daltonlaan 200 (tijdelijke locatie)',
         'adress':'Daltonlaan 400',
         'postcode':'3584 BJ',
         'plaats':'Utrecht',
@@ -26,7 +27,7 @@ export class LocatiesService {
         'cafetaria':false,
         'parkeerMogelijkheden': 'Ja, genoeg',
       },
-      {'naam': 'Daltonlaan 500 (tijdelijke locatie)',
+      {'id':3,'naam': 'Daltonlaan 500 (tijdelijke locatie)',
         'adress':'Daltonlaan 500',
         'postcode':'3584 BJ',
         'plaats':'Utrecht',

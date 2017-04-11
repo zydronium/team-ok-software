@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Locatie} from "../../models/Locatie";
+import {LocatieService} from "../../services/locatie.service";
 
 @Component({
   selector: 'app-locatie',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./locatie.component.css']
 })
 export class LocatieComponent implements OnInit {
-
-  constructor() { }
+  locatie: any;
+  constructor(private locatieService: LocatieService) { }
 
   ngOnInit() {
+  this.locatie = this.locatieService.getLocatie();
   }
 
 }
