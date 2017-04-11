@@ -14,7 +14,6 @@ import { VerdiepingComponent } from './components/verdieping/verdieping.componen
 import { WerkplekComponent } from './components/werkplek/werkplek.component';
 import {AppComponent} from "./app.component";
 import {LocatiesService} from "./services/locaties.service";
-import {LocatieService} from "./services/locatie.service";
 import {VerdiepingenService} from "./services/verdiepingen.service";
 
 @NgModule({
