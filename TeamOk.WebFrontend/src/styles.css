@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+  display: block;
+  margin: 8px;
+}
+.component{
+  background: #ececec;
+  min-height: 700px;
+}
+
+header{
+  overflow: visible;
+  padding: 0.5em 2em 1.3em;
+  min-height: 7em;
+  margin: 0 auto
+}
+.logobar {
+ max-width: 400px;
+  padding: 2.5em 2em 1.3em;
+  min-height: 7em;
+}
+
+ul.navbar {
+  list-style-type: none;
+  margin-bottom: 0px;
+  overflow: hidden;
+  background: #00a1e1;
+  border-radius: 0px;
+  min-height: 0px;
+  border:0px;
+  font-size: 1.2em;
+}
+
+ul.navbar li {float: left;
+  border:20px;}
+
+ul.navbar li a {
+  display: block;
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  padding: .5em .6em;
+  text-transform: uppercase;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+ul.navbar li a:hover:not(.active) {background-color: #e72e2a;}
+
+ul.navbar li a.active {background-color: #e72e2a;}
+
+@media screen and (max-width: 600px){
+  ul.navbar li {float: none;}
+}
+
+
