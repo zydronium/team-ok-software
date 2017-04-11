@@ -65,7 +65,7 @@ namespace TeamOk.WorkFrontend.Facade
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Kiosk}/{action=Index}/{id?}");
             });
         }
     }
