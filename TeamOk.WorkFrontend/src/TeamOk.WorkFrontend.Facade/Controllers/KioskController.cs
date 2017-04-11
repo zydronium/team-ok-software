@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TeamOk.WorkFrontend.Facade.Controllers
 {
-    public class HomeController : Controller
+    public class KioskController : Controller
     {
         public IActionResult Index()
         {
