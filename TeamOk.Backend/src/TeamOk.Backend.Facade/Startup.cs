@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.Swagger.Model;
 
 namespace TeamOk.Backend.Facade
 {
@@ -34,6 +35,18 @@ namespace TeamOk.Backend.Facade
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureSwaggerGen(options =>
+            {
+                options.SingleApiVersion(new Info
+                {
+                    Version = "v1",
+                    Title = "WerkplekkenBackend",
+                    Description = "A RESTfull service for Werkplekken",
+                    TermsOfService = "None"
+                });
+            });
+            services.AddSwaggerGen();
+
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
@@ -51,6 +64,9 @@ namespace TeamOk.Backend.Facade
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseMvc();
+
+            app.UseSwagger();
+            app.UseSwaggerUi();
         }
     }
 }
