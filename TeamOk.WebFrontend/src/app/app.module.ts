@@ -13,6 +13,8 @@ import { VerdiepingenComponent } from './components/verdiepingen/verdiepingen.co
 import { VerdiepingComponent } from './components/verdieping/verdieping.component';
 import { WerkplekComponent } from './components/werkplek/werkplek.component';
 import {AppComponent} from "./app.component";
+import {LocatiesService} from "./services/locaties.service";
+import {VerdiepingenService} from "./services/verdiepingen.service";
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import {AppComponent} from "./app.component";
     routes,
     RouterModule
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : '/' }],
+  providers: [{provide: APP_BASE_HREF, useValue : '/' }, LocatiesService, VerdiepingenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
