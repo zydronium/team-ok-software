@@ -2,3 +2,14 @@
   <li class="breadcrumb-item"><a href="#">Home</a></li>
   <li class="breadcrumb-item active">Locaties</li>
 </ol>
+<div style="border:solid 1.5px black; margin:10px;">
+  <h2 style="padding-left:10px;border-bottom:ridge 0.5px grey; color:deepskyblue; font-weight:bold;">Locaties</h2>
+  <table class="table-striped" style="width:100%; overflow:scroll;  height:100px;">
+    <tr *ngFor="let locatie of locaties">
+      <td style="padding:10px;">
+        <h4 style="color:deepskyblue;font-weight:bold;">{{locatie.adress}}</h4>
+        <p style="font-style:oblique;">{{locatie.plaats}}</p>
+      </td>
+    </tr>
+  </table>
+</div>

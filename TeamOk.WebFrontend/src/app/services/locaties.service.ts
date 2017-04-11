@@ -34,6 +34,36 @@ export class LocatiesService {
         'cafetaria':true,
         'parkeerMogelijkheden': 'Ja, genoeg'
 
+      },
+      {'naam': 'Daltonlaan 500 (tijdelijke locatie)',
+        'adress':'Daltonlaan 500',
+        'postcode':'3584 BJ',
+        'plaats':'Utrecht',
+        'telefoonnummer': '088-4818283',
+        'openingstijden': '08:30 - 19:00',
+        'cafetaria':true,
+        'parkeerMogelijkheden': 'Ja, genoeg'
+
+      },
+      {'naam': 'Daltonlaan 500 (tijdelijke locatie)',
+        'adress':'Daltonlaan 500',
+        'postcode':'3584 BJ',
+        'plaats':'Utrecht',
+        'telefoonnummer': '088-4818283',
+        'openingstijden': '08:30 - 19:00',
+        'cafetaria':true,
+        'parkeerMogelijkheden': 'Ja, genoeg'
+
+      },
+      {'naam': 'Daltonlaan 500 (tijdelijke locatie)',
+        'adress':'Daltonlaan 500',
+        'postcode':'3584 BJ',
+        'plaats':'Utrecht',
+        'telefoonnummer': '088-4818283',
+        'openingstijden': '08:30 - 19:00',
+        'cafetaria':true,
+        'parkeerMogelijkheden': 'Ja, genoeg'
+
       }
       ]
 return locaties;
