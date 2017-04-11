@@ -10,6 +10,16 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
     {
         public IActionResult Index()
         {
+            //Vraag de backend wat de status is van deze tafel 
+
+            //If tafel = bezet
+            //return View("Bezet");
+            
+
+            //If tafel != bezet
+            //Return View("Vrij")
+
+
             return View();
         }
 
