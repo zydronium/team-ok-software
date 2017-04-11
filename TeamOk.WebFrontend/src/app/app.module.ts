@@ -3,18 +3,23 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
+import { routes } from './app.routes';
+import {RouterModule} from "@angular/router";
+import { HomeComponent } from './components/home/home.component';
+import {APP_BASE_HREF} from "@angular/common";
 
 @NgModule({
   declarations: [
-    AppComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routes,
+    RouterModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{provide: APP_BASE_HREF, useValue : '/' }],
+  bootstrap: [HomeComponent]
 })
 export class AppModule { }
