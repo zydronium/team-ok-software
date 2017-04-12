@@ -2,6 +2,7 @@
     padding-top: 0px;
     padding-bottom: 20px;
     overflow:hidden;
+    height:auto;
 }
 
 .btn-block{
@@ -26,11 +27,13 @@
 }
 
 .navigation-bar{
-    float:right
+    float:right;
 }
 
 a {
    color: grey;
+   text-align:center;
+   height:25vh;
 }
 
 .navigation-items{
