@@ -30,7 +30,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
         private bool getIsBezet()
         {
             //Vraag de backend wat de status is van deze tafel 
-            return false;
+            return true;
         }
 
         public IActionResult About()
