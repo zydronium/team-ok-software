@@ -4,11 +4,25 @@
     overflow:hidden;
 }
 
+.btn-block{
+    padding-top: 100vh;
+    display: block;
+}
+
+.col-xs-9.claimwerkplekbutton{
+    position: absolute;
+    padding-right: 0px;
+    padding-left: 0px;
+
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .navigation-bar{
