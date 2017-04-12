@@ -6,22 +6,20 @@
 }
 
 .btn-block{
-    width:200vh;
-    height:100vh;
-    position:relative;
+    height: 100vh;
+    position:absolute;
 }
 
 .claimwerkplekbutton{
-    position: absolute;
-    width: 100%;
-    display: block;
+    position: relative;
 }
 
 .container.body-content {
+    width: auto;
     padding-left: 0px;  
-    padding-right: 0px;
+    padding-right: 65px;
     margin-left: 0px;
-    margin-right: 65px;
+    margin-right: 0px;
 }
 
 
