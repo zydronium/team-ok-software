@@ -56,6 +56,16 @@ li{
     float:right
 }
 
+.center-text{
+    position:relative;
+    text-align:center;
+}
+
+.center-image{
+    height:25em;
+    width:100vh;
+}
+
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,
 select,

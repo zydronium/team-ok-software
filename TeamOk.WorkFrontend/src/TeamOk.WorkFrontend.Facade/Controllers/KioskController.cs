@@ -35,8 +35,8 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
-
+            ViewData["Message"] = "Voor meer info";
+            ViewData["URL"] = "bit.ly/????";
             return View();
         }
 
