@@ -33,10 +33,23 @@
     float:right;
 }
 
-a {
-   color: grey;
-   text-align:center;
-   height:25vh;
+@media screen and (min-height: 300px) {
+    a {
+        color: grey;
+        text-align: center;
+        padding: 12.5vh 15px 12.5vh 15px !important;
+    }
+}
+@media screen and (max-height: 299px) {
+    a {
+        color: grey;
+        text-align: center;
+    }
+}
+
+li{
+    color:grey;
+    height:25vh;
 }
 
 .navigation-items{
