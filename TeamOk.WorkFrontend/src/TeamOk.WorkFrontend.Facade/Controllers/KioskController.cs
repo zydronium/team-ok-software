@@ -10,23 +10,33 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
     {
         public IActionResult Index()
         {
-            //Vraag de backend wat de status is van deze tafel 
+           
+            var Bezet = getIsBezet();
 
             //If tafel = bezet
             //return View("Bezet");
-            
-
             //If tafel != bezet
             //Return View("Vrij")
+            if (Bezet)
+            {
+                return View("Bezet");
+            }
+            else
+            {
+                return View("Vrij");
+            }
+        }
 
-
-            return View();
+        private bool getIsBezet()
+        {
+            //Vraag de backend wat de status is van deze tafel 
+            return true;
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
-
+            ViewData["Message"] = "Voor meer info";
+            ViewData["URL"] = "bit.ly/????";
             return View();
         }
 

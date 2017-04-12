@@ -2,25 +2,66 @@
     padding-top: 0px;
     padding-bottom: 20px;
     overflow:hidden;
+    height:auto;
 }
+
+.btn-block{
+    height: 100vh;
+    position:absolute;
+}
+
+.claimwerkplekbutton{
+    position: relative;
+}
+
+.container.body-content {
+    width: auto;
+    padding-left: 0px;  
+    padding-right: 65px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
+
 
 .navigation-bar{
-    float:right
+    float:right;
 }
 
-a {
-   color: grey;
+@media screen and (min-height: 300px) {
+    a {
+        color: grey;
+        text-align: center;
+        padding: 12.5vh 15px 12.5vh 15px !important;
+    }
+}
+@media screen and (max-height: 299px) {
+    a {
+        color: grey;
+        text-align: center;
+    }
+}
+
+li{
+    color:grey;
+    height:25vh;
 }
 
 .navigation-items{
     float:right
+}
+
+.center-text{
+    position:relative;
+    text-align:center;
+}
+
+.center-image{
+    height:25em;
+    width:100vh;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
