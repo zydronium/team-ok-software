@@ -1,0 +1,18 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Home</a></li>
+  <li class="breadcrumb-item"><a href="locaties">locaties</a></li>
+  <li class="breadcrumb-item"><a href="locaties/{{locatie.id}}">{{locatie.naam}}</a></li>
+  <li class="breadcrumb-item active">Verdiepingen</li>
+</ol>
+<div style="border:solid 1.5px black; margin:10px;">
+  <h2 style="padding-left:10px;border-bottom:ridge 0.5px grey; color:deepskyblue; font-weight:bold;">Verdiepingen {{locatie.naam}}</h2>
+  <table class="table-striped" style="width:100%; overflow:scroll;  height:100px;">
+    <tr *ngFor="let verdieping of verdiepingen">
+      <td style="padding:10px;">
+        <h4 style="color:deepskyblue;font-weight:bold;">{{verdieping.naam}}</h4>
+        <p style="font-style:oblique;">{{verdieping.werkplekken}} werkplekken ({{verdieping.vrije_werkplekken}} vrij)</p>
+        <i class="fa fa-chevron-right"style="color: #e72e2a" aria-hidden="true"></i>
+      </td>
+    </tr>
+  </table>
+</div>
