@@ -16,8 +16,9 @@ locaties: any;
   ngOnInit() {
     this.locaties = this.locatiesService.getLocaties();
   }
-openLocatie(locatie){
-    this.locatieService.setLocatie(locatie);
-    this.router.navigate(['/locaties/'+ locatie.id]);
-}
+  
+  openLocatie(locatie){
+      // this.locatieService.setLocatie(locatie);
+      this.router.navigate(['/locaties/'+ locatie.id]);
+  }
 }
