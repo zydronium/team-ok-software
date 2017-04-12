@@ -1,11 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
-body{
-  display: block;
-  margin: 8px;
-}
 .component{
   background: #ececec;
-  min-height: 700px;
+  height: auto;
+}
+
+.breadcrumb{
+  border-radius: 0px;
+  background: #ececec;
+  color:pink!important;
+}
+
+.breadcrumb-item{
+  color: #00a1e2!important;
+  text-transform: uppercase;
+}
+
+.breadcrumb>li+li:before{
+  font-family: fontAwesome;
+  content: "\f178";
+  color: #e72e2a;
+}
+
+.breadcrumb-color{
+  color: #00a1e2!important;
 }
 
 header{
@@ -43,11 +59,62 @@ ul.navbar li a {
   text-transform: uppercase;
   font-weight: normal;
   letter-spacing: 1px;
+  font-weight: bold;
 }
 
 ul.navbar li a:hover:not(.active) {background-color: #e72e2a;}
 
 ul.navbar li a.active {background-color: #e72e2a;}
+
+.overview-list{
+  border:solid 1.5px white;
+  margin:10px;
+  background-color:white;
+  padding: 1.2em;
+}
+
+.overview-list-title{
+  padding-left:10px;
+  border-bottom:1px solid #bebebe;
+  color:#00a1e2;
+  font-weight:bold;
+}
+
+.overview-list-content{
+  width:100%;
+  overflow:scroll;
+  /*height:100px;*/
+}
+
+.overview-list-content-row{
+  padding:10px;
+}
+#aftertest::after{
+  /*font-size: medium;*/
+  /*margin-top: 50%;*/
+  /*color:blue!important;*/
+  font-family: fontAwesome;
+  content: "\f054";
+  width: 1em;
+  height: 1em;
+  font-weight: bold;
+  display: block;
+  color: #e72e2a!important;
+  position: absolute;
+  right: 9px;
+  /*top: 50%;*/
+  margin-top: -.5em;
+}
+
+h4{
+  color: #00a1e2;
+  font-weight:bold;
+}
+
+footer{
+  margin-top: 15px;
+  background-color:red;
+}
 
 @media screen and (max-width: 600px){
   ul.navbar li {float: none;}
