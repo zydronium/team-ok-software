@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Werkplek Locator</title>
 
   <base href="/">
@@ -12,12 +11,23 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-  <script src="path/to/angular.js"></script>
-  <script src="path/to/angular-route.js"></script>
+  <!--<script src="path/to/angular.js"></script>-->
+  <!--<script src="path/to/angular-route.js"></script>-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.2.2/web-animations.min.js"></script>
-
 </head>
 <body>
-  <app-home>Loading...</app-home>
+<header>
+  <a id="logo"><img class="logobar" id="huLogo" src="assets/images/hu-logo-werpleklocator.svg"></a>
+</header>
+  <ul class="navbar">
+    <li><a class="active" href="/" title="Home"> Home </a></li>
+    <li><a href="/" title="Zoek"> Zoek NYI </a></li>
+    <li><a href="/locaties" title="Locaties"> Locaties </a></li>
+  </ul>
+  <!--<app-home>Loading...</app-home>-->
+<div class="component">
+  <app-root>Loading...</app-root>
+</div>
 </body>
+<footer> <i class="fa fa-copyright" aria-hidden="true"> Het team </i></footer>
 </html>
