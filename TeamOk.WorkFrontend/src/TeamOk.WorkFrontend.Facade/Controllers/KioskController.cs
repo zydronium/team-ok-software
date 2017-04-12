@@ -8,15 +8,17 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
 {
     public class KioskController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index([FromHeader]string macaddress, [FromQuery] string MAC)
         {
-           
+            Console.Write("Hello Index");
             var Bezet = getIsBezet();
-
+            Console.Write(macaddress);
+            Console.Write(MAC);
             //If tafel = bezet
             //return View("Bezet");
             //If tafel != bezet
             //Return View("Vrij")
+
             if (Bezet)
             {
                 return View("Bezet");
