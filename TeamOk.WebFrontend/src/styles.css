@@ -93,6 +93,7 @@ ul.navbar li a.active {background-color: #e72e2a;}
 
 .overview-list-content-row{
   padding:10px;
+  cursor: pointer;
 }
 #overview-list-content-row-arrow::after{
   font-family: fontAwesome;

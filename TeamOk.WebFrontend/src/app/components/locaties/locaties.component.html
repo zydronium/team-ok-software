@@ -7,8 +7,10 @@
   <table class="table-striped overview-list-content" >
     <tr *ngFor="let locatie of locaties" (click)="openLocatie(locatie)">
       <td class="overview-list-content-row">
-        <h4>{{locatie.naam}}</h4>
-        <p>{{locatie.plaats}}</p>
+        <div id="overview-list-content-row-arrow">
+          <h4>{{locatie.naam}}</h4>
+          <p>{{locatie.plaats}}</p>
+        </div>
       </td>
     </tr>
   </table>
