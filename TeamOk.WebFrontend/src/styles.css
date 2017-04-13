@@ -159,9 +159,28 @@ h4{
 }
 
 /*  GRID OF THREE  */
-.span_3_of_3 { width: 100%; border-style: dotted}
-.span_2_of_3 { width: 66.13%; border-style: dotted }
-.span_1_of_3 { width: 32.26%; border-style: dotted}
+.span_3_of_3 {
+  width: 100%;
+  border:solid 1.5px white;
+  margin:10px;
+  background-color:white;
+}
+
+.span_2_of_3 {
+  width: 66.13%;
+  border:solid 1.5px white;
+  padding:1.2em;
+  padding-top:0em;
+  background-color:white;
+}
+
+.span_1_of_3 {
+  width: 32.26%;
+  border:solid 1.5px white;
+  padding:1.2em;
+  padding-top:0em;
+  background-color:white;
+}
 
 /*  GO FULL WIDTH BELOW 480 PIXELS */
 @media only screen and (max-width: 480px) {
@@ -189,3 +208,7 @@ h4{
 .group:after { content:""; display:table; }
 .group:after { clear:both;}
 .group { zoom:1; /* For IE 6/7 */ }
+
+.column-text{
+  padding:10px;
+}
