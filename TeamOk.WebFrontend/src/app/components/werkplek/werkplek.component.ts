@@ -37,7 +37,8 @@ export class WerkplekComponent implements OnInit {
     this.verdiepingid = this.route.snapshot.params["verdiepingid"];
     this.verdieping = this.verdiepingenService.getVerdieping(this.verdiepingid);
 
-    this.werkplek = this.werkplekkenService.getWerkplek(this.verdiepingid);
+    this.werkplekid = this.route.snapshot.params["werkplekid"];
+    this.werkplek = this.werkplekkenService.getWerkplek(this.werkplekid);
   }
 
 }
