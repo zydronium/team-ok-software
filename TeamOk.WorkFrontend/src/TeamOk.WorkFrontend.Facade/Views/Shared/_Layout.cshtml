@@ -22,10 +22,10 @@
         <div>
             <div>
                 <ul class="nav navigation-items">
-                    <li><a asp-area="" asp-controller="Kiosk" asp-action="About">?</a></li>
-                    <li><a asp-area="" asp-controller="Kiosk" asp-action="Timer ">Clock</a></li>
-                    <li><a asp-area="" asp-controller="Kiosk" asp-action="Index">Play</a></li>
-                    <li><a asp-area="" asp-controller="Kiosk" asp-action="Index">Stop</a></li>
+                    <li class="list"><a asp-area="" asp-controller="Kiosk" asp-action="About">?</a></li>
+                    <li class="list"><a asp-area="" asp-controller="Kiosk" asp-action="Timer">Clock</a></li>
+                    <li class="list"><a asp-area="" asp-controller="Kiosk" asp-action="Index">Play</a></li>
+                    <li class="list"><a asp-area="" asp-controller="Kiosk" asp-action="Index">Stop</a></li>
                 </ul>
             </div>
         </div>
@@ -40,7 +40,7 @@
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.1.0.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery">
         </script>
