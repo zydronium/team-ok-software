@@ -27,4 +27,8 @@ export class LocatieComponent implements OnInit {
   bekijkVerdiepingen(){
     this.router.navigate(['/locaties/'+ this.locatie.id + '/verdiepingen'] );
   }
+
+  openOV(){
+    var newWindow = window.open('http://9292.nl/');
+  }
 }

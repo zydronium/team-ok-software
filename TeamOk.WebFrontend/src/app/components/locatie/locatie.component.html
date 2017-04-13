@@ -36,9 +36,7 @@
             </td>
           </tr>
         </table>
-      </md-card>
-      <md-card style="margin:20px; cursor:pointer; text-align: center;" (click)="bekijkVerdiepingen()">
-        <h3 class="overview-list-title">Bekijk verdiepingen</h3>
+        <input class="button-red button-red-fill-width" type="button" value="Bekijk verdiepingen" (click)="bekijkVerdiepingen()">
       </md-card>
     </td>
     <td>
@@ -50,8 +48,11 @@
           <sebm-google-map [latitude]="locatie.lat" [longitude]="locatie.lng" [zoom]="17">
             <sebm-google-map-marker [latitude]="locatie.lat" [longitude]="locatie.lng"></sebm-google-map-marker>
           </sebm-google-map>
+          <br>
          <p> Parkeermogelijkheden: {{locatie.parkeermogelijkheden}}</p>
-          <a class="btn btn-primary" style="width:100%;" href="http://9292.nl/">OV</a>
+          <div>
+            <input class="button-red button-red-fill-width" type="button" value="OV" (click)="openOV()">
+          </div>
         </div>
       </md-card>
     </td>

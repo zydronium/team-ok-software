@@ -175,6 +175,10 @@ ul.navbar li a.active {background-color: #e72e2a;}
   width: 100px;
 }
 
+.button-red-fill-width{
+  width: 100%;
+}
+
 .center-text{
   text-align: center;
 }
