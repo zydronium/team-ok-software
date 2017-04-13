@@ -12,29 +12,24 @@ export class LocatiesService {
         'naam': 'Daltonlaan 200 (tijdelijke locatie)',
       'adress':'Daltonlaan 200',
       'postcode':'3584 BJ',
-      'plaats':'Utrecht28',
+      'plaats':'Utrecht',
       'telefoonnummer': '088-48183',
       'openingstijden': '08:00 - 20:00',
       'cafetaria':false,
-      'parkeerMogelijkheden': 'Ja, genoeg'
+      'parkeerMogelijkheden': 'Ja, genoeg',
+        'lat': 52.0871692,
+        'lng': 5.159740899999974
       },
-      {'id':2,'naam': 'Daltonlaan 200 (tijdelijke locatie)',
-        'adress':'Daltonlaan 400',
+      {'id':2,'naam': 'Daltonlaan 500 (tijdelijke locatie)',
+        'adress':'Daltonlaan 500',
         'postcode':'3584 BJ',
         'plaats':'Utrecht',
         'telefoonnummer': '088-4818283',
         'openingstijden': '08:00 - 20:00',
         'cafetaria':false,
         'parkeerMogelijkheden': 'Ja, genoeg',
-      },
-      {'id':3,'naam': 'Daltonlaan 500 (tijdelijke locatie)',
-        'adress':'Daltonlaan 500',
-        'postcode':'3584 BJ',
-        'plaats':'Utrecht',
-        'telefoonnummer': '088-4818283',
-        'openingstijden': '08:30 - 19:00',
-        'cafetaria':true,
-        'parkeerMogelijkheden': 'Ja, genoeg'
+        'lat': 52.0884244,
+        'lng': 5.159922700000038
       }
     ];
     return locaties;
@@ -49,9 +44,11 @@ export class LocatiesService {
         postcode:'3584 BJ',
         plaats:'Utrecht',
         telefoonnummer: '088-48183',
-        openingstijden: '08:00 - 20:00',
+        openingstijden: 'maandag t/m vrijdag van 08:00 tot 20:00',
         cafetaria:false,
-        parkeermogelijkheden: 'Ja, genoeg'
+        parkeermogelijkheden: 'Ja, genoeg',
+        lat: 52.0871692,
+        lng: 5.159740899999974
       },
       {
         id: 2,
@@ -62,7 +59,9 @@ export class LocatiesService {
         telefoonnummer: '088-4818283',
         openingstijden: '08:30 - 19:00',
         cafetaria:true,
-        parkeermogelijkheden: 'Ja, genoeg'
+        parkeermogelijkheden: 'Ja, genoeg',
+        lat: 52.0884244,
+        lng: 5.159922700000038
       }
     ];
 

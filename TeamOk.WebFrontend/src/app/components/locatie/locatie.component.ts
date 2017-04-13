@@ -12,8 +12,7 @@ import {Router, ActivatedRoute} from "@angular/router";
 export class LocatieComponent implements OnInit {
   locatieid: number;
   locatie: Locatie;
-
-  constructor(
+    constructor(
     private route: ActivatedRoute,
     private router: Router,
     private locatiesService: LocatiesService
@@ -24,6 +23,7 @@ export class LocatieComponent implements OnInit {
   ngOnInit() {
     this.locatieid = this.route.snapshot.params['locatieid'];
     this.locatie = this.locatiesService.getLocatie(this.locatieid);
+
   }
 
 }
