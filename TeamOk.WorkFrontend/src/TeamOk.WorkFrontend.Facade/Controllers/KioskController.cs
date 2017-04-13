@@ -51,5 +51,10 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
         {
             return View();
         }
+
+        public IActionResult Timer()
+        {
+            return View();
+        }
     }
 }
