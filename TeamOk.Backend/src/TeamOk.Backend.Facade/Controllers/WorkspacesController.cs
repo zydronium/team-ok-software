@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TeamOk.Backend.Facade.Models;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,34 +13,34 @@ namespace TeamOk.Backend.Facade.Controllers
     public class WorkspacesController : Controller
     {
         // GET: api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("{FloorId}")]
+        public IEnumerable<Workspace> Get(int FloorId)
         {
-            return new string[] { "value1", "value2" };
+            return new Workspace[] { new Workspace(), new Workspace() };
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{FloorId}/{id}")]
+        public Workspace Get(int FloorId, int id)
         {
-            return "value";
+            return new Workspace();
         }
 
         // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
+        [HttpPost("{FloorId}")]
+        public void Post(int FloorId, [FromBody]Workspace value)
         {
         }
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPut("{FloorId}/{id}")]
+        public void Put(int FloorId, int id, [FromBody]Workspace value)
         {
         }
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{FloorId}/{id}")]
+        public void Delete(int FloorId, int id)
         {
         }
     }
