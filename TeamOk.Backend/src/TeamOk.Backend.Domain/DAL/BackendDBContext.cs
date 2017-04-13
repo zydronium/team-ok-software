@@ -15,6 +15,7 @@ namespace TeamOk.Backend.Domain.DAL
         }
 
         public DbSet<Location> Locations { get; set; }
+        public DbSet<facility> facilities { get; set; }
         public DbSet<Floor> Floors { get; set; }
         public DbSet<Workspace> Workspaces { get; set; }
         public DbSet<Notification> Notifications { get; set; }
