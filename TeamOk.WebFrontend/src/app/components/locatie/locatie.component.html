@@ -1,1 +1,44 @@
-{{locatie | json}}
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a class="breadcrumb-color" href="#">Home</a></li>
+  <li class="breadcrumb-item"><a class="breadcrumb-color" href="#">Locaties</a></li>
+  <li class="breadcrumb-item active">{{locatie.adress}}</li>
+</ol>
+<md-card class="col-xs-12 col-md-8" style="margin:20px">
+  <md-card-title>
+    <h2 class="overview-list-title">{{locatie.adress}} {{locatie.plaats}}</h2>
+  </md-card-title>
+  <table>
+    <tr>
+      <td style="width:75%">
+    <label>{{locatie.naam}}</label>
+    <br>
+    <label>{{locatie.postcode}} {{locatie.plaats}}</label>
+    <br>
+    <label>Tel: {{locatie.telefoonnummer}}</label>
+      </td>
+      <td><img src="" alt=""><img src="../../src/assets/images/2013 10 18 Daltonlaan200_03.jpg.jpg" height="138"
+                                  width="277"/></td>
+    </tr>
+    <tr>
+      <td>{{locatie.openingstijden}}</td>
+    </tr>
+    <tr>
+      <td>
+       <label>Cafetaria:
+         <i *ngIf="locatie.cafetaria == false" class="fa fa-times" style="color:red"></i>
+         <i *ngIf="locatie.cafetaria == true" class="fa fa-check" style="color:green"></i>
+         </label>
+      </td>
+    </tr>
+  </table>
+</md-card>
+  <md-card class="col-xs-12 col-md-3" style="margin:20px">
+    <md-card-title>
+      <h3 class="overview-list-title">{{locatie.adress}} {{locatie.plaats}}</h3>
+    </md-card-title>
+    <div>
+      <sebm-google-map [latitude]="locatie.lat" [longitude]="locatie.lng" [zoom]="17">
+        <sebm-google-map-marker [latitude]="locatie.lat" [longitude]="locatie.lng"></sebm-google-map-marker>
+      </sebm-google-map>
+    </div>
+  </md-card>

@@ -16,6 +16,11 @@ import {AppComponent} from "./app.component";
 import {LocatiesService} from "./services/locaties.service";
 import {VerdiepingenService} from "./services/verdiepingen.service";
 import {WerkplekkenService} from "./services/werkplekken.service";
+import {MdCardModule} from "@angular2-material/card";
+import {MdButtonModule} from "@angular2-material/button";
+import {MdIconModule} from "@angular2-material/icon";
+import {MdIconRegistry} from "@angular2-material/icon";
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 @NgModule({
   declarations: [
@@ -32,9 +37,15 @@ import {WerkplekkenService} from "./services/werkplekken.service";
     FormsModule,
     HttpModule,
     routes,
-    RouterModule
+    RouterModule,
+    MdCardModule,
+    MdButtonModule,
+    MdIconModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDtoOYq0ogNyyt0_KUusjXo16eqFOrdQPc'
+    })
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : '/' }, LocatiesService, VerdiepingenService, WerkplekkenService],
+  providers: [{provide: APP_BASE_HREF, useValue : '/' }, LocatiesService, WerkplekkenService, VerdiepingenService , MdIconRegistry],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,5 +13,7 @@ export interface Locatie{
   telefoonnummer: string,
   openingstijden: string,
   cafetaria: boolean,
-  parkeermogelijkheden: string
+  parkeermogelijkheden: string,
+  lat:any,
+  lng:any,
 }
