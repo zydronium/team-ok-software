@@ -15,7 +15,7 @@ import { WerkplekComponent } from './components/werkplek/werkplek.component';
 import {AppComponent} from "./app.component";
 import {LocatiesService} from "./services/locaties.service";
 import {VerdiepingenService} from "./services/verdiepingen.service";
-import {LocatieService} from "./services/locatie.service";
+import {WerkplekkenService} from "./services/werkplekken.service";
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import {LocatieService} from "./services/locatie.service";
     routes,
     RouterModule
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : '/' }, LocatiesService, LocatieService, VerdiepingenService],
+  providers: [{provide: APP_BASE_HREF, useValue : '/' }, LocatiesService, VerdiepingenService, WerkplekkenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

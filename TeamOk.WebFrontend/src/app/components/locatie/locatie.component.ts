@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Locatie} from "../../models/Locatie";
-import {LocatieService} from "../../services/locatie.service";
 import {LocatiesService} from "../../services/locaties.service";
 import {Router, ActivatedRoute} from "@angular/router";
 
