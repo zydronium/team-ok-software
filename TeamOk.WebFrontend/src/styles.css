@@ -180,7 +180,7 @@ ul.navbar li a.active {background-color: #e72e2a;}
 }
 
 .center-text{
-  text-align: center;
+  text-align: center!important;
 }
 
 h4{
