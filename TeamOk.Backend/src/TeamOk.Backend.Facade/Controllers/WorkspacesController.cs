@@ -14,33 +14,33 @@ namespace TeamOk.Backend.Facade.Controllers
     {
         // GET: api/values
         [HttpGet("{FloorId}")]
-        public IEnumerable<Workspace> Get(int FloorId)
+        public IEnumerable<Workspace> Get(long FloorId)
         {
             return new Workspace[] { new Workspace(), new Workspace() };
         }
 
         // GET api/values/5
         [HttpGet("{FloorId}/{id}")]
-        public Workspace Get(int FloorId, int id)
+        public Workspace Get(long FloorId, long id)
         {
             return new Workspace();
         }
 
         // POST api/values
         [HttpPost("{FloorId}")]
-        public void Post(int FloorId, [FromBody]Workspace value)
+        public void Post(long FloorId, [FromBody]Workspace value)
         {
         }
 
         // PUT api/values/5
         [HttpPut("{FloorId}/{id}")]
-        public void Put(int FloorId, int id, [FromBody]Workspace value)
+        public void Put(long FloorId, long id, [FromBody]Workspace value)
         {
         }
 
         // DELETE api/values/5
         [HttpDelete("{FloorId}/{id}")]
-        public void Delete(int FloorId, int id)
+        public void Delete(long FloorId, long id)
         {
         }
     }

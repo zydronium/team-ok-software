@@ -13,12 +13,8 @@ namespace TeamOk.Backend.Facade.Controllers
     public class NotificationsController : Controller
     {
         // POST api/values
-        /// <remarks>
-        /// ClaimType is a enum {Claim, Free}
-        /// 
-        /// </remarks>
         [HttpPost("{WorkSpaceId}")]
-        public void Post(int WorkSpaceId, [FromBody]Notification value)
+        public void Post(long WorkSpaceId, [FromBody]Notification value)
         {
         }
     }

@@ -5,5 +5,5 @@ using System.Threading.Tasks;
 
 namespace TeamOk.Backend.Facade.Models
 {
-    enum ClaimType { Claim, Free };
+    public enum ClaimType { Free, Claim };
 }

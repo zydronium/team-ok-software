@@ -7,7 +7,7 @@ namespace TeamOk.Backend.Facade.Models
 {
     public class Status
     {
-        string ClaimType { get; set; }
-        DateTime ClaimedUntill { get; set; }
+        public ClaimType ClaimType { get; set; }
+        public DateTime ClaimedUntill { get; set; }
     }
 }

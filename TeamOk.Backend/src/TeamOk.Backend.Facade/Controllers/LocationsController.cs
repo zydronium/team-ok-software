@@ -21,7 +21,7 @@ namespace TeamOk.Backend.Facade.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public Location Get(int id)
+        public Location Get(long id)
         {
             return new Location();
         }
@@ -34,13 +34,13 @@ namespace TeamOk.Backend.Facade.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Location value)
+        public void Put(long id, [FromBody]Location value)
         {
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(long id)
         {
         }
     }

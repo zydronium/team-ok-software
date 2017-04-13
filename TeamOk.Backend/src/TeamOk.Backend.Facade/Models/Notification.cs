@@ -7,6 +7,6 @@ namespace TeamOk.Backend.Facade.Models
 {
     public class Notification
     {
-        string ClaimType { get; set; }
+        public ClaimType ClaimType { get; set; }
     }
 }

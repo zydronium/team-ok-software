@@ -13,10 +13,6 @@ namespace TeamOk.Backend.Facade.Controllers
     public class WorkspaceunitsController : Controller
     {
         // GET api/values/5
-        /// <remarks>
-        /// ClaimType is a enum {Claim, Free}
-        /// 
-        /// </remarks>
         [HttpGet("{MacAddress}")]
         public Status Get(string MacAddress)
         {
@@ -24,10 +20,6 @@ namespace TeamOk.Backend.Facade.Controllers
         }
 
         // PUT api/values/5
-        /// <remarks>
-        /// ClaimType is a enum {Claim, Free}
-        /// 
-        /// </remarks>
         [HttpPost("{MacAddress}")]
         public void Put(string MacAddress, [FromBody]Status value)
         {

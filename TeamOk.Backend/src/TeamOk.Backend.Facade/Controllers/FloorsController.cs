@@ -14,33 +14,33 @@ namespace TeamOk.Backend.Facade.Controllers
     {
         // GET: api/values
         [HttpGet("{LocationId}")]
-        public IEnumerable<Floor> Get(int LocationId)
+        public IEnumerable<Floor> Get(long LocationId)
         {
             return new Floor[] { new Floor(), new Floor() };
         }
 
         // GET api/values/5
         [HttpGet("{LocationId}/{id}")]
-        public Floor Get(int LocationId, int id)
+        public Floor Get(long LocationId, long id)
         {
             return new Floor();
         }
 
         // POST api/values
         [HttpPost("{LocationId}")]
-        public void Post(int LocationId, [FromBody]Floor value)
+        public void Post(long LocationId, [FromBody]Floor value)
         {
         }
 
         // PUT api/values/5
         [HttpPut("{LocationId}/{id}")]
-        public void Put(int LocationId, int id, [FromBody]Floor value)
+        public void Put(long LocationId, long id, [FromBody]Floor value)
         {
         }
 
         // DELETE api/values/5
         [HttpDelete("{LocationId}/{id}")]
-        public void Delete(int LocationId, int id)
+        public void Delete(long LocationId, long id)
         {
         }
     }
