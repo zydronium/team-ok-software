@@ -9,7 +9,6 @@ body{
 .breadcrumb{
   border-radius: 0px;
   background: #ececec;
-  color:pink!important;
 }
 
 .breadcrumb-item{
@@ -211,4 +210,5 @@ h4{
 
 .column-text{
   padding:10px;
+  text-align: justify;
 }
