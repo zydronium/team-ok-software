@@ -85,6 +85,12 @@ ul.navbar li a.active {background-color: #e72e2a;}
   font-weight:bold;
 }
 
+.overview-list-filter{
+  float: right;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
 .overview-list-content{
   width:100%;
   overflow:scroll;
@@ -98,6 +104,27 @@ ul.navbar li a.active {background-color: #e72e2a;}
 
 .overview-list-content-row:hover{
   background-color: #ececec;
+}
+
+.overview-list-content-row-image{
+  display:inline-block;
+  vertical-align:top;
+  width: 55px;
+}
+
+.overview-list-content-row-image-text{
+  display:inline-block;
+  margin-left: 10px;
+}
+
+.overview-list-content-row-check{
+  font-size: 4.5em;
+  color: limegreen;
+}
+
+.overview-list-content-row-close{
+  font-size: 5.0em;
+  color: #e72e2a;
 }
 
 #overview-list-content-row-arrow::after{
