@@ -32,7 +32,6 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
         {
 
 
-
             //Vraag de backend wat de status is van deze tafel 
             return true;
         }
