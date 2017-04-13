@@ -31,4 +31,7 @@ export class VerdiepingenComponent implements OnInit {
     this.verdiepingen = this.verdiepingenService.getVerdiepingen(this.locatieid);
   }
 
+  openVerdieping(verdiepingid: number){
+    this.router.navigate(["/locaties/"+ this.locatie.id+"/verdiepingen/"+verdiepingid]);
+  }
 }
