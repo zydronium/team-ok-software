@@ -50,6 +50,8 @@ ul.navbar {
   min-height: 0px;
   border:0px;
   font-size: 1.2em;
+  font-family: 'myfont';
+  letter-spacing: 1px;
 }
 
 ul.navbar li {float: left;
@@ -64,7 +66,6 @@ ul.navbar li a {
   text-transform: uppercase;
   font-weight: normal;
   letter-spacing: 1px;
-  font-weight: bold;
 }
 
 ul.navbar li a:hover:not(.active) {background-color: #e72e2a;}
@@ -82,7 +83,7 @@ ul.navbar li a.active {background-color: #e72e2a;}
   padding-left:10px;
   border-bottom:1px solid #bebebe;
   color:#00a1e2;
-  font-weight:bold;
+  font-family: 'myfont';
 }
 
 .overview-list-content{
@@ -122,5 +123,15 @@ h4{
 @media screen and (max-width: 600px){
   ul.navbar li {float: none;}
 }
+
+@font-face {
+  font-family: "myfont";
+  src: url("assets/fonts/husans-normal-webfont.woff") format('woff');
+}
+
+h2{
+  font-family: 'myfont';
+}
+
 
 
