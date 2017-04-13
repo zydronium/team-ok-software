@@ -6,3 +6,31 @@
   <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties/{{locatie.id}}/verdiepingen/{{verdieping.id}}">{{verdieping.naam}}</a></li>
   <li class="breadcrumb-item">{{werkplek.naam}}</li>
 </ol>
+<div class="section group">
+  <div class="col span_2_of_3">
+    <h2 class="overview-list-title">{{werkplek.naam}}, {{verdieping.naam}}</h2>
+    <div class="column-text">
+      <p>{{werkplek.zitplaatsen}} zitplaatsen</p>
+      <p>{{werkplek.stopcontacten}} stopcontacten</p>
+    </div>
+  </div>
+  <div class="col span_1_of_3 center-text">
+    <h2 class="overview-list-title">Bezetting</h2>
+    <div class="column-text">
+      <i *ngIf="!werkplek.bezet" class="fa fa-check workspace-occupied-check" aria-hidden="true"></i>
+      <i *ngIf="werkplek.bezet" class="fa fa-close workspace-occupied-close" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>
+<div class="section group">
+  <div class="col span_3_of_3">
+    <h2 class="overview-list-title">Help ons om de informatie up-to-date te houden</h2>
+    <div class="column-text">
+      In werkelijkheid is deze tafel momenteel:
+    </div>
+    <div class="melding-button-bar">
+      <input class="button-red button-red-spacing-right button-red-small" type="button" value="Bezet">
+      <input class="button-red button-red-small" type="button" value="Vrij">
+    </div>
+  </div>
+</div>

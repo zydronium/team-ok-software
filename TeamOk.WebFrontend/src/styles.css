@@ -144,6 +144,42 @@ ul.navbar li a.active {background-color: #e72e2a;}
   cursor: pointer;
 }
 
+.workspace-occupied-check{
+  font-size: 10.0em;
+  color: limegreen;
+}
+
+.workspace-occupied-close{
+  font-size: 10.0em;
+  color: #e72e2a;
+}
+
+.melding-button-bar{
+  padding: 10px;
+}
+
+.button-red{
+  border: 0px;
+  background-color: #e72e2a;
+  color: white;
+  font-size: 1.2em;
+  font-family: 'myfont';
+  letter-spacing: 1px;
+  padding: 10px;
+}
+
+.button-red-spacing-right{
+  margin-right: 15px;
+}
+
+.button-red-small{
+  width: 100px;
+}
+
+.center-text{
+  text-align: center;
+}
+
 h4{
   color: #00a1e2;
   font-weight:bold;
@@ -162,7 +198,8 @@ h4{
 .span_3_of_3 {
   width: 100%;
   border:solid 1.5px white;
-  margin:10px;
+  padding:1.2em;
+  padding-top:0em;
   background-color:white;
 }
 
