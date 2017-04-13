@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace TeamOk.Backend.Domain.Entities
 {
-    public class Facility
+    public class FloorFacility
     {
         [Required]
         public long Id { get; set; }
         [Required]
-        public string Name { get; set; }
+        public long FacilityId { get; set; }
+        [Required]
+        public string Value { get; set; }
         [Required]
         public DateTime Created { get; set; }
         [Required]
