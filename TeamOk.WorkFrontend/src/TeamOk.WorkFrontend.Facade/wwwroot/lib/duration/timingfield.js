@@ -22,12 +22,10 @@
             
             this.getHours().value = this.tsToHours(this.elem.val());
             this.getMinutes().value = this.tsToMinutes(this.elem.val());
-            this.getSeconds().value = this.tsToSeconds(this.elem.val());
             
             this.tpl.width(this.settings.width);
             this.tpl.find('.timingfield_hours   .input-group-addon').text(this.settings.hoursText);
             this.tpl.find('.timingfield_minutes .input-group-addon').text(this.settings.minutesText);
-            this.tpl.find('.timingfield_seconds .input-group-addon').text(this.settings.secondsText);
             
             this.tpl.find('.timingfield_hours .timingfield_next')
                 .on('mouseup', function() { clearInterval(timeoutId); return false; })
@@ -39,14 +37,11 @@
             this.tpl.find('.timingfield_hours   .timingfield_prev').on('mousedown', $.proxy(this.downHour,  this));
             this.tpl.find('.timingfield_minutes .timingfield_next').on('mousedown', $.proxy(this.upMin,     this));
             this.tpl.find('.timingfield_minutes .timingfield_prev').on('mousedown', $.proxy(this.downMin,   this));
-            this.tpl.find('.timingfield_seconds .timingfield_next').on('mousedown', $.proxy(this.upSec,     this));
-            this.tpl.find('.timingfield_seconds .timingfield_prev').on('mousedown', $.proxy(this.downSec,   this));
             
             // input triggers
             this.tpl.find('.timingfield_hours   input').on('keyup', $.proxy(this.inputHour, this));
-            this.tpl.find('.timingfield_minutes input').on('keyup', $.proxy(this.inputMin,  this));
-            this.tpl.find('.timingfield_seconds input').on('keyup', $.proxy(this.inputSec,  this));
-            
+            this.tpl.find('.timingfield_minutes input').on('keyup', $.proxy(this.inputMin, this));
+
             // change on elem
             this.elem.on('change', $.proxy(this.change,  this));
         },
@@ -56,18 +51,13 @@
         getMinutes: function() {
             return this.tpl.find('.timingfield_minutes input')[0];
         },
-        getSeconds: function() {
-            return this.tpl.find('.timingfield_seconds input')[0];
-        },
         tsToHours: function(timestamp) {
             return parseInt(timestamp/3600);
         },
         tsToMinutes: function(timestamp) {
             return parseInt((timestamp%3600) / 60);
         },
-        tsToSeconds: function(timestamp) {
-            return parseInt((timestamp%3600) % 60);
-        },
+    
         hmsToTimestamp: function(h, m, s) {
             return parseInt(h)*3600 + parseInt(m)*60 + parseInt(s);
         },
@@ -112,7 +102,7 @@
         upMin: function() {
             if (!this.disabled) {
                 if (this.getMinutes().value < 59) {
-                    this.getMinutes().value = parseInt(this.getMinutes().value) + 1;
+                    this.getMinutes().value = parseInt(this.getMinutes().value) + 15;
                     this.updateElem();
                     return true;
                 } else if (this.upHour()) {
@@ -127,7 +117,7 @@
         downMin: function() {
             if (!this.disabled) {
                 if (this.getMinutes().value > 0) {
-                    this.getMinutes().value = parseInt(this.getMinutes().value) - 1;
+                    this.getMinutes().value = parseInt(this.getMinutes().value) - 15;
                     this.updateElem();
                     return true;
                 } else if (this.downHour()) {
@@ -136,7 +126,6 @@
                     return true;
                 }
             }
-            
             return false;
         },
         inputMin: function() {
@@ -150,47 +139,9 @@
                 this.updateElem();
             }
         },
-        upSec: function() {
-            if (!this.disabled) {
-                if (this.getSeconds().value < 59) {
-                    this.getSeconds().value = parseInt(this.getSeconds().value) + 1;
-                    this.updateElem();
-                    return true;
-                } else if (this.upMin()) {
-                    this.getSeconds().value = 0;
-                    this.updateElem();
-                    return true;
-                }
-            }
-            
-            return false;
-        },
-        downSec: function() {
-            if (!this.disabled) {
-                if (this.getSeconds().value > 0) {
-                    this.getSeconds().value = parseInt(this.getSeconds().value) - 1;
-                    this.updateElem();
-                    return true;
-                } else if (this.downMin()) {
-                    this.getSeconds().value = 59;
-                    this.updateElem();
-                    return true;
-                }
-            }
-            
-            return false;
-        },
-        inputSec: function() {
-            if (!this.disabled) {
-                if (this.getSeconds().value < 0) {
-                    this.getSeconds().value = 0;
-                } else if (this.getSeconds().value > 59) {
-                    this.getSeconds().value = 59;
-                }
-                
-                this.updateElem();
-            }
-        },
+     
+     
+       
         disable: function() {
             this.disabled = true;
             this.tpl.find('input:text').prop('disabled', true);
@@ -228,7 +179,6 @@
         width:          263,
         hoursText:      'H',
         minutesText:    'M',
-        secondsText:    'S'
     };
         
     $.fn.timingfield.template = '<div class="timingfield">\
@@ -248,14 +198,6 @@
             </span>\
             <button type="button" class="timingfield_prev btn btn-default btn-xs btn-block" tabindex="-1"><span class="glyphicon glyphicon-minus"></span></button>\
         </div>\
-        <div class="timingfield_seconds">\
-            <button type="button" class="timingfield_next btn btn-default btn-xs btn-block" tabindex="-1"><span class="glyphicon glyphicon-plus"></span></button>\
-            <span class="input-group">\
-                <input type="text" class="form-control">\
-                <span class="input-group-addon"></span>\
-            </span>\
-            <button type="button" class="timingfield_prev btn btn-default btn-xs btn-block" tabindex="-1"><span class="glyphicon glyphicon-minus"></span></button>\
-        </div>\
-    </div>';
+   </div>';
 
 }( jQuery ));
