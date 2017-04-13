@@ -36,7 +36,7 @@ export class LocatiesService {
   }
 
   getLocatie(locatieid: number) : Locatie {
-    var locaties : Array<Locatie> = [
+    let locaties : Array<Locatie> = [
       {
         id: 1,
         naam: 'Daltonlaan 200 (tijdelijke locatie)',
@@ -65,7 +65,7 @@ export class LocatiesService {
       }
     ];
 
-    var locaties = locaties.filter(locatie => locatie.id == locatieid);
+    locaties = locaties.filter(locatie => locatie.id == locatieid);
 
     if(locaties.length == 1){
       return locaties[0];

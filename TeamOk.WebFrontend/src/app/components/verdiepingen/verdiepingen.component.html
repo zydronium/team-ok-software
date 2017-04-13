@@ -7,7 +7,7 @@
 <div class="overview-list" >
   <h2 class="overview-list-title">Verdiepingen {{locatie.naam}}</h2>
   <table class="table-striped" class="table-striped overview-list-content">
-    <tr *ngFor="let verdieping of verdiepingen">
+    <tr *ngFor="let verdieping of verdiepingen" (click)="openVerdieping(verdieping.id)">
       <td class="overview-list-content-row">
         <div id="overview-list-content-row-arrow">
           <h4>{{verdieping.naam}}</h4>

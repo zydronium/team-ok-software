@@ -15,7 +15,7 @@ import { WerkplekComponent } from './components/werkplek/werkplek.component';
 import {AppComponent} from "./app.component";
 import {LocatiesService} from "./services/locaties.service";
 import {VerdiepingenService} from "./services/verdiepingen.service";
-import {LocatieService} from "./services/locatie.service";
+import {WerkplekkenService} from "./services/werkplekken.service";
 import {MdCardModule} from "@angular2-material/card";
 import {MdButtonModule} from "@angular2-material/button";
 import {MdIconModule} from "@angular2-material/icon";
@@ -45,7 +45,7 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
       apiKey: 'AIzaSyDtoOYq0ogNyyt0_KUusjXo16eqFOrdQPc'
     })
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : '/' }, LocatiesService, LocatieService, VerdiepingenService, MdIconRegistry ],
+  providers: [{provide: APP_BASE_HREF, useValue : '/' }, LocatiesService, WerkplekkenService, VerdiepingenService , MdIconRegistry],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
