@@ -24,5 +24,7 @@ export class LocatieComponent implements OnInit {
     this.locatie = this.locatiesService.getLocatie(this.locatieid);
 
   }
-
+  bekijkVerdiepingen(){
+    this.router.navigate(['/locaties/'+ this.locatie.id + '/verdiepingen'] );
+  }
 }
