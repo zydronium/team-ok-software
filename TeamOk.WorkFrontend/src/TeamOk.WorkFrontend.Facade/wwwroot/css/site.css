@@ -43,7 +43,7 @@
 }
 @media screen and (max-height: 299px) {
     a {
-        color: grey!important;
+        color: grey;
         text-align: center;
     }
 }

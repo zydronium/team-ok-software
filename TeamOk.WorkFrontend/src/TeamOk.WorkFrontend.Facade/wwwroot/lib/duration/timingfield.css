@@ -2,15 +2,13 @@
 .timingfield .timingfield_minutes,
 .timingfield .timingfield_seconds {
   display: inline-block;
-  width: calc(50vw - 35px);
-  height: 100vh;
+  width: 32%;
 }
 
 .timingfield .timingfield_hours .timingfield_next,
 .timingfield .timingfield_minutes .timingfield_next,
 .timingfield .timingfield_seconds .timingfield_next {
   border-radius: 3px 3px 0 0;
-  height:37.5%;
   border-bottom: 0 none;
 }
 
@@ -18,7 +16,6 @@
 .timingfield .timingfield_minutes .input-group,
 .timingfield .timingfield_seconds .input-group {
   width: 100%;
-  height: 25%;
 }
 
 .timingfield .timingfield_hours .input-group input,
@@ -29,7 +26,6 @@
 .timingfield .timingfield_seconds .input-group .input-group-addon {
   border-radius: 0;
   text-align: center;
-  height:100%;
 }
 
 .timingfield .timingfield_hours .input-group .input-group-addon,
@@ -42,6 +38,5 @@
 .timingfield .timingfield_minutes .timingfield_prev,
 .timingfield .timingfield_seconds .timingfield_prev {
   border-radius: 0 0 3px 3px;
-  height:37.5%;
   border-top: 0 none;
 }
