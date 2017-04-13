@@ -76,7 +76,9 @@ ul.navbar li a.active {background-color: #e72e2a;}
   border:solid 1.5px white;
   margin:10px;
   background-color:white;
-  padding: 1.2em;
+  padding-left: 1.2em;
+  padding-bottom: 1.2em;
+  padding-right: 1.2em;
 }
 
 .overview-list-title{
@@ -156,9 +158,34 @@ h4{
   src: url("assets/fonts/husans-normal-webfont.woff") format('woff');
 }
 
-h2{
-  font-family: 'myfont';
+/*  GRID OF THREE  */
+.span_3_of_3 { width: 100%; border-style: dotted}
+.span_2_of_3 { width: 66.13%; border-style: dotted }
+.span_1_of_3 { width: 32.26%; border-style: dotted}
+
+/*  GO FULL WIDTH BELOW 480 PIXELS */
+@media only screen and (max-width: 480px) {
+  .col {  margin: 1% 0 1% 0%; }
+  .span_3_of_3, .span_2_of_3, .span_1_of_3 { width: 100%; }
 }
 
+/*  SECTIONS  */
+.section {
+  clear: both;
+  padding: 0px;
+  margin: 1.2em;
+}
 
+/*  COLUMN SETUP  */
+.col {
+  display: block;
+  float:left;
+  margin: 1% 0 1% 1.6%;
+}
+.col:first-child { margin-left: 0; }
 
+/*  GROUPING  */
+.group:before,
+.group:after { content:""; display:table; }
+.group:after { clear:both;}
+.group { zoom:1; /* For IE 6/7 */ }
