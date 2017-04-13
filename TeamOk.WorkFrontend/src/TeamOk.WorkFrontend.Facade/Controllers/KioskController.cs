@@ -11,8 +11,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
         public IActionResult Index([FromHeader]string macaddress, [FromQuery] string MAC)
         {
             Console.Write("Hello Index");
-            var Bezet = getIsBezet();
-            Console.Write(macaddress);
+            var Bezet = getIsBezet(MAC);
             Console.Write(MAC);
             //If tafel = bezet
             //return View("Bezet");
@@ -29,8 +28,11 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             }
         }
 
-        private bool getIsBezet()
+        private bool getIsBezet(string mac)
         {
+
+
+
             //Vraag de backend wat de status is van deze tafel 
             return true;
         }
