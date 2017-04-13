@@ -95,6 +95,11 @@ ul.navbar li a.active {background-color: #e72e2a;}
   padding:10px;
   cursor: pointer;
 }
+
+.overview-list-content-row:hover{
+  background-color: #ececec;
+}
+
 #overview-list-content-row-arrow::after{
   font-family: fontAwesome;
   content: "\f054";
