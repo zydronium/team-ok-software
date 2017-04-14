@@ -184,7 +184,7 @@
         <div class="timingfield_hours">\
             <button type="button" class="timingfield_next btn btn-default btn-xs btn-block" tabindex="-1"><span class="glyphicon glyphicon-plus"></span></button>\
             <div class="input-group">\
-                <input type="text" class="form-control">\
+                <input type="text" class="form-control" name="Hours">\
                 <span class="input-group-addon"></span>\
             </div>\
             <button type="button" class="timingfield_prev btn btn-default btn-xs btn-block" tabindex="-1"><span class="glyphicon glyphicon-minus"></span></button>\
@@ -192,7 +192,7 @@
         <div class="timingfield_minutes">\
             <button type="button" class="timingfield_next btn btn-default btn-xs btn-block" tabindex="-1"><span class="glyphicon glyphicon-plus"></span></button>\
             <span class="input-group">\
-                <input type="text" class="form-control">\
+                <input type="text" class="form-control" name="Minutes">\
                 <span class="input-group-addon"></span>\
             </span>\
             <button type="button" class="timingfield_prev btn btn-default btn-xs btn-block" tabindex="-1"><span class="glyphicon glyphicon-minus"></span></button>\

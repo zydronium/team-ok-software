@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TeamOk.WorkFrontend.Facade.Models;
 
 namespace TeamOk.WorkFrontend.Facade.Controllers
 {
@@ -59,5 +60,18 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult ChooseTime(ChosenTimeModel model)
+        {
+            int hours = model.Hours;
+            int minutes = model.Minutes;
+            if (getIsBezet(""))
+            {
+                return View("Bezet");
+            }
+            else return View("Vrij");
+        }
+
     }
 }

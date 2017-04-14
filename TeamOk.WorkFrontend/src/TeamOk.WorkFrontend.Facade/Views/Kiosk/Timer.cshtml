@@ -1,11 +1,16 @@
-﻿@*
+﻿@model TeamOk.WorkFrontend.Facade.Models.ChosenTimeModel
+@*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
 <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="~/lib/duration/timingfield.css" rel="stylesheet">
+@using (Html.BeginForm("ChooseTime", "Kiosk", FormMethod.Post))
+{
 <input type="text" class="timing">
+<button type="submit" value="Submit" style="width:calc(99vw - 50px); height: 10vh;"> Klik hier om te kiezen</button>
+}
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="~/lib/duration/timingfield.js"></script>
 <script>
@@ -14,4 +19,5 @@ $(".timing").timingfield({
         width: "100vw",
     hoursText:      'uur',
     minutesText:    'min',
-    });</script>
+});
+</script>

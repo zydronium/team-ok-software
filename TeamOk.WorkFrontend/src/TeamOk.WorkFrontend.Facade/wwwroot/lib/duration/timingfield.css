@@ -3,7 +3,7 @@
 .timingfield .timingfield_seconds {
   display: inline-block;
   width: calc(50vw - 35px);
-  height: 100vh;
+  height: 90vh;
 }
 
 .timingfield .timingfield_hours .timingfield_next,
