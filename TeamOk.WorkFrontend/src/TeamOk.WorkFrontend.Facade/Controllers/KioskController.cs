@@ -30,10 +30,14 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
 
         private bool getIsBezet(string mac)
         {
-
-
             //Vraag de backend wat de status is van deze tafel 
-            return true;
+            return false;
+        }
+
+        [HttpPost]
+        public void reserveerWerkplek(object sender, EventArgs e)
+        {
+            Console.Write("Hi");
         }
 
         public IActionResult About()

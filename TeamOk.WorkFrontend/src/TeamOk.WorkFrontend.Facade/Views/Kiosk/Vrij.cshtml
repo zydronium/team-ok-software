@@ -1,9 +1,6 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
-<div class="claimwerkplekbutton">
-    <button class="btn-block btn-block-styling" style="background-color: forestgreen">Claim Werkplek</button>
+﻿<div class="claimwerkplekbutton" >
+    @using (Html.BeginForm("reserveerWerkplek", "Kiosk", FormMethod.Post))
+    {
+        <button type="submit" value="submit" class="btn-block btn-block-styling" style="background-color: forestgreen">Claim Werkplek</button>
+    }
 </div>
