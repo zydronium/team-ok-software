@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -61,12 +62,13 @@ namespace TeamOk.WorkFrontend.Facade
 
             app.UseStaticFiles();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Kiosk}/{action=Index}/{id?}");
-            });
+            app.UseMvc(configureRoutes);
+        }
+
+        private void configureRoutes(IRouteBuilder routeBuilder)
+        {
+            routeBuilder.MapRoute(name: "default",template: "{controller=Kiosk}/{action=Index}/{id?}");
+            //routeBuilder.MapPost("reserveerWerkplek", );
         }
     }
 }
