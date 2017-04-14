@@ -3,80 +3,86 @@
   <li class="breadcrumb-item"><a class="breadcrumb-color" href="/locaties">Locaties</a></li>
   <li class="breadcrumb-item active">{{locatie.adress}}</li>
 </ol>
-<table style="width:100%">
-  <tr>
-    <td>
-      <md-card style="margin:20px">
-        <md-card-title>
-          <h2 class="overview-list-title">{{locatie.adress}} {{locatie.plaats}}</h2>
-        </md-card-title>
-        <table>
-          <tr>
-            <td style="width:75%;">
-              <label>{{locatie.naam}}</label>
-              <br>
-              <label>{{locatie.postcode}} {{locatie.plaats}}</label>
-              <br>
-              <label>Tel: {{locatie.telefoonnummer}}</label>
-            </td>
-            <td>
-              <img src="../../src/assets/images/2013 10 18 Daltonlaan200_03.jpg.jpg" height="138"
-                     width="277" />
-            </td>
-          </tr>
-          <tr>
-            <td>{{locatie.openingstijden}}</td>
-          </tr>
-          <tr>
-            <td>
-              <label>Cafetaria:
-                <i *ngIf="locatie.cafetaria == false" class="fa fa-times" style="color:red"></i>
-                <i *ngIf="locatie.cafetaria == true" class="fa fa-check" style="color:green"></i>
-              </label>
-            </td>
-          </tr>
-        </table>
-        <input class="button-red button-red-fill-width" type="button" value="Bekijk verdiepingen" (click)="bekijkVerdiepingen()">
-      </md-card>
-    </td>
-    <td>
-      <md-card style="margin:20px">
-        <md-card-title>
-          <h3 class="overview-list-title">{{locatie.adress}} {{locatie.plaats}}</h3>
-        </md-card-title>
-        <div>
-          <sebm-google-map [latitude]="locatie.lat" [longitude]="locatie.lng" [zoom]="17">
-            <sebm-google-map-marker [latitude]="locatie.lat" [longitude]="locatie.lng"></sebm-google-map-marker>
-          </sebm-google-map>
-          <br>
-         <p> Parkeermogelijkheden: {{locatie.parkeermogelijkheden}}</p>
-          <div>
-            <input class="button-red button-red-fill-width" type="button" value="OV" (click)="openOV()">
-          </div>
-        </div>
-      </md-card>
-    </td>
-  </tr>
-</table>
+<!--<table style="width:100%">-->
+  <!--<tr>-->
+    <!--<td>-->
+      <!--<md-card style="margin:20px">-->
+        <!--<md-card-title>-->
+          <!--<h2 class="overview-list-title">{{locatie.adress}} {{locatie.plaats}}</h2>-->
+        <!--</md-card-title>-->
+        <!--<table>-->
+          <!--<tr>-->
+            <!--<td style="width:75%;">-->
+              <!--<label>{{locatie.naam}}</label>-->
+              <!--<br>-->
+              <!--<label>{{locatie.postcode}} {{locatie.plaats}}</label>-->
+              <!--<br>-->
+              <!--<label>Tel: {{locatie.telefoonnummer}}</label>-->
+            <!--</td>-->
+            <!--<td>-->
+              <!--<img src="../../src/assets/images/2013 10 18 Daltonlaan200_03.jpg.jpg" height="138"-->
+                     <!--width="277" />-->
+            <!--</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+            <!--<td>{{locatie.openingstijden}}</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+            <!--<td>-->
+              <!--<label>Cafetaria:-->
+                <!--<i *ngIf="locatie.cafetaria == false" class="fa fa-times" style="color:red"></i>-->
+                <!--<i *ngIf="locatie.cafetaria == true" class="fa fa-check" style="color:green"></i>-->
+              <!--</label>-->
+            <!--</td>-->
+          <!--</tr>-->
+        <!--</table>-->
+        <!--<input class="button-red button-red-fill-width" type="button" value="Bekijk verdiepingen" (click)="bekijkVerdiepingen()">-->
+      <!--</md-card>-->
+    <!--</td>-->
+    <!--<td>-->
+      <!--<md-card style="margin:20px">-->
+        <!--<md-card-title>-->
+          <!--<h3 class="overview-list-title">{{locatie.adress}} {{locatie.plaats}}</h3>-->
+        <!--</md-card-title>-->
+        <!--<div>-->
+          <!--<sebm-google-map [latitude]="locatie.lat" [longitude]="locatie.lng" [zoom]="17">-->
+            <!--<sebm-google-map-marker [latitude]="locatie.lat" [longitude]="locatie.lng"></sebm-google-map-marker>-->
+          <!--</sebm-google-map>-->
+          <!--<br>-->
+         <!--<p> Parkeermogelijkheden: {{locatie.parkeermogelijkheden}}</p>-->
+          <!--<div>-->
+            <!--<input class="button-red button-red-fill-width" type="button" value="OV" (click)="openOV()">-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</md-card>-->
+    <!--</td>-->
+  <!--</tr>-->
+<!--</table>-->
+
 
 <div class="section group">
   <div class="col span_2_of_3">
-    <h2 class="overview-list-title"> {{locatie.adress}} {{locatie.plaats}} </h2>
+    <h2 class="overview-list-title"> {{locatie.naam}} </h2>
     <div class="column-text">
-      <label>{{locatie.naam}}</label>
-      <br>
-      <label>{{locatie.postcode}} {{locatie.plaats}}</label>
-      <br>
-      <label>Tel: {{locatie.telefoonnummer}}</label>
-      <br>
-      <img src="../../src/assets/images/2013 10 18 Daltonlaan200_03.jpg.jpg" height="138"
-           width="277" />
-      <br>
-      <td>{{locatie.openingstijden}}</td>
-      <br>
+      <div class="location-column-left">
+      <!--Hier komt de tekst LINKS-->
+        <label>{{locatie.naam}}</label>
+        <br>
+        <label>{{locatie.postcode}} {{locatie.plaats}}</label>
+        <br>
+        <label>Tel: {{locatie.telefoonnummer}}</label>
+        <br>
+      </div>
+      <div class="location-column-right">
+        <div class="location-column-right-inner">
+          <img src="../../src/assets/images/2013 10 18 Daltonlaan200_03.jpg.jpg" height="138"
+                   width="277" />
+        </div>
+      </div>
+      {{locatie.openingstijden}} <br>
       <label>Cafetaria:
-        <i *ngIf="locatie.cafetaria == false" class="fa fa-times" style="color:red"></i>
-        <i *ngIf="locatie.cafetaria == true" class="fa fa-check" style="color:green"></i>
+        <i *ngIf="locatie.cafetaria == false" class="fa fa-times icon-red"></i>
+        <i *ngIf="locatie.cafetaria == true" class="fa fa-check icon-green"></i>
       </label>
       <br>
       <input class="button-red button-red-fill-width" type="button" value="Bekijk verdiepingen" (click)="bekijkVerdiepingen()">
@@ -85,15 +91,11 @@
   <div class="col span_1_of_3">
     <h2 class="overview-list-title"> {{locatie.adress}} {{locatie.plaats}}</h2>
     <div class="column-text">
-
       <sebm-google-map [latitude]="locatie.lat" [longitude]="locatie.lng" [zoom]="17">
         <sebm-google-map-marker [latitude]="locatie.lat" [longitude]="locatie.lng"></sebm-google-map-marker>
       </sebm-google-map>
-
-      Parkeermogelijkheden: {{locatie.parkeermogelijkheden}}
-
+      <br><p>Parkeermogelijkheden: {{locatie.parkeermogelijkheden}}</p>
       <input class="button-red button-red-fill-width" type="button" value="OV" (click)="openOV()">
-
     </div>
   </div>
 </div>
