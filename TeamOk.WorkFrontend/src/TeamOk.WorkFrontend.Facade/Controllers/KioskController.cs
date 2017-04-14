@@ -9,15 +9,11 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
 {
     public class KioskController : Controller
     {
+        public ChosenTimeModel Reserveringstijd { get; set; }
         public IActionResult Index([FromHeader]string macaddress, [FromQuery] string MAC)
         {
             Console.Write("Hello Index");
             var Bezet = getIsBezet(MAC);
-            Console.Write(MAC);
-            //If tafel = bezet
-            //return View("Bezet");
-            //If tafel != bezet
-            //Return View("Vrij")
 
             if (Bezet)
             {
@@ -36,9 +32,11 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
         }
 
         [HttpPost]
-        public void reserveerWerkplek(object sender, EventArgs e)
+        public void reserveerWerkplek(object sender, EventArgs e, [FromQuery] string MAC)
         {
-            Console.Write("Hi");
+            Reservering reservering = new Reservering();
+            reservering.setClaimedUntil(Reserveringstijd);
+            
         }
 
         public IActionResult About()
@@ -68,8 +66,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
         [HttpPost]
         public ActionResult ChooseTime(ChosenTimeModel model)
         {
-            int hours = model.Hours;
-            int minutes = model.Minutes;
+            model = Reserveringstijd;
             if (getIsBezet(""))
             {
                 return View("Bezet");
