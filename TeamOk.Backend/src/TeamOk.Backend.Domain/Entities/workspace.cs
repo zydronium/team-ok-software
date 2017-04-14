@@ -14,6 +14,8 @@ namespace TeamOk.Backend.Domain.Entities
         public long FloorId { get; set; }
         [Required]
         public string Name { get; set; }
+        [Required]
+        public string MacAddress { get; set; }
         public List<WorkspaceFacility> WorkspaceFacilities { get; set; }
         [Required]
         public DateTime Created { get; set; }
