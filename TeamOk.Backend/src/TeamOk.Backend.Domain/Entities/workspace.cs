@@ -9,9 +9,9 @@ namespace TeamOk.Backend.Domain.Entities
     public class Workspace
     {
         [Required]
-        public long Id { get; set; }
+        public long ID { get; set; }
         [Required]
-        public long FloorId { get; set; }
+        public long FloorID { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

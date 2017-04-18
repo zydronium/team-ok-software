@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.Swagger.Model;
+using TeamOk.Backend.Domain.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace TeamOk.Backend.Facade
 {
@@ -51,6 +53,8 @@ namespace TeamOk.Backend.Facade
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
+
+            services.AddDbContext<BackendDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SQLServer")), ServiceLifetime.Transient);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline

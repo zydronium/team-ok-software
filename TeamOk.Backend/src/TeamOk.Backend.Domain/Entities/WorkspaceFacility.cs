@@ -9,9 +9,9 @@ namespace TeamOk.Backend.Domain.Entities
     public class WorkspaceFacility
     {
         [Required]
-        public long Id { get; set; }
+        public long ID { get; set; }
         [Required]
-        public long FacilityId { get; set; }
+        public long FacilityID { get; set; }
         [Required]
         public string Value { get; set; }
         [Required]
