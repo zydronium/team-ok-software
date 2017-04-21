@@ -45,8 +45,19 @@ namespace TeamOk.Backend.Facade.Controllers
                 localValue.OpeningHours = location.OpeningHours;
                 localValue.Phonenumber = location.Phonenumber;
                 localValue.Postcode = location.Postcode;
+                localValue.Facilities = new List<Facility>();
 
+                foreach (var facilityInstance in location.LocationFacilities)
+                {
+                    Facility localFacility = new Facility();
+                    localFacility.Created = facilityInstance.Created;
+                    localFacility.Id = facilityInstance.ID;
+                    localFacility.Modified = facilityInstance.Modified;
+                    localFacility.Name = facilityInstance.FacilityInstance.Name;
+                    localFacility.Value = facilityInstance.Value;
 
+                    localValue.Facilities.Add(localFacility);
+                }
 
                 value.Add(localValue);
             }
@@ -74,8 +85,19 @@ namespace TeamOk.Backend.Facade.Controllers
             localValue.OpeningHours = location.OpeningHours;
             localValue.Phonenumber = location.Phonenumber;
             localValue.Postcode = location.Postcode;
+            localValue.Facilities = new List<Facility>();
 
+            foreach(var facilityInstance in location.LocationFacilities)
+            {
+                Facility localFacility = new Facility();
+                localFacility.Created = facilityInstance.Created;
+                localFacility.Id = facilityInstance.ID;
+                localFacility.Modified = facilityInstance.Modified;
+                localFacility.Name = facilityInstance.FacilityInstance.Name;
+                localFacility.Value = facilityInstance.Value;
 
+                localValue.Facilities.Add(localFacility);
+            }
 
             return localValue;
         }
