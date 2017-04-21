@@ -18,18 +18,9 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             _context = context;
         }
 
-        public IActionResult Index([FromHeader]string macaddress, [FromQuery] string MAC)
+        public IActionResult Index([FromQuery] string MacAddress)
         {
-            Console.Write("Hello Index");
-            var Bezet = getIsBezet(MAC);
-            Console.Write(MAC);
-            var test = _context.ApiWorkspaceunitsByMacAddressGet("test");
-            //If tafel = bezet
-            //return View("Bezet");
-            //If tafel != bezet
-            //Return View("Vrij")
-
-            if (Bezet)
+            if (getIsBezet(MacAddress) == true)
             {
                 return View("Bezet");
             }
@@ -41,7 +32,17 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
 
         private bool getIsBezet(string mac)
         {
-            //Vraag de backend wat de status is van deze tafel 
+            Status getStatus;
+            try
+            {
+                getStatus = _context.ApiWorkspaceunitsByMacAddressGet(mac);
+                bool isClaimed = (bool)getStatus.Claimed;
+                return isClaimed;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.InnerException);
+            }
             return false;
         }
 
@@ -76,11 +77,11 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
         }
 
         [HttpPost]
-        public ActionResult ChooseTime(ChosenTimeModel model)
+        public ActionResult ChooseTime(ChosenTimeModel model, [FromQuery] string MacAddress)
         {
             int hours = model.Hours;
             int minutes = model.Minutes;
-            if (getIsBezet(""))
+            if (getIsBezet(MacAddress))
             {
                 return View("Bezet");
             }
