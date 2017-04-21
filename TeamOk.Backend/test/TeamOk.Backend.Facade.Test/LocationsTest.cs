@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TeamOk.Backend.Domain.DAL;
+using TeamOk.Backend.Domain.Entities;
+using TeamOk.Backend.Facade.Controllers;
 
 namespace TeamOk.Backend.Facade.Test
 {
@@ -27,14 +29,13 @@ namespace TeamOk.Backend.Facade.Test
         public void getLocationsTest()
         {
             var option = CreateNewContextOptions();
-            PostCursusViewModel PostCursusViewModel = new PostCursusViewModel();
-            using (var context = new CASDBContext(option))
+            using (var context = new BackendDBContext(option))
             {
-                Cursus cursus = new Cursus();
-                cursus.Cursuscode = "test";
-                cursus.Duur = 5;
-                cursus.Titel = "Test";
-                context.Cursussen.Add(cursus);
+                Facility facility = new Facility();
+                facility.Name = "test";
+                facility.Created = DateTime.Now;
+                facility.Modified = DateTime.Now;
+                context.facilities.Add(facility);
                 try
                 {
                     context.SaveChanges();
@@ -43,12 +44,14 @@ namespace TeamOk.Backend.Facade.Test
                 {
                     throw;
                 }
-                CursusInstantie cursusInstantie = new CursusInstantie();
-                cursusInstantie.StartDatum = DateTime.Now;
-                cursusInstantie.WeekNummer = DateTimeHelpers.GetWeekNumber(cursusInstantie.StartDatum);
-                cursusInstantie.CursusID = cursus.ID;
+                LocationFacility locationFacility = new LocationFacility();
+                locationFacility.FacilityID = facility.ID;
+                locationFacility.FacilityInstance = facility;
+                locationFacility.Created = DateTime.Now;
+                locationFacility.Modified = DateTime.Now;
+                locationFacility.Value = "Test";
 
-                context.CursusInstanties.Add(cursusInstantie);
+                context.LocationFacilities.Add(locationFacility);
                 try
                 {
                     context.SaveChanges();
@@ -57,8 +60,29 @@ namespace TeamOk.Backend.Facade.Test
                 {
                     throw;
                 }
-                var target = new CursusController(context);
-                var result = target.GetCursussen();
+                Location location = new Location();
+                location.LocationFacilities = new List<LocationFacility>();
+                location.LocationFacilities.Add(locationFacility);
+                location.Name = "test";
+                location.Latitude = 1.10;
+                location.Longitude = 1.10;
+                location.OpeningHours = "test";
+                location.Phonenumber = "test";
+                location.Postcode = "test";
+                location.Created = DateTime.Now;
+                location.Modified = DateTime.Now;
+
+                context.Locations.Add(location);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                var target = new LocationsController(context);
+                var result = target.GetLocations();
                 int count = 1;
                 Assert.AreEqual(count, result.Count());
             }
