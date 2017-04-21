@@ -13,6 +13,8 @@ namespace TeamOk.Backend.Domain.Entities
         [Required]
         public long FacilityID { get; set; }
         [Required]
+        public Facility FacilityInstance { get; set; }
+        [Required]
         public string Value { get; set; }
         [Required]
         public DateTime Created { get; set; }
