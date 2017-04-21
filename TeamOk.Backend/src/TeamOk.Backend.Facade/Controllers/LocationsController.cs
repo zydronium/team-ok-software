@@ -22,7 +22,7 @@ namespace TeamOk.Backend.Facade.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<Location> GetLocations()
+        public IEnumerable<LocationViewModel> GetLocations()
         {
             var result = _context.Locations
                 .Include(x => x.LocationFacilities)
@@ -30,10 +30,10 @@ namespace TeamOk.Backend.Facade.Controllers
                 .OrderBy(x => x.Name)
                 .ToList();
 
-            List<Location> value = new List<Location>();
+            List<LocationViewModel> value = new List<LocationViewModel>();
             foreach (var location in result)
             {
-                Location localValue = new Location();
+                LocationViewModel localValue = new LocationViewModel();
                 localValue.Address = location.Address;
                 localValue.City = location.City;
                 localValue.Created = location.Created;
@@ -45,11 +45,11 @@ namespace TeamOk.Backend.Facade.Controllers
                 localValue.OpeningHours = location.OpeningHours;
                 localValue.Phonenumber = location.Phonenumber;
                 localValue.Postcode = location.Postcode;
-                localValue.Facilities = new List<Facility>();
+                localValue.Facilities = new List<FacilityViewModel>();
 
                 foreach (var facilityInstance in location.LocationFacilities)
                 {
-                    Facility localFacility = new Facility();
+                    FacilityViewModel localFacility = new FacilityViewModel();
                     localFacility.Created = facilityInstance.Created;
                     localFacility.Id = facilityInstance.ID;
                     localFacility.Modified = facilityInstance.Modified;
@@ -66,14 +66,14 @@ namespace TeamOk.Backend.Facade.Controllers
         
         // GET: api/Cursus
         [HttpGet("{id}")]
-        public Location GetLocation([FromRoute] long id)
+        public LocationViewModel GetLocation([FromRoute] long id)
         {
             var location = _context.Locations
                 .Include(x => x.LocationFacilities)
                 .ThenInclude(x => x.FacilityInstance)
                 .OrderBy(x => x.Name)
                 .SingleOrDefault(x => x.ID == id);
-            Location localValue = new Location();
+            LocationViewModel localValue = new LocationViewModel();
             localValue.Address = location.Address;
             localValue.City = location.City;
             localValue.Created = location.Created;
@@ -85,11 +85,11 @@ namespace TeamOk.Backend.Facade.Controllers
             localValue.OpeningHours = location.OpeningHours;
             localValue.Phonenumber = location.Phonenumber;
             localValue.Postcode = location.Postcode;
-            localValue.Facilities = new List<Facility>();
+            localValue.Facilities = new List<FacilityViewModel>();
 
             foreach(var facilityInstance in location.LocationFacilities)
             {
-                Facility localFacility = new Facility();
+                FacilityViewModel localFacility = new FacilityViewModel();
                 localFacility.Created = facilityInstance.Created;
                 localFacility.Id = facilityInstance.ID;
                 localFacility.Modified = facilityInstance.Modified;

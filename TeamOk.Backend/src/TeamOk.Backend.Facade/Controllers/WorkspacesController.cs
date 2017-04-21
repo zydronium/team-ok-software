@@ -21,27 +21,27 @@ namespace TeamOk.Backend.Facade.Controllers
 
         // GET: api/values
         [HttpGet("{FloorId}")]
-        public IEnumerable<Workspace> Get(long FloorId)
+        public IEnumerable<WorkspaceViewModel> Get(long FloorId)
         {
-            return new Workspace[] { new Workspace(), new Workspace() };
+            return new WorkspaceViewModel[] { new WorkspaceViewModel(), new WorkspaceViewModel() };
         }
 
         // GET api/values/5
         [HttpGet("{FloorId}/{id}")]
-        public Workspace Get(long FloorId, long id)
+        public WorkspaceViewModel Get(long FloorId, long id)
         {
-            return new Workspace();
+            return new WorkspaceViewModel();
         }
 
         // POST api/values
         [HttpPost("{FloorId}")]
-        public void Post(long FloorId, [FromBody]Workspace value)
+        public void Post(long FloorId, [FromBody]WorkspaceViewModel value)
         {
         }
 
         // PUT api/values/5
         [HttpPut("{FloorId}/{id}")]
-        public void Put(long FloorId, long id, [FromBody]Workspace value)
+        public void Put(long FloorId, long id, [FromBody]WorkspaceViewModel value)
         {
         }
 

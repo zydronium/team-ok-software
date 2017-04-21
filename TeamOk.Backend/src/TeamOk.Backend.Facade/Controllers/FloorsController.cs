@@ -21,27 +21,27 @@ namespace TeamOk.Backend.Facade.Controllers
 
         // GET: api/values
         [HttpGet("{LocationId}")]
-        public IEnumerable<Floor> Get(long LocationId)
+        public IEnumerable<FloorViewModel> Get(long LocationId)
         {
-            return new Floor[] { new Floor(), new Floor() };
+            return new FloorViewModel[] { new FloorViewModel(), new FloorViewModel() };
         }
 
         // GET api/values/5
         [HttpGet("{LocationId}/{id}")]
-        public Floor Get(long LocationId, long id)
+        public FloorViewModel Get(long LocationId, long id)
         {
-            return new Floor();
+            return new FloorViewModel();
         }
 
         // POST api/values
         [HttpPost("{LocationId}")]
-        public void Post(long LocationId, [FromBody]Floor value)
+        public void Post(long LocationId, [FromBody]FloorViewModel value)
         {
         }
 
         // PUT api/values/5
         [HttpPut("{LocationId}/{id}")]
-        public void Put(long LocationId, long id, [FromBody]Floor value)
+        public void Put(long LocationId, long id, [FromBody]FloorViewModel value)
         {
         }
 
