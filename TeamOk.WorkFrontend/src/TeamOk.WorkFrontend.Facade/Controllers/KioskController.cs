@@ -19,8 +19,14 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             _context = context;
         }
 
+        
         public IActionResult Index([FromQuery] string MacAddress)
         {
+            if(MacAddress != null)
+            {
+                HttpContext.Session.SetString("MacAddress", MacAddress);
+            }
+            
             if (getIsBezet(MacAddress) == true)
             {
                 return View("Bezet");
@@ -48,8 +54,9 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
         }
 
         [HttpPost]
-        public void reserveerWerkplek(object sender, EventArgs e, [FromQuery] String MacAddress)
+        public void reserveerWerkplek(object sender, EventArgs e)
         {
+            var MacAddress = HttpContext.Session.GetString("MacAddress");
             if (!getIsBezet(MacAddress))
             {
                 double? Minutes = Convert.ToDouble(Request.Cookies["ChosenMinutes"]);
@@ -96,8 +103,9 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
         }
 
         [HttpPost]
-        public ActionResult ChooseTime(ChosenTimeModel model, [FromQuery] string MacAddress)
+        public ActionResult ChooseTime(ChosenTimeModel model)
         {
+            var MacAddress = HttpContext.Session.GetString("MacAddress");
             int hours = model.Hours;
             int minutes = model.Minutes;
             CookieOptions options = new CookieOptions();
