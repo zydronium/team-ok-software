@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using TeamOk.WorkFrontend.Facade.Agents;
 
 namespace TeamOk.WorkFrontend.Facade
 {
@@ -38,6 +39,11 @@ namespace TeamOk.WorkFrontend.Facade
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
+
+            services.AddScoped<IBackendApiClient>(container =>
+            {
+                return new BackendApiClient(baseUri: new Uri("https://backend.werkplek.123apps.net"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

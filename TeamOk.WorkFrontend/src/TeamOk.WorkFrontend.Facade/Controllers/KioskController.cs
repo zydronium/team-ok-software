@@ -4,16 +4,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TeamOk.WorkFrontend.Facade.Models;
+using TeamOk.WorkFrontend.Facade.Agents;
 
 namespace TeamOk.WorkFrontend.Facade.Controllers
 {
     public class KioskController : Controller
     {
+
+        private readonly IBackendApiClient _context;
+
+        public KioskController(IBackendApiClient context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index([FromHeader]string macaddress, [FromQuery] string MAC)
         {
             Console.Write("Hello Index");
             var Bezet = getIsBezet(MAC);
             Console.Write(MAC);
+            _context.ApiWorkspaceunitsByMacAddressGet("test");
             //If tafel = bezet
             //return View("Bezet");
             //If tafel != bezet
