@@ -9,9 +9,9 @@ namespace TeamOk.Backend.Domain.Entities
     public class Floor
     {
         [Required]
-        public long Id { get; set; }
+        public long ID { get; set; }
         [Required]
-        public long LocationId { get; set; }
+        public long LocationID { get; set; }
         [Required]
         public string Name { get; set; }
         public List<FloorFacility> FloorFacilities { get; set; }

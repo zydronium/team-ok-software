@@ -9,7 +9,7 @@ namespace TeamOk.Backend.Domain.Entities
     public class Location
     {
         [Required]
-        public long Id { get; set; }
+        public long ID { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

@@ -9,7 +9,7 @@ namespace TeamOk.Backend.Domain.Entities
     public class NotificationType
     {
         [required]
-        public long Id { get; set; }
+        public long ID { get; set; }
         [required]
         public string Name { get; set; }
     }

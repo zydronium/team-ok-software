@@ -9,9 +9,9 @@ namespace TeamOk.Backend.Domain.Entities
     public class Occupation
     {
         [Required]
-        public long Id { get; set; }
+        public long ID { get; set; }
         [Required]
-        public long WorkspaceId { get; set; }
+        public long WorkspaceID { get; set; }
         [Required]
         public NotificationType Type { get; set; }
         [Required]
