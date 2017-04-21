@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace TeamOk.Backend.Facade.Models
 {
-    public class Status
+    public class NotificationViewModel
     {
         public bool Claimed { get; set; }
-        public DateTime ClaimedUntill { get; set; }
     }
 }

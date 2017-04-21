@@ -21,14 +21,14 @@ namespace TeamOk.Backend.Facade.Controllers
 
         // GET api/values/5
         [HttpGet("{MacAddress}")]
-        public Status Get(string MacAddress)
+        public StatusViewModel Get(string MacAddress)
         {
-            return new Status();
+            return new StatusViewModel();
         }
 
         // PUT api/values/5
         [HttpPost("{MacAddress}")]
-        public void Put(string MacAddress, [FromBody]Status value)
+        public void Put(string MacAddress, [FromBody]StatusViewModel value)
         {
         }
     }

@@ -22,30 +22,84 @@ namespace TeamOk.Backend.Facade.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<Location> GetLocations()
+        public IEnumerable<LocationViewModel> GetLocations()
         {
             var result = _context.Locations
                 .Include(x => x.LocationFacilities)
+                .ThenInclude(x => x.FacilityInstance)
                 .OrderBy(x => x.Name)
                 .ToList();
 
-            IEnumerable<Location> value = new List<Location>();
+            List<LocationViewModel> value = new List<LocationViewModel>();
             foreach (var location in result)
             {
+                LocationViewModel localValue = new LocationViewModel();
+                localValue.Address = location.Address;
+                localValue.City = location.City;
+                localValue.Created = location.Created;
+                localValue.Id = location.ID;
+                localValue.Latitude = location.Latitude;
+                localValue.Longitude = location.Longitude;
+                localValue.Modified = location.Modified;
+                localValue.Name = location.Name;
+                localValue.OpeningHours = location.OpeningHours;
+                localValue.Phonenumber = location.Phonenumber;
+                localValue.Postcode = location.Postcode;
+                localValue.Facilities = new List<FacilityViewModel>();
 
+                foreach (var facilityInstance in location.LocationFacilities)
+                {
+                    FacilityViewModel localFacility = new FacilityViewModel();
+                    localFacility.Created = facilityInstance.Created;
+                    localFacility.Id = facilityInstance.ID;
+                    localFacility.Modified = facilityInstance.Modified;
+                    localFacility.Name = facilityInstance.FacilityInstance.Name;
+                    localFacility.Value = facilityInstance.Value;
+
+                    localValue.Facilities.Add(localFacility);
+                }
+
+                value.Add(localValue);
             }
             return value;
         }
         
         // GET: api/Cursus
         [HttpGet("{id}")]
-        public Location GetLocation([FromRoute] long id)
+        public LocationViewModel GetLocation([FromRoute] long id)
         {
-            var result = _context.Locations
+            var location = _context.Locations
+                .Include(x => x.LocationFacilities)
+                .ThenInclude(x => x.FacilityInstance)
                 .OrderBy(x => x.Name)
                 .SingleOrDefault(x => x.ID == id);
-            Location value = new Location();
-            return value;
+            LocationViewModel localValue = new LocationViewModel();
+            localValue.Address = location.Address;
+            localValue.City = location.City;
+            localValue.Created = location.Created;
+            localValue.Id = location.ID;
+            localValue.Latitude = location.Latitude;
+            localValue.Longitude = location.Longitude;
+            localValue.Modified = location.Modified;
+            localValue.Name = location.Name;
+            localValue.OpeningHours = location.OpeningHours;
+            localValue.Phonenumber = location.Phonenumber;
+            localValue.Postcode = location.Postcode;
+            localValue.Facilities = new List<FacilityViewModel>();
+
+            foreach(var facilityInstance in location.LocationFacilities)
+            {
+                FacilityViewModel localFacility = new FacilityViewModel();
+                localFacility.Created = facilityInstance.Created;
+                localFacility.Id = facilityInstance.ID;
+                localFacility.Modified = facilityInstance.Modified;
+                localFacility.Name = facilityInstance.FacilityInstance.Name;
+                localFacility.Value = facilityInstance.Value;
+
+                localValue.Facilities.Add(localFacility);
+            }
+
+            return localValue;
         }
     }
 }
