@@ -17,6 +17,8 @@ import {LocatiesService} from "./services/locaties.service";
 import {VerdiepingenService} from "./services/verdiepingen.service";
 import {WerkplekkenService} from "./services/werkplekken.service";
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { ZoekComponent } from './components/zoek/zoek.component';
+import { ZoekResultatenComponent } from './components/zoek-resultaten/zoek-resultaten.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     LocatieComponent,
     VerdiepingenComponent,
     VerdiepingComponent,
-    WerkplekComponent
+    WerkplekComponent,
+    ZoekComponent,
+    ZoekResultatenComponent
   ],
   imports: [
     BrowserModule,
