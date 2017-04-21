@@ -15,7 +15,7 @@
       </div>
       <div class="col span_1_of_6">
         <!--2 of 6  -->
-        Zitplaatsen: 
+        Zitplaatsen:
       </div>
       <div class="col span_1_of_6">
         <!--3 of 6  -->
@@ -62,9 +62,17 @@
         ZOEEEEEEEEEEEEEEEK
       </div>
     </div>
-
-
-
-
-
+</div>
+<div class="overview-list" >
+  <h2 class="overview-list-title">Resultaten</h2>
+  <table class="table-striped overview-list-content" >
+    <tr *ngFor="let locatie of locaties" (click)="openLocatie(locatie)">
+      <td class="overview-list-content-row">
+        <div id="overview-list-content-row-arrow">
+          <h4>{{locatie.naam}}</h4>
+          <p>{{locatie.plaats}}</p>
+        </div>
+      </td>
+    </tr>
+  </table>
 </div>
