@@ -21,7 +21,7 @@ namespace TeamOk.Backend.Facade.Controllers
 
         // POST api/values
         [HttpPost("{WorkSpaceId}")]
-        public void Post(long WorkSpaceId, [FromBody]Notification value)
+        public void Post(long WorkSpaceId, [FromBody]NotificationViewModel value)
         {
         }
     }

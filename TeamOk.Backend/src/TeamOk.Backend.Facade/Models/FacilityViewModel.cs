@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TeamOk.Backend.Facade.Models
 {
-    public class Facility
+    public class FacilityViewModel
     {
         public long Id { get; set; }
         public string Name { get; set; }
