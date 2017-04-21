@@ -96,7 +96,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
         }
 
         [HttpPost]
-        public ActionResult ChooseTime(ChosenTimeModel model, [FromQuery] String MacAddress)
+        public ActionResult ChooseTime(ChosenTimeModel model, [FromQuery] string MacAddress)
         {
             int hours = model.Hours;
             int minutes = model.Minutes;
