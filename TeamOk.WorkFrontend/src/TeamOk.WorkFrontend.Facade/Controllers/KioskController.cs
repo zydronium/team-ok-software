@@ -51,12 +51,22 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
         {
             if (!getIsBezet(MacAddress))
             {
-                int Minutes = Convert.ToInt32(Request.Cookies["ChosenMinutes"]);
-                int Hours = Convert.ToInt32(Request.Cookies["ChosenHours"]);
-                Status status = new Status();
-                status.ClaimedUntill = DateTime.Now.AddMinutes(Minutes).AddHours(Hours);
-                status.Claimed = true;
-                _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
+                double? Minutes = Convert.ToDouble(Request.Cookies["ChosenMinutes"]);
+                double? Hours = Convert.ToDouble(Request.Cookies["ChosenHours"]);
+                if (Minutes != null && Hours != null)
+                {
+                    Status status = new Status();
+                    status.ClaimedUntill = DateTime.Now.AddMinutes((double) Minutes).AddHours((double) Hours);
+                    status.Claimed = true;
+                    _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
+                }
+                else
+                {
+                    Status status = new Status();
+                    status.ClaimedUntill = DateTime.Now.AddMinutes(30).AddHours(0);
+                    status.Claimed = true;
+                    _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
+                }
             }
         }
 
