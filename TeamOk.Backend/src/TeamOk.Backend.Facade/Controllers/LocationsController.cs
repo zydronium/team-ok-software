@@ -26,13 +26,29 @@ namespace TeamOk.Backend.Facade.Controllers
         {
             var result = _context.Locations
                 .Include(x => x.LocationFacilities)
+                .ThenInclude(x => x.FacilityInstance)
                 .OrderBy(x => x.Name)
                 .ToList();
 
-            IEnumerable<Location> value = new List<Location>();
+            List<Location> value = new List<Location>();
             foreach (var location in result)
             {
+                Location localValue = new Location();
+                localValue.Address = location.Address;
+                localValue.City = location.City;
+                localValue.Created = location.Created;
+                localValue.Id = location.ID;
+                localValue.Latitude = location.Latitude;
+                localValue.Longitude = location.Longitude;
+                localValue.Modified = location.Modified;
+                localValue.Name = location.Name;
+                localValue.OpeningHours = location.OpeningHours;
+                localValue.Phonenumber = location.Phonenumber;
+                localValue.Postcode = location.Postcode;
 
+
+
+                value.Add(localValue);
             }
             return value;
         }
@@ -41,11 +57,27 @@ namespace TeamOk.Backend.Facade.Controllers
         [HttpGet("{id}")]
         public Location GetLocation([FromRoute] long id)
         {
-            var result = _context.Locations
+            var location = _context.Locations
+                .Include(x => x.LocationFacilities)
+                .ThenInclude(x => x.FacilityInstance)
                 .OrderBy(x => x.Name)
                 .SingleOrDefault(x => x.ID == id);
-            Location value = new Location();
-            return value;
+            Location localValue = new Location();
+            localValue.Address = location.Address;
+            localValue.City = location.City;
+            localValue.Created = location.Created;
+            localValue.Id = location.ID;
+            localValue.Latitude = location.Latitude;
+            localValue.Longitude = location.Longitude;
+            localValue.Modified = location.Modified;
+            localValue.Name = location.Name;
+            localValue.OpeningHours = location.OpeningHours;
+            localValue.Phonenumber = location.Phonenumber;
+            localValue.Postcode = location.Postcode;
+
+
+
+            return localValue;
         }
     }
 }
