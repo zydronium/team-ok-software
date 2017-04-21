@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using TeamOk.WorkFrontend.Facade.Agents;
+using TeamOk.WorkFrontend.Facade;
 
 namespace TeamOk.WorkFrontend.Facade
 {
@@ -40,9 +40,9 @@ namespace TeamOk.WorkFrontend.Facade
 
             services.AddMvc();
 
-            services.AddScoped<IBackendApiClient>(container =>
+            services.AddScoped<IWerkplekkenBackend>(container =>
             {
-                return new BackendApiClient(baseUri: new Uri("https://backend.werkplek.123apps.net"));
+                return new WerkplekkenBackend(baseUri: new Uri("https://backend.werkplek.123apps.net"));
             });
         }
 

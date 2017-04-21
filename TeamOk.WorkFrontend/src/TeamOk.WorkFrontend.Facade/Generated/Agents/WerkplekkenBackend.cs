@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
-namespace TeamOk.WorkFrontend.Facade.Agents
+namespace TeamOk.WorkFrontend.Facade
 {
     using System;
     using System.Linq;
@@ -23,7 +23,7 @@ namespace TeamOk.WorkFrontend.Facade.Agents
     /// <summary>
     /// A RESTfull service for Werkplekken
     /// </summary>
-    public partial class BackendApiClient : ServiceClient<BackendApiClient>, IBackendApiClient
+    public partial class WerkplekkenBackend : ServiceClient<WerkplekkenBackend>, IWerkplekkenBackend
     {
         /// <summary>
         /// The base URI of the service.
@@ -41,23 +41,18 @@ namespace TeamOk.WorkFrontend.Facade.Agents
         public JsonSerializerSettings DeserializationSettings { get; private set; }        
 
         /// <summary>
-        /// Subscription credentials which uniquely identify client subscription.
-        /// </summary>
-        public ServiceClientCredentials Credentials { get; private set; }
-
-        /// <summary>
-        /// Initializes a new instance of the BackendApiClient class.
+        /// Initializes a new instance of the WerkplekkenBackend class.
         /// </summary>
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public BackendApiClient(params DelegatingHandler[] handlers) : base(handlers)
+        public WerkplekkenBackend(params DelegatingHandler[] handlers) : base(handlers)
         {
             this.Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BackendApiClient class.
+        /// Initializes a new instance of the WerkplekkenBackend class.
         /// </summary>
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
@@ -65,13 +60,13 @@ namespace TeamOk.WorkFrontend.Facade.Agents
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected BackendApiClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
+        public WerkplekkenBackend(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
         {
             this.Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BackendApiClientClient class.
+        /// Initializes a new instance of the WerkplekkenBackend class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -79,7 +74,7 @@ namespace TeamOk.WorkFrontend.Facade.Agents
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public BackendApiClient(Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
+        public WerkplekkenBackend(Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -89,7 +84,7 @@ namespace TeamOk.WorkFrontend.Facade.Agents
         }
 
         /// <summary>
-        /// Initializes a new instance of the BackendApiClientClient class.
+        /// Initializes a new instance of the WerkplekkenBackend class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -100,123 +95,13 @@ namespace TeamOk.WorkFrontend.Facade.Agents
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected BackendApiClient(Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public WerkplekkenBackend(Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {
                 throw new ArgumentNullException("baseUri");
             }
             this.BaseUri = baseUri;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the BackendApiClientClient class.
-        /// </summary>
-        /// <param name='credentials'>
-        /// Required. Subscription credentials which uniquely identify client subscription.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        public BackendApiClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
-        {
-            if (credentials == null)
-            {
-                throw new ArgumentNullException("credentials");
-            }
-            this.Credentials = credentials;
-            if (this.Credentials != null)
-            {
-                this.Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the BackendApiClientClient class.
-        /// </summary>
-        /// <param name='credentials'>
-        /// Required. Subscription credentials which uniquely identify client subscription.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        public BackendApiClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (credentials == null)
-            {
-                throw new ArgumentNullException("credentials");
-            }
-            this.Credentials = credentials;
-            if (this.Credentials != null)
-            {
-                this.Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the BackendApiClientClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Subscription credentials which uniquely identify client subscription.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        public BackendApiClient(Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new ArgumentNullException("baseUri");
-            }
-            if (credentials == null)
-            {
-                throw new ArgumentNullException("credentials");
-            }
-            this.BaseUri = baseUri;
-            this.Credentials = credentials;
-            if (this.Credentials != null)
-            {
-                this.Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the BackendApiClientClient class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Subscription credentials which uniquely identify client subscription.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        public BackendApiClient(Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new ArgumentNullException("baseUri");
-            }
-            if (credentials == null)
-            {
-                throw new ArgumentNullException("credentials");
-            }
-            this.BaseUri = baseUri;
-            this.Credentials = credentials;
-            if (this.Credentials != null)
-            {
-                this.Credentials.InitializeServiceClient(this);
-            }
         }
 
         /// <summary>
@@ -304,12 +189,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
 
             // Serialize Request
             string _requestContent = null;
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -427,12 +306,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
                 _httpRequest.Content = new StringContent(_requestContent, Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -527,12 +400,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
 
             // Serialize Request
             string _requestContent = null;
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -654,12 +521,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
                 _httpRequest.Content = new StringContent(_requestContent, Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -754,12 +615,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
 
             // Serialize Request
             string _requestContent = null;
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -846,12 +701,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
 
             // Serialize Request
             string _requestContent = null;
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -965,12 +814,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
                 _httpRequest.Content = new StringContent(_requestContent, Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -1061,12 +904,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
 
             // Serialize Request
             string _requestContent = null;
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -1184,12 +1021,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
                 _httpRequest.Content = new StringContent(_requestContent, Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -1280,12 +1111,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
 
             // Serialize Request
             string _requestContent = null;
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -1385,12 +1210,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
                 _httpRequest.Content = new StringContent(_requestContent, Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -1477,12 +1296,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
 
             // Serialize Request
             string _requestContent = null;
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -1596,12 +1409,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
                 _httpRequest.Content = new StringContent(_requestContent, Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -1692,12 +1499,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
 
             // Serialize Request
             string _requestContent = null;
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -1815,12 +1616,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
                 _httpRequest.Content = new StringContent(_requestContent, Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -1911,12 +1706,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
 
             // Serialize Request
             string _requestContent = null;
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -2007,12 +1796,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
 
             // Serialize Request
             string _requestContent = null;
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -2130,12 +1913,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
                 _httpRequest.Content = new StringContent(_requestContent, Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -2230,12 +2007,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
 
             // Serialize Request
             string _requestContent = null;
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -2357,12 +2128,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
                 _httpRequest.Content = new StringContent(_requestContent, Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -2457,12 +2222,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
 
             // Serialize Request
             string _requestContent = null;
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -2557,12 +2316,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
 
             // Serialize Request
             string _requestContent = null;
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -2684,12 +2437,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
                 _httpRequest.Content = new StringContent(_requestContent, Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
             // Send Request
             if (_shouldTrace)
             {
@@ -2731,1301 +2478,6 @@ namespace TeamOk.WorkFrontend.Facade.Agents
             }
             return _result;
         }
-
-    }
-}
-// Code generated by Microsoft (R) AutoRest Code Generator 0.16.0.0
-// Changes may cause incorrect behavior and will be lost if the code is
-// regenerated.
-
-namespace TeamOk.WorkFrontend.Facade.Agents
-{
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Microsoft.Rest;
-    using Models;
-
-    /// <summary>
-    /// Extension methods for BackendApiClientClient.
-    /// </summary>
-    public static partial class BackendApiClientClientExtensions
-    {
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationId'>
-            /// </param>
-            public static IList<Floor> ApiFloorsByLocationIdGet(this IBackendApiClient operations, long locationId)
-            {
-                return Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiFloorsByLocationIdGetAsync(locationId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationId'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IList<Floor>> ApiFloorsByLocationIdGetAsync(this IBackendApiClient operations, long locationId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ApiFloorsByLocationIdGetWithHttpMessagesAsync(locationId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationId'>
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            public static void ApiFloorsByLocationIdPost(this IBackendApiClient operations, long locationId, Floor value = default(Floor))
-            {
-                Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiFloorsByLocationIdPostAsync(locationId, value), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationId'>
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ApiFloorsByLocationIdPostAsync(this IBackendApiClient operations, long locationId, Floor value = default(Floor), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                await operations.ApiFloorsByLocationIdPostWithHttpMessagesAsync(locationId, value, null, cancellationToken).ConfigureAwait(false);
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationId'>
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            public static Floor ApiFloorsByLocationIdByIdGet(this IBackendApiClient operations, long locationId, long id)
-            {
-                return Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiFloorsByLocationIdByIdGetAsync(locationId, id), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationId'>
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Floor> ApiFloorsByLocationIdByIdGetAsync(this IBackendApiClient operations, long locationId, long id, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ApiFloorsByLocationIdByIdGetWithHttpMessagesAsync(locationId, id, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationId'>
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            public static void ApiFloorsByLocationIdByIdPut(this IBackendApiClient operations, long locationId, long id, Floor value = default(Floor))
-            {
-                Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiFloorsByLocationIdByIdPutAsync(locationId, id, value), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationId'>
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ApiFloorsByLocationIdByIdPutAsync(this IBackendApiClient operations, long locationId, long id, Floor value = default(Floor), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                await operations.ApiFloorsByLocationIdByIdPutWithHttpMessagesAsync(locationId, id, value, null, cancellationToken).ConfigureAwait(false);
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationId'>
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            public static void ApiFloorsByLocationIdByIdDelete(this IBackendApiClient operations, long locationId, long id)
-            {
-                Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiFloorsByLocationIdByIdDeleteAsync(locationId, id), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationId'>
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ApiFloorsByLocationIdByIdDeleteAsync(this IBackendApiClient operations, long locationId, long id, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                await operations.ApiFloorsByLocationIdByIdDeleteWithHttpMessagesAsync(locationId, id, null, cancellationToken).ConfigureAwait(false);
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            public static IList<Location> ApiLocationsGet(this IBackendApiClient operations)
-            {
-                return Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiLocationsGetAsync(), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IList<Location>> ApiLocationsGetAsync(this IBackendApiClient operations, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ApiLocationsGetWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            public static void ApiLocationsPost(this IBackendApiClient operations, Location value = default(Location))
-            {
-                Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiLocationsPostAsync(value), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ApiLocationsPostAsync(this IBackendApiClient operations, Location value = default(Location), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                await operations.ApiLocationsPostWithHttpMessagesAsync(value, null, cancellationToken).ConfigureAwait(false);
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            public static Location ApiLocationsByIdGet(this IBackendApiClient operations, long id)
-            {
-                return Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiLocationsByIdGetAsync(id), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Location> ApiLocationsByIdGetAsync(this IBackendApiClient operations, long id, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ApiLocationsByIdGetWithHttpMessagesAsync(id, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            public static void ApiLocationsByIdPut(this IBackendApiClient operations, long id, Location value = default(Location))
-            {
-                Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiLocationsByIdPutAsync(id, value), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ApiLocationsByIdPutAsync(this IBackendApiClient operations, long id, Location value = default(Location), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                await operations.ApiLocationsByIdPutWithHttpMessagesAsync(id, value, null, cancellationToken).ConfigureAwait(false);
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            public static void ApiLocationsByIdDelete(this IBackendApiClient operations, long id)
-            {
-                Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiLocationsByIdDeleteAsync(id), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ApiLocationsByIdDeleteAsync(this IBackendApiClient operations, long id, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                await operations.ApiLocationsByIdDeleteWithHttpMessagesAsync(id, null, cancellationToken).ConfigureAwait(false);
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='workSpaceId'>
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            public static void ApiNotificationsByWorkSpaceIdPost(this IBackendApiClient operations, long workSpaceId, Notification value = default(Notification))
-            {
-                Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiNotificationsByWorkSpaceIdPostAsync(workSpaceId, value), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='workSpaceId'>
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ApiNotificationsByWorkSpaceIdPostAsync(this IBackendApiClient operations, long workSpaceId, Notification value = default(Notification), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                await operations.ApiNotificationsByWorkSpaceIdPostWithHttpMessagesAsync(workSpaceId, value, null, cancellationToken).ConfigureAwait(false);
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            public static IList<string> ApiValuesGet(this IBackendApiClient operations)
-            {
-                return Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiValuesGetAsync(), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IList<string>> ApiValuesGetAsync(this IBackendApiClient operations, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ApiValuesGetWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            public static void ApiValuesPost(this IBackendApiClient operations, string value = default(string))
-            {
-                Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiValuesPostAsync(value), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ApiValuesPostAsync(this IBackendApiClient operations, string value = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                await operations.ApiValuesPostWithHttpMessagesAsync(value, null, cancellationToken).ConfigureAwait(false);
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            public static string ApiValuesByIdGet(this IBackendApiClient operations, int id)
-            {
-                return Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiValuesByIdGetAsync(id), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<string> ApiValuesByIdGetAsync(this IBackendApiClient operations, int id, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ApiValuesByIdGetWithHttpMessagesAsync(id, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            public static void ApiValuesByIdPut(this IBackendApiClient operations, int id, string value = default(string))
-            {
-                Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiValuesByIdPutAsync(id, value), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ApiValuesByIdPutAsync(this IBackendApiClient operations, int id, string value = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                await operations.ApiValuesByIdPutWithHttpMessagesAsync(id, value, null, cancellationToken).ConfigureAwait(false);
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            public static void ApiValuesByIdDelete(this IBackendApiClient operations, int id)
-            {
-                Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiValuesByIdDeleteAsync(id), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ApiValuesByIdDeleteAsync(this IBackendApiClient operations, int id, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                await operations.ApiValuesByIdDeleteWithHttpMessagesAsync(id, null, cancellationToken).ConfigureAwait(false);
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='floorId'>
-            /// </param>
-            public static IList<Workspace> ApiWorkspacesByFloorIdGet(this IBackendApiClient operations, long floorId)
-            {
-                return Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiWorkspacesByFloorIdGetAsync(floorId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='floorId'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IList<Workspace>> ApiWorkspacesByFloorIdGetAsync(this IBackendApiClient operations, long floorId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ApiWorkspacesByFloorIdGetWithHttpMessagesAsync(floorId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='floorId'>
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            public static void ApiWorkspacesByFloorIdPost(this IBackendApiClient operations, long floorId, Workspace value = default(Workspace))
-            {
-                Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiWorkspacesByFloorIdPostAsync(floorId, value), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='floorId'>
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ApiWorkspacesByFloorIdPostAsync(this IBackendApiClient operations, long floorId, Workspace value = default(Workspace), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                await operations.ApiWorkspacesByFloorIdPostWithHttpMessagesAsync(floorId, value, null, cancellationToken).ConfigureAwait(false);
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='floorId'>
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            public static Workspace ApiWorkspacesByFloorIdByIdGet(this IBackendApiClient operations, long floorId, long id)
-            {
-                return Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiWorkspacesByFloorIdByIdGetAsync(floorId, id), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='floorId'>
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Workspace> ApiWorkspacesByFloorIdByIdGetAsync(this IBackendApiClient operations, long floorId, long id, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ApiWorkspacesByFloorIdByIdGetWithHttpMessagesAsync(floorId, id, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='floorId'>
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            public static void ApiWorkspacesByFloorIdByIdPut(this IBackendApiClient operations, long floorId, long id, Workspace value = default(Workspace))
-            {
-                Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiWorkspacesByFloorIdByIdPutAsync(floorId, id, value), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='floorId'>
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ApiWorkspacesByFloorIdByIdPutAsync(this IBackendApiClient operations, long floorId, long id, Workspace value = default(Workspace), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                await operations.ApiWorkspacesByFloorIdByIdPutWithHttpMessagesAsync(floorId, id, value, null, cancellationToken).ConfigureAwait(false);
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='floorId'>
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            public static void ApiWorkspacesByFloorIdByIdDelete(this IBackendApiClient operations, long floorId, long id)
-            {
-                Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiWorkspacesByFloorIdByIdDeleteAsync(floorId, id), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='floorId'>
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ApiWorkspacesByFloorIdByIdDeleteAsync(this IBackendApiClient operations, long floorId, long id, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                await operations.ApiWorkspacesByFloorIdByIdDeleteWithHttpMessagesAsync(floorId, id, null, cancellationToken).ConfigureAwait(false);
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='macAddress'>
-            /// </param>
-            public static Status ApiWorkspaceunitsByMacAddressGet(this IBackendApiClient operations, string macAddress)
-            {
-                return Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiWorkspaceunitsByMacAddressGetAsync(macAddress), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='macAddress'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Status> ApiWorkspaceunitsByMacAddressGetAsync(this IBackendApiClient operations, string macAddress, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ApiWorkspaceunitsByMacAddressGetWithHttpMessagesAsync(macAddress, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='macAddress'>
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            public static void ApiWorkspaceunitsByMacAddressPost(this IBackendApiClient operations, string macAddress, Status value = default(Status))
-            {
-                Task.Factory.StartNew(s => ((IBackendApiClient)s).ApiWorkspaceunitsByMacAddressPostAsync(macAddress, value), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='macAddress'>
-            /// </param>
-            /// <param name='value'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ApiWorkspaceunitsByMacAddressPostAsync(this IBackendApiClient operations, string macAddress, Status value = default(Status), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                await operations.ApiWorkspaceunitsByMacAddressPostWithHttpMessagesAsync(macAddress, value, null, cancellationToken).ConfigureAwait(false);
-            }
-
-    }
-}
-// Code generated by Microsoft (R) AutoRest Code Generator 0.16.0.0
-// Changes may cause incorrect behavior and will be lost if the code is
-// regenerated.
-
-namespace TeamOk.WorkFrontend.Facade.Agents
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Net.Http;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Newtonsoft.Json;
-    using Microsoft.Rest;
-    using Models;
-
-    /// <summary>
-    /// A RESTfull service for Werkplekken
-    /// </summary>
-    public partial interface IBackendApiClient : IDisposable
-    {
-        /// <summary>
-        /// The base URI of the service.
-        /// </summary>
-        Uri BaseUri { get; set; }
-
-        /// <summary>
-        /// Gets or sets json serialization settings.
-        /// </summary>
-        JsonSerializerSettings SerializationSettings { get; }
-
-        /// <summary>
-        /// Gets or sets json deserialization settings.
-        /// </summary>
-        JsonSerializerSettings DeserializationSettings { get; }
-
-        /// <summary>
-        /// Subscription credentials which uniquely identify client
-        /// subscription.
-        /// </summary>
-        ServiceClientCredentials Credentials { get; }
-
-
-            /// <param name='locationId'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<IList<Floor>>> ApiFloorsByLocationIdGetWithHttpMessagesAsync(long locationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='locationId'>
-        /// </param>
-        /// <param name='value'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> ApiFloorsByLocationIdPostWithHttpMessagesAsync(long locationId, Floor value = default(Floor), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='locationId'>
-        /// </param>
-        /// <param name='id'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Floor>> ApiFloorsByLocationIdByIdGetWithHttpMessagesAsync(long locationId, long id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='locationId'>
-        /// </param>
-        /// <param name='id'>
-        /// </param>
-        /// <param name='value'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> ApiFloorsByLocationIdByIdPutWithHttpMessagesAsync(long locationId, long id, Floor value = default(Floor), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='locationId'>
-        /// </param>
-        /// <param name='id'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> ApiFloorsByLocationIdByIdDeleteWithHttpMessagesAsync(long locationId, long id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<IList<Location>>> ApiLocationsGetWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='value'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> ApiLocationsPostWithHttpMessagesAsync(Location value = default(Location), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='id'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Location>> ApiLocationsByIdGetWithHttpMessagesAsync(long id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='id'>
-        /// </param>
-        /// <param name='value'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> ApiLocationsByIdPutWithHttpMessagesAsync(long id, Location value = default(Location), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='id'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> ApiLocationsByIdDeleteWithHttpMessagesAsync(long id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='workSpaceId'>
-        /// </param>
-        /// <param name='value'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> ApiNotificationsByWorkSpaceIdPostWithHttpMessagesAsync(long workSpaceId, Notification value = default(Notification), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<IList<string>>> ApiValuesGetWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='value'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> ApiValuesPostWithHttpMessagesAsync(string value = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='id'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<string>> ApiValuesByIdGetWithHttpMessagesAsync(int id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='id'>
-        /// </param>
-        /// <param name='value'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> ApiValuesByIdPutWithHttpMessagesAsync(int id, string value = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='id'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> ApiValuesByIdDeleteWithHttpMessagesAsync(int id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='floorId'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<IList<Workspace>>> ApiWorkspacesByFloorIdGetWithHttpMessagesAsync(long floorId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='floorId'>
-        /// </param>
-        /// <param name='value'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> ApiWorkspacesByFloorIdPostWithHttpMessagesAsync(long floorId, Workspace value = default(Workspace), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='floorId'>
-        /// </param>
-        /// <param name='id'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Workspace>> ApiWorkspacesByFloorIdByIdGetWithHttpMessagesAsync(long floorId, long id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='floorId'>
-        /// </param>
-        /// <param name='id'>
-        /// </param>
-        /// <param name='value'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> ApiWorkspacesByFloorIdByIdPutWithHttpMessagesAsync(long floorId, long id, Workspace value = default(Workspace), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='floorId'>
-        /// </param>
-        /// <param name='id'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> ApiWorkspacesByFloorIdByIdDeleteWithHttpMessagesAsync(long floorId, long id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='macAddress'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Status>> ApiWorkspaceunitsByMacAddressGetWithHttpMessagesAsync(string macAddress, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='macAddress'>
-        /// </param>
-        /// <param name='value'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> ApiWorkspaceunitsByMacAddressPostWithHttpMessagesAsync(string macAddress, Status value = default(Status), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-    }
-}
-// Code generated by Microsoft (R) AutoRest Code Generator 0.16.0.0
-// Changes may cause incorrect behavior and will be lost if the code is
-// regenerated.
-
-namespace TeamOk.WorkFrontend.Facade.Agents.Models
-{
-    using System;
-    using System.Linq;
-    using System.Collections.Generic;
-    using Newtonsoft.Json;
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
-
-    public partial class Floor
-    {
-        /// <summary>
-        /// Initializes a new instance of the Floor class.
-        /// </summary>
-        public Floor() { }
-
-        /// <summary>
-        /// Initializes a new instance of the Floor class.
-        /// </summary>
-        public Floor(long? id = default(long?), long? locationId = default(long?), string name = default(string), IList<Facility> facilities = default(IList<Facility>), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
-        {
-            Id = id;
-            LocationId = locationId;
-            Name = name;
-            Facilities = facilities;
-            Created = created;
-            Modified = modified;
-        }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public long? Id { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "locationId")]
-        public long? LocationId { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "facilities")]
-        public IList<Facility> Facilities { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "created")]
-        public DateTime? Created { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "modified")]
-        public DateTime? Modified { get; set; }
-
-    }
-}
-// Code generated by Microsoft (R) AutoRest Code Generator 0.16.0.0
-// Changes may cause incorrect behavior and will be lost if the code is
-// regenerated.
-
-namespace TeamOk.WorkFrontend.Facade.Agents.Models
-{
-    using System;
-    using System.Linq;
-    using System.Collections.Generic;
-    using Newtonsoft.Json;
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
-
-    public partial class Facility
-    {
-        /// <summary>
-        /// Initializes a new instance of the Facility class.
-        /// </summary>
-        public Facility() { }
-
-        /// <summary>
-        /// Initializes a new instance of the Facility class.
-        /// </summary>
-        public Facility(long? id = default(long?), string name = default(string), string value = default(string), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
-        {
-            Id = id;
-            Name = name;
-            Value = value;
-            Created = created;
-            Modified = modified;
-        }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public long? Id { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public string Value { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "created")]
-        public DateTime? Created { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "modified")]
-        public DateTime? Modified { get; set; }
-
-    }
-}
-// Code generated by Microsoft (R) AutoRest Code Generator 0.16.0.0
-// Changes may cause incorrect behavior and will be lost if the code is
-// regenerated.
-
-namespace TeamOk.WorkFrontend.Facade.Agents.Models
-{
-    using System;
-    using System.Linq;
-    using System.Collections.Generic;
-    using Newtonsoft.Json;
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
-
-    public partial class Location
-    {
-        /// <summary>
-        /// Initializes a new instance of the Location class.
-        /// </summary>
-        public Location() { }
-
-        /// <summary>
-        /// Initializes a new instance of the Location class.
-        /// </summary>
-        public Location(long? id = default(long?), string name = default(string), string address = default(string), string postcode = default(string), string city = default(string), string phonenumber = default(string), string openingHours = default(string), double? latitude = default(double?), double? longitude = default(double?), IList<Facility> facilities = default(IList<Facility>), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
-        {
-            Id = id;
-            Name = name;
-            Address = address;
-            Postcode = postcode;
-            City = city;
-            Phonenumber = phonenumber;
-            OpeningHours = openingHours;
-            Latitude = latitude;
-            Longitude = longitude;
-            Facilities = facilities;
-            Created = created;
-            Modified = modified;
-        }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public long? Id { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "address")]
-        public string Address { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "postcode")]
-        public string Postcode { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "city")]
-        public string City { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "phonenumber")]
-        public string Phonenumber { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "openingHours")]
-        public string OpeningHours { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "latitude")]
-        public double? Latitude { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "longitude")]
-        public double? Longitude { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "facilities")]
-        public IList<Facility> Facilities { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "created")]
-        public DateTime? Created { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "modified")]
-        public DateTime? Modified { get; set; }
-
-    }
-}
-// Code generated by Microsoft (R) AutoRest Code Generator 0.16.0.0
-// Changes may cause incorrect behavior and will be lost if the code is
-// regenerated.
-
-namespace TeamOk.WorkFrontend.Facade.Agents.Models
-{
-    using System;
-    using System.Linq;
-    using System.Collections.Generic;
-    using Newtonsoft.Json;
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
-
-    public partial class Notification
-    {
-        /// <summary>
-        /// Initializes a new instance of the Notification class.
-        /// </summary>
-        public Notification() { }
-
-        /// <summary>
-        /// Initializes a new instance of the Notification class.
-        /// </summary>
-        public Notification(bool? claimed = default(bool?))
-        {
-            Claimed = claimed;
-        }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "claimed")]
-        public bool? Claimed { get; set; }
-
-    }
-}
-// Code generated by Microsoft (R) AutoRest Code Generator 0.16.0.0
-// Changes may cause incorrect behavior and will be lost if the code is
-// regenerated.
-
-namespace TeamOk.WorkFrontend.Facade.Agents.Models
-{
-    using System;
-    using System.Linq;
-    using System.Collections.Generic;
-    using Newtonsoft.Json;
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
-
-    public partial class Workspace
-    {
-        /// <summary>
-        /// Initializes a new instance of the Workspace class.
-        /// </summary>
-        public Workspace() { }
-
-        /// <summary>
-        /// Initializes a new instance of the Workspace class.
-        /// </summary>
-        public Workspace(long? id = default(long?), long? floorId = default(long?), string name = default(string), bool? claimed = default(bool?), IList<Facility> facilities = default(IList<Facility>), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
-        {
-            Id = id;
-            FloorId = floorId;
-            Name = name;
-            Claimed = claimed;
-            Facilities = facilities;
-            Created = created;
-            Modified = modified;
-        }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public long? Id { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "floorId")]
-        public long? FloorId { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "claimed")]
-        public bool? Claimed { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "facilities")]
-        public IList<Facility> Facilities { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "created")]
-        public DateTime? Created { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "modified")]
-        public DateTime? Modified { get; set; }
-
-    }
-}
-// Code generated by Microsoft (R) AutoRest Code Generator 0.16.0.0
-// Changes may cause incorrect behavior and will be lost if the code is
-// regenerated.
-
-namespace TeamOk.WorkFrontend.Facade.Agents.Models
-{
-    using System;
-    using System.Linq;
-    using System.Collections.Generic;
-    using Newtonsoft.Json;
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
-
-    public partial class Status
-    {
-        /// <summary>
-        /// Initializes a new instance of the Status class.
-        /// </summary>
-        public Status() { }
-
-        /// <summary>
-        /// Initializes a new instance of the Status class.
-        /// </summary>
-        public Status(bool? claimed = default(bool?), DateTime? claimedUntill = default(DateTime?))
-        {
-            Claimed = claimed;
-            ClaimedUntill = claimedUntill;
-        }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "claimed")]
-        public bool? Claimed { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "claimedUntill")]
-        public DateTime? ClaimedUntill { get; set; }
 
     }
 }

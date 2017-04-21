@@ -4,16 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TeamOk.WorkFrontend.Facade.Models;
-using TeamOk.WorkFrontend.Facade.Agents;
+using TeamOk.WorkFrontend.Facade;
 
 namespace TeamOk.WorkFrontend.Facade.Controllers
 {
     public class KioskController : Controller
     {
 
-        private readonly IBackendApiClient _context;
+        private readonly IWerkplekkenBackend _context;
 
-        public KioskController(IBackendApiClient context)
+        public KioskController(IWerkplekkenBackend context)
         {
             _context = context;
         }
@@ -23,7 +23,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             Console.Write("Hello Index");
             var Bezet = getIsBezet(MAC);
             Console.Write(MAC);
-            _context.ApiWorkspaceunitsByMacAddressGet("test");
+            var test = _context.ApiWorkspaceunitsByMacAddressGet("test");
             //If tafel = bezet
             //return View("Bezet");
             //If tafel != bezet
