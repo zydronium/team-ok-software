@@ -28,8 +28,9 @@ namespace TeamOk.Backend.Facade.Controllers
 
         // PUT api/values/5
         [HttpPost("{MacAddress}")]
-        public void Put(string MacAddress, [FromBody]StatusViewModel value)
+        public StatusViewModel Put(string MacAddress, [FromBody]StatusViewModel value)
         {
+            return new StatusViewModel();
         }
     }
 }
