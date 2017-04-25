@@ -39,7 +39,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
 
         private bool getIsBezet(string mac)
         {
-            Status getStatus;
+            StatusViewModel getStatus;
             try
             {
                 getStatus = _context.ApiWorkspaceunitsByMacAddressGet(mac);
@@ -54,28 +54,36 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
         }
 
         [HttpPost]
-        public void reserveerWerkplek(object sender, EventArgs e)
+        public IActionResult reserveerWerkplek(object sender, EventArgs e)
         {
             var MacAddress = HttpContext.Session.GetString("MacAddress");
+            StatusViewModel modelToPost = new StatusViewModel();
+            StatusViewModel postedModel =  new StatusViewModel();
             if (!getIsBezet(MacAddress))
             {
                 double? Minutes = Convert.ToDouble(Request.Cookies["ChosenMinutes"]);
                 double? Hours = Convert.ToDouble(Request.Cookies["ChosenHours"]);
-                if (Minutes != null && Hours != null)
+                if (Minutes != 0 && Hours != 0)
                 {
-                    Status status = new Status();
+                    StatusViewModel status = new StatusViewModel();
                     status.ClaimedUntill = DateTime.Now.AddMinutes((double) Minutes).AddHours((double) Hours);
                     status.Claimed = true;
-                    _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
+                    modelToPost = status;
+                    postedModel = _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
                 }
                 else
                 {
-                    Status status = new Status();
+                    StatusViewModel status = new StatusViewModel();
                     status.ClaimedUntill = DateTime.Now.AddMinutes(30).AddHours(0);
                     status.Claimed = true;
-                    _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
+                    modelToPost = status;
+                    postedModel = _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
                 }
             }
+
+
+            return Json(modelToPost);
+
         }
 
         public IActionResult About()

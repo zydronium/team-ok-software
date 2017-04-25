@@ -38,7 +38,7 @@
     a {
         color: grey!important;
         text-align: center;
-        padding: 12.5vh 15px 12.5vh 15px !important;
+        padding: 16.65vh 15px 16.65vh 15px !important;
     }
 }
 @media screen and (max-height: 299px) {
@@ -50,7 +50,7 @@
 
 .list{
     color:grey;
-    height:25vh;
+    height:33.33vh;
 }
 
 .navigation-items{

@@ -11,22 +11,21 @@ namespace TeamOk.WorkFrontend.Facade.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
 
-    public partial class Floor
+    public partial class FacilityViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the Floor class.
+        /// Initializes a new instance of the FacilityViewModel class.
         /// </summary>
-        public Floor() { }
+        public FacilityViewModel() { }
 
         /// <summary>
-        /// Initializes a new instance of the Floor class.
+        /// Initializes a new instance of the FacilityViewModel class.
         /// </summary>
-        public Floor(long? id = default(long?), long? locationId = default(long?), string name = default(string), IList<Facility> facilities = default(IList<Facility>), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
+        public FacilityViewModel(long? id = default(long?), string name = default(string), string value = default(string), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
         {
             Id = id;
-            LocationId = locationId;
             Name = name;
-            Facilities = facilities;
+            Value = value;
             Created = created;
             Modified = modified;
         }
@@ -38,18 +37,13 @@ namespace TeamOk.WorkFrontend.Facade.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "locationId")]
-        public long? LocationId { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "facilities")]
-        public IList<Facility> Facilities { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public string Value { get; set; }
 
         /// <summary>
         /// </summary>

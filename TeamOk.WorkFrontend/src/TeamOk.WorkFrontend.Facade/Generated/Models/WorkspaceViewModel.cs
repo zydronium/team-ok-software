@@ -11,17 +11,17 @@ namespace TeamOk.WorkFrontend.Facade.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
 
-    public partial class Workspace
+    public partial class WorkspaceViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the Workspace class.
+        /// Initializes a new instance of the WorkspaceViewModel class.
         /// </summary>
-        public Workspace() { }
+        public WorkspaceViewModel() { }
 
         /// <summary>
-        /// Initializes a new instance of the Workspace class.
+        /// Initializes a new instance of the WorkspaceViewModel class.
         /// </summary>
-        public Workspace(long? id = default(long?), long? floorId = default(long?), string name = default(string), bool? claimed = default(bool?), IList<Facility> facilities = default(IList<Facility>), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
+        public WorkspaceViewModel(long? id = default(long?), long? floorId = default(long?), string name = default(string), bool? claimed = default(bool?), IList<FacilityViewModel> facilities = default(IList<FacilityViewModel>), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
         {
             Id = id;
             FloorId = floorId;
@@ -55,7 +55,7 @@ namespace TeamOk.WorkFrontend.Facade.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "facilities")]
-        public IList<Facility> Facilities { get; set; }
+        public IList<FacilityViewModel> Facilities { get; set; }
 
         /// <summary>
         /// </summary>

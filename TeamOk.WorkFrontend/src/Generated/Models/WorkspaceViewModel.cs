@@ -11,21 +11,23 @@ namespace TeamOk.WorkFrontend.Facade.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
 
-    public partial class Facility
+    public partial class WorkspaceViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the Facility class.
+        /// Initializes a new instance of the WorkspaceViewModel class.
         /// </summary>
-        public Facility() { }
+        public WorkspaceViewModel() { }
 
         /// <summary>
-        /// Initializes a new instance of the Facility class.
+        /// Initializes a new instance of the WorkspaceViewModel class.
         /// </summary>
-        public Facility(long? id = default(long?), string name = default(string), string value = default(string), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
+        public WorkspaceViewModel(long? id = default(long?), long? floorId = default(long?), string name = default(string), bool? claimed = default(bool?), IList<FacilityViewModel> facilities = default(IList<FacilityViewModel>), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
         {
             Id = id;
+            FloorId = floorId;
             Name = name;
-            Value = value;
+            Claimed = claimed;
+            Facilities = facilities;
             Created = created;
             Modified = modified;
         }
@@ -37,13 +39,23 @@ namespace TeamOk.WorkFrontend.Facade.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "floorId")]
+        public long? FloorId { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public string Value { get; set; }
+        [JsonProperty(PropertyName = "claimed")]
+        public bool? Claimed { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "facilities")]
+        public IList<FacilityViewModel> Facilities { get; set; }
 
         /// <summary>
         /// </summary>
