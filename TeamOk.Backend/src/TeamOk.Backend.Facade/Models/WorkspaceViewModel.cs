@@ -11,6 +11,7 @@ namespace TeamOk.Backend.Facade.Models
         public long FloorId { get; set; }
         public string Name { get; set; }
         public bool Claimed { get; set; }
+        public DateTime ClaimedUntill { get; set; }
         public List<FacilityViewModel> Facilities { get; set; }
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }

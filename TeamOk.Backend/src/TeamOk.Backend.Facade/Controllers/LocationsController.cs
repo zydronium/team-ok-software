@@ -67,7 +67,7 @@ namespace TeamOk.Backend.Facade.Controllers
         
         // GET: api/Cursus
         [HttpGet("{id}")]
-        public LocationViewModel GetLocation([FromRoute] long id)
+        public LocationViewModel GetLocationById([FromRoute] long id)
         {
             var location = _context.Locations
                 .Include(x => x.LocationFacilities)
