@@ -15,15 +15,15 @@ namespace TeamOk.Backend.Domain.Entities
         [Required]
         public NotificationType Type { get; set; }
         [Required]
-        public DateTime TimestampFrom { get; set; }
+        public DateTime? TimestampFrom { get; set; }
         [Required]
-        public DateTime TimestampTo { get; set; }
+        public DateTime? TimestampTo { get; set; }
         [Required]
         public DateTime Created { get; set; }
         [Required]
         public DateTime Modified { get; set; }
         [Required]
         public bool Deleted { get; set; }
-        public DateTime DeletedDate { get; set; }
+        public DateTime? DeletedDate { get; set; }
     }
 }

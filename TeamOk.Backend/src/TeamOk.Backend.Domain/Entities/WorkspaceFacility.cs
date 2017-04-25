@@ -22,6 +22,6 @@ namespace TeamOk.Backend.Domain.Entities
         public DateTime Modified { get; set; }
         [Required]
         public bool Deleted { get; set; }
-        public DateTime DeletedDate { get; set; }
+        public DateTime? DeletedDate { get; set; }
     }
 }

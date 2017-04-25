@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TeamOk.Backend.Facade.Models;
 using TeamOk.Backend.Domain.DAL;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,34 +22,73 @@ namespace TeamOk.Backend.Facade.Controllers
 
         // GET: api/values
         [HttpGet("{FloorId}")]
-        public IEnumerable<Workspace> Get(long FloorId)
+        public IEnumerable<WorkspaceViewModel> GetWorkspaces(long FloorId)
         {
-            return new Workspace[] { new Workspace(), new Workspace() };
+            var result = _context.Workspaces
+                .Include(x => x.WorkspaceFacilities)
+                .ThenInclude(x => x.FacilityInstance)
+                .Where(x => x.FloorID == FloorId && x.Deleted == false && x.WorkspaceFacilities.Any(y => y.Deleted == false && y.FacilityInstance.Deleted == false))
+                .OrderBy(x => x.Name)
+                .ToList();
+
+            List<WorkspaceViewModel> value = new List<WorkspaceViewModel>();
+            foreach (var workspace in result)
+            {
+                WorkspaceViewModel localValue = new WorkspaceViewModel();
+                localValue.Created = workspace.Created;
+                localValue.Id = workspace.ID;
+                localValue.Modified = workspace.Modified;
+                localValue.Name = workspace.Name;
+                localValue.Claimed = false;
+                localValue.Facilities = new List<FacilityViewModel>();
+
+                foreach (var facilityInstance in workspace.WorkspaceFacilities)
+                {
+                    FacilityViewModel localFacility = new FacilityViewModel();
+                    localFacility.Created = facilityInstance.Created;
+                    localFacility.Id = facilityInstance.ID;
+                    localFacility.Modified = facilityInstance.Modified;
+                    localFacility.Name = facilityInstance.FacilityInstance.Name;
+                    localFacility.Value = facilityInstance.Value;
+
+                    localValue.Facilities.Add(localFacility);
+                }
+
+                value.Add(localValue);
+            }
+            return value;
         }
 
         // GET api/values/5
         [HttpGet("{FloorId}/{id}")]
-        public Workspace Get(long FloorId, long id)
+        public WorkspaceViewModel GetWorkspaceById(long FloorId, long id)
         {
-            return new Workspace();
-        }
+            var workspace = _context.Workspaces
+                .Include(x => x.WorkspaceFacilities)
+                .ThenInclude(x => x.FacilityInstance)
+                .OrderBy(x => x.Name)
+                .Where(x => x.FloorID == FloorId && x.Deleted == false && x.WorkspaceFacilities.Any(y => y.Deleted == false && y.FacilityInstance.Deleted == false))
+                .SingleOrDefault(x => x.ID == id);
+            WorkspaceViewModel localValue = new WorkspaceViewModel();
+            localValue.Created = workspace.Created;
+            localValue.Id = workspace.ID;
+            localValue.Modified = workspace.Modified;
+            localValue.Name = workspace.Name;
+            localValue.Facilities = new List<FacilityViewModel>();
 
-        // POST api/values
-        [HttpPost("{FloorId}")]
-        public void Post(long FloorId, [FromBody]Workspace value)
-        {
-        }
+            foreach (var facilityInstance in workspace.WorkspaceFacilities)
+            {
+                FacilityViewModel localFacility = new FacilityViewModel();
+                localFacility.Created = facilityInstance.Created;
+                localFacility.Id = facilityInstance.ID;
+                localFacility.Modified = facilityInstance.Modified;
+                localFacility.Name = facilityInstance.FacilityInstance.Name;
+                localFacility.Value = facilityInstance.Value;
 
-        // PUT api/values/5
-        [HttpPut("{FloorId}/{id}")]
-        public void Put(long FloorId, long id, [FromBody]Workspace value)
-        {
-        }
+                localValue.Facilities.Add(localFacility);
+            }
 
-        // DELETE api/values/5
-        [HttpDelete("{FloorId}/{id}")]
-        public void Delete(long FloorId, long id)
-        {
+            return localValue;
         }
     }
 }

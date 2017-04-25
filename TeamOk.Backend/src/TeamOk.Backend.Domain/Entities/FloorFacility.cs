@@ -9,7 +9,7 @@ namespace TeamOk.Backend.Domain.Entities
     public class FloorFacility
     {
         [Required]
-        public long Id { get; set; }
+        public long ID { get; set; }
         [Required]
         public long FacilityID { get; set; }
         [Required]
@@ -22,6 +22,6 @@ namespace TeamOk.Backend.Domain.Entities
         public DateTime Modified { get; set; }
         [Required]
         public bool Deleted { get; set; }
-        public DateTime DeletedDate { get; set; }
+        public DateTime? DeletedDate { get; set; }
     }
 }

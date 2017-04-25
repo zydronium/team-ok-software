@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TeamOk.Backend.Facade.Models
 {
-    public class Location
+    public class LocationViewModel
     {
         public long Id { get; set; }
         public string Name { get; set; }
@@ -16,7 +16,7 @@ namespace TeamOk.Backend.Facade.Models
         public string OpeningHours { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public List<Facility> Facilities { get; set; }
+        public List<FacilityViewModel> Facilities { get; set; }
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }
     }
