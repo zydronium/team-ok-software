@@ -27,6 +27,7 @@ namespace TeamOk.Backend.Facade.Controllers
             var result = _context.Locations
                 .Include(x => x.LocationFacilities)
                 .ThenInclude(x => x.FacilityInstance)
+                .Where(x => x.Deleted == false && x.LocationFacilities.Any(y => y.Deleted == false && y.FacilityInstance.Deleted == false))
                 .OrderBy(x => x.Name)
                 .ToList();
 
@@ -72,6 +73,7 @@ namespace TeamOk.Backend.Facade.Controllers
                 .Include(x => x.LocationFacilities)
                 .ThenInclude(x => x.FacilityInstance)
                 .OrderBy(x => x.Name)
+                .Where(x => x.Deleted == false && x.LocationFacilities.Any(y => y.Deleted == false && y.FacilityInstance.Deleted == false))
                 .SingleOrDefault(x => x.ID == id);
             LocationViewModel localValue = new LocationViewModel();
             localValue.Address = location.Address;
