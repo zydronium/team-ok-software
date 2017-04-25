@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import {Locatie} from "../models/Locatie";
+import {Http, Response, Headers} from '@angular/http';
+import 'rxjs/Rx';
 
 @Injectable()
 export class LocatiesService {
 
-  constructor() { }
+  private baseUrl: string = "https://backend.werkplek.123apps.net/api";
+
+  constructor(private http : Http) { }
 
   getLocaties() {
     var locaties =[
@@ -32,6 +36,7 @@ export class LocatiesService {
         'lng': 5.159922700000038
       }
     ];
+    
     return locaties;
   }
 

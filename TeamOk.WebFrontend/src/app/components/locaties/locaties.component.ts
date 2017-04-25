@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./locaties.component.css']
 })
 export class LocatiesComponent implements OnInit {
-locaties: any;
+   locaties: any;
    constructor(private locatiesService : LocatiesService, private router: Router) { }
 
   ngOnInit() {
