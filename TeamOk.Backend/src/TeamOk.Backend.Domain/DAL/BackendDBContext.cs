@@ -15,10 +15,13 @@ namespace TeamOk.Backend.Domain.DAL
         }
 
         public DbSet<Location> Locations { get; set; }
-        public DbSet<Facility> facilities { get; set; }
+        public DbSet<LocationFacility> LocationFacilities { get; set; }
         public DbSet<Floor> Floors { get; set; }
+        public DbSet<FloorFacility> FloorFacilities { get; set; }
         public DbSet<Workspace> Workspaces { get; set; }
+        public DbSet<WorkspaceFacility> WorkspaceFacilities { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Occupation> Occupations { get; set; }
+        public DbSet<Facility> facilities { get; set; }
     }
 }

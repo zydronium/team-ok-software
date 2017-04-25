@@ -1,0 +1,31 @@
+/home/pi/startSlides.sh
+#!/bin/bash
+sleep 2
+xset s off         # don't activate screensaver
+xset -dpms         # disable DPMS (Energy Star) features.
+xset s noblank     # don't blank the video device
+xset s off -dpms
+unclutter -display :0 -noevents -grab &
+IFACE=eth0
+read MAC </sys/class/net/$IFACE/address
+#exit 1
+while true; do
+        chromium-browser --kiosk --start-maximized --incognito https://work.werkplek.123apps.net/kiosk/?MacAddress=$MAC
+done
+
+----
+
+/home/pi/.xinitrc
+xset s off         # don't activate screensaver
+xset -dpms         # disable DPMS (Energy Star) features.
+xset s noblank     # don't blank the video device
+xset s off -dpms
+
+exec /etc/alternatives/x-session-manager      # start lxde
+
+---
+
+/home/pi/.config/autostart/kiosk.desktop
+[Desktop Entry]
+Type=Application
+Exec=lxterminal --command ./startSlides.sh
