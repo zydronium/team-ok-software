@@ -2,7 +2,7 @@
 .timingfield .timingfield_minutes,
 .timingfield .timingfield_seconds {
   display: inline-block;
-  width: calc(50vw - 64px);
+  width: calc(50vw - 45px);
   height: 60vh;
 }
 
