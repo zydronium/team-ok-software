@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using TeamOk.WorkFrontend.Facade.Models;
 using TeamOk.WorkFrontend.Facade;
 using Microsoft.AspNetCore.Http;
+using TeamOk.WorkFrontend.Facade.Generated.Models;
 
 namespace TeamOk.WorkFrontend.Facade.Controllers
 {
