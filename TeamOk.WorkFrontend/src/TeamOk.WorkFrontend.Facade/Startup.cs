@@ -39,6 +39,8 @@ namespace TeamOk.WorkFrontend.Facade
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
+            services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
+            services.AddSession();
 
             services.AddScoped<IWerkplekkenBackend>(container =>
             {
@@ -67,7 +69,7 @@ namespace TeamOk.WorkFrontend.Facade
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseMvc(configureRoutes);
         }
 
