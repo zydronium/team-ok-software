@@ -11,17 +11,17 @@ namespace TeamOk.WorkFrontend.Facade.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
 
-    public partial class Location
+    public partial class LocationViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the Location class.
+        /// Initializes a new instance of the LocationViewModel class.
         /// </summary>
-        public Location() { }
+        public LocationViewModel() { }
 
         /// <summary>
-        /// Initializes a new instance of the Location class.
+        /// Initializes a new instance of the LocationViewModel class.
         /// </summary>
-        public Location(long? id = default(long?), string name = default(string), string address = default(string), string postcode = default(string), string city = default(string), string phonenumber = default(string), string openingHours = default(string), double? latitude = default(double?), double? longitude = default(double?), IList<Facility> facilities = default(IList<Facility>), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
+        public LocationViewModel(long? id = default(long?), string name = default(string), string address = default(string), string postcode = default(string), string city = default(string), string phonenumber = default(string), string openingHours = default(string), double? latitude = default(double?), double? longitude = default(double?), IList<FacilityViewModel> facilities = default(IList<FacilityViewModel>), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
         {
             Id = id;
             Name = name;
@@ -85,7 +85,7 @@ namespace TeamOk.WorkFrontend.Facade.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "facilities")]
-        public IList<Facility> Facilities { get; set; }
+        public IList<FacilityViewModel> Facilities { get; set; }
 
         /// <summary>
         /// </summary>

@@ -11,17 +11,17 @@ namespace TeamOk.WorkFrontend.Facade.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
 
-    public partial class Notification
+    public partial class NotificationViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the Notification class.
+        /// Initializes a new instance of the NotificationViewModel class.
         /// </summary>
-        public Notification() { }
+        public NotificationViewModel() { }
 
         /// <summary>
-        /// Initializes a new instance of the Notification class.
+        /// Initializes a new instance of the NotificationViewModel class.
         /// </summary>
-        public Notification(bool? claimed = default(bool?))
+        public NotificationViewModel(bool? claimed = default(bool?))
         {
             Claimed = claimed;
         }

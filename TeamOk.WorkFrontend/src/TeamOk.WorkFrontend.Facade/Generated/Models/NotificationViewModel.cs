@@ -11,31 +11,25 @@ namespace TeamOk.WorkFrontend.Facade.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
 
-    public partial class Status
+    public partial class NotificationViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the Status class.
+        /// Initializes a new instance of the NotificationViewModel class.
         /// </summary>
-        public Status() { }
+        public NotificationViewModel() { }
 
         /// <summary>
-        /// Initializes a new instance of the Status class.
+        /// Initializes a new instance of the NotificationViewModel class.
         /// </summary>
-        public Status(bool? claimed = default(bool?), DateTime? claimedUntill = default(DateTime?))
+        public NotificationViewModel(bool? claimed = default(bool?))
         {
             Claimed = claimed;
-            ClaimedUntill = claimedUntill;
         }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "claimed")]
         public bool? Claimed { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "claimedUntill")]
-        public DateTime? ClaimedUntill { get; set; }
 
     }
 }
