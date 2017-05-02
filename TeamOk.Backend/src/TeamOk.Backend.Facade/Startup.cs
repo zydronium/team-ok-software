@@ -55,6 +55,16 @@ namespace TeamOk.Backend.Facade
             services.AddMvc();
 
             services.AddDbContext<BackendDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SQLServer")), ServiceLifetime.Transient);
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AnyOrigin", builder =>
+                {
+                    builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod();
+                });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
@@ -71,6 +81,8 @@ namespace TeamOk.Backend.Facade
 
             app.UseSwagger();
             app.UseSwaggerUi();
+
+            app.UseCors("AnyOrigin");
         }
     }
 }

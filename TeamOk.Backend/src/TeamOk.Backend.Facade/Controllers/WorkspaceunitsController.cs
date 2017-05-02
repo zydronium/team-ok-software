@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TeamOk.Backend.Facade.Models;
 using TeamOk.Backend.Domain.DAL;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,16 +22,24 @@ namespace TeamOk.Backend.Facade.Controllers
 
         // GET api/values/5
         [HttpGet("{MacAddress}")]
-        public StatusViewModel Get(string MacAddress)
+        public StatusViewModel GetStatusByMacAddress(string MacAddress)
         {
-            return new StatusViewModel();
+            var workspace = _context.Workspaces
+                .Where(x=> x.Deleted == false)
+                .SingleOrDefault(x => x.MacAddress == MacAddress);
+
+            StatusViewModel localValue = new StatusViewModel();
+            localValue.Claimed = false;
+            localValue.ClaimedUntill = DateTime.Now;
+
+            return localValue;
         }
 
         // PUT api/values/5
         [HttpPost("{MacAddress}")]
-        public StatusViewModel Put(string MacAddress, [FromBody]StatusViewModel value)
+        public StatusViewModel PostStatusByMacAddress(string MacAddress, [FromBody]StatusViewModel value)
         {
-            return new StatusViewModel();
+            return GetStatusByMacAddress(MacAddress);
         }
     }
 }
