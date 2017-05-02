@@ -15,8 +15,8 @@ import {Werkplek} from "../../models/Werkplek";
 export class VerdiepingComponent implements OnInit {
   locatieid: number;
   verdiepingid: number;
-  locatie: Locatie;
-  verdieping: Verdieping;
+  locatie: any = {};
+  verdieping: any = {};
   werkplekken: Array<Werkplek> = [];
   werkplekkenSelectie: Array<Werkplek> = [];
 
@@ -32,10 +32,10 @@ export class VerdiepingComponent implements OnInit {
 
   ngOnInit() {
     this.locatieid = this.route.snapshot.params['locatieid'];
-    this.locatie = this.locatiesService.getLocatie(this.locatieid);
+    this.locatiesService.getLocatie(this.locatieid).subscribe(result => this.locatie = result);
 
     this.verdiepingid = this.route.snapshot.params["verdiepingid"];
-    this.verdieping = this.verdiepingenService.getVerdieping(this.verdiepingid);
+    this.verdiepingenService.getVerdieping(this.locatieid, this.verdiepingid).subscribe(result => this.verdieping = result);
 
     this.werkplekken = this.werkplekkenService.getWerkplekken(this.verdiepingid);
     this.werkplekkenSelectie = this.werkplekken;

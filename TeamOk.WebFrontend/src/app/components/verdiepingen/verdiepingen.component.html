@@ -1,17 +1,18 @@
 <ol class="breadcrumb">
   <li class="breadcrumb-item"><a class="breadcrumb-color" href="#">Home </a></li>
   <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties">locaties</a></li>
-  <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties/{{locatie.id}}">{{locatie.naam}}</a></li>
+  <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties/{{locatie.id}}">{{locatie.name}}</a></li>
   <li class="breadcrumb-item active">Verdiepingen</li>
 </ol>
 <div class="overview-list" >
-  <h2 class="overview-list-title">Verdiepingen {{locatie.naam}}</h2>
+  <h2 class="overview-list-title">Verdiepingen {{locatie.name}}</h2>
   <table class="table-striped" class="table-striped overview-list-content">
     <tr *ngFor="let verdieping of verdiepingen" (click)="openVerdieping(verdieping.id)">
       <td class="overview-list-content-row">
         <div id="overview-list-content-row-arrow">
-          <h4>{{verdieping.naam}}</h4>
-          <p>{{verdieping.werkplekken}} werkplekken ({{verdieping.vrije_werkplekken}} vrij)</p>
+          <h4>{{verdieping.name}}</h4>
+          <p>Bekijk de werkplekken</p>
+          <!--<p>{{verdieping.werkplekken}} werkplekken ({{verdieping.vrije_werkplekken}} vrij)</p>-->
         </div>
       </td>
     </tr>
