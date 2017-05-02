@@ -20,36 +20,38 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             _context = context;
         }
 
-        
+
         public IActionResult Index([FromQuery] string MacAddress)
         {
-            if(MacAddress != null)
+            if (MacAddress != null)
             {
                 HttpContext.Session.SetString("MacAddress", MacAddress);
+
+                if (getIsBezet(MacAddress) == true)
+                {
+                    return View("Bezet");
+                }
+                else
+                {
+                    return View("Vrij");
+                }
             }
-            
-            if (getIsBezet(MacAddress) == true)
-            {
-                return View("Bezet");
-            }
-            else
-            {
-                return View("Vrij");
-            }
+            return View("Error");
         }
 
+         
         private bool getIsBezet(string mac)
         {
-            StatusViewModel getStatus;
+            StatusViewModel Status;
             try
             {
-                getStatus = _context.ApiWorkspaceunitsByMacAddressGet(mac);
-                bool isClaimed = (bool)getStatus.Claimed;
+                Status = _context.ApiWorkspaceunitsByMacAddressGet(mac);
+                bool isClaimed = (bool)Status.Claimed;
                 return isClaimed;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.InnerException);
+                Console.WriteLine(ex.Message);
             }
             return false;
         }
