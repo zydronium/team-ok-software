@@ -266,39 +266,32 @@ h4{
   float:right;
 }
 
-/*.input-group-btn{*/
-  /*display:inline!important;*/
-/*}*/
+text_in_col_right{
+  float: right;
+}
 
-/*.input-group{*/
-  /*display:inline!important;*/
-/*}*/
-
-/*  GRID OF SIX  */
-.span_6_of_6 {
+/*  GRID OF FOUR  */
+.span_4_of_4 {
   width: 100%;
 }
-
-.span_5_of_6 {
-  width: 83.06%;
+.span_3_of_4 {
+  width: 74.6%;
 }
-
-.span_4_of_6 {
-  width: 66.13%;
-}
-
-.span_3_of_6 {
+.span_2_of_4 {
   width: 49.2%;
 }
-
-.span_2_of_6 {
-  width: 32.26%;
+.span_1_of_4 {
+  width: 23.8%;
 }
 
-.span_1_of_6 {
-  width: 15.33%;
+.in_wrapper_left
+{
+  float: left;
 }
 
+.in_wrapper_right{
+  overflow:hidden;
+}
 
 @media only screen and (max-width: 640px)
 {
@@ -308,6 +301,8 @@ h4{
   .span_3_of_3, .span_2_of_3, .span_1_of_3 {
     width: 100%;
   }
+  .span_1_of_4, .span_2_of_4, .span_3_of_4, .span_4_of_4 { width: 100%;}
+
   .location-column-left{
     width:100%;
     float:none;
@@ -323,5 +318,8 @@ h4{
   }
   .logobar{
     width:200px;
+  }
+  .in_wrapper_left{
+    float:none;
   }
 }
