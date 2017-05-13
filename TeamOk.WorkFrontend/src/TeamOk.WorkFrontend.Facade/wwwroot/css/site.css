@@ -15,15 +15,17 @@
 }
 
 .container.body-content {
-    width: auto;
+    width: 100vw;
     padding-left: 0px;  
     padding-right: 65px;
     margin-left: 0px;
     margin-right: 0px;
+    text-align:center;
 }
 
 .scaleable{
-    max-width: 75vh;
+    width: 100vw;
+    height:100vh;
 }
 
 /* Wrapping element */
@@ -45,6 +47,7 @@
     a {
         color: grey!important;
         text-align: center;
+        padding: 10.0vh 15px 7.5vh 15px !important;
     }
 }
 
@@ -94,3 +97,18 @@ textarea {
     display: none
   }
 }
+@media all and (max-width: 1200px) { /* screen size until 1200px */
+    body {
+        font-size: 1.8em; /* 1.5x default size */
+    }
+}
+@media all and (max-width: 1000px) { /* screen size until 1000px */
+    body {
+        font-size: 1.5em; /* 1.2x default size */
+        }
+    }
+@media all and (max-width: 500px) { /* screen size until 500px */
+    body {
+        font-size: 1.2em; /* 0.8x default size */
+        }
+    }
