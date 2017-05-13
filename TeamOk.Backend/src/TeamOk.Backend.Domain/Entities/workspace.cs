@@ -13,6 +13,8 @@ namespace TeamOk.Backend.Domain.Entities
         [Required]
         public long FloorID { get; set; }
         [Required]
+        public Floor Floor { get; set; }
+        [Required]
         public string Name { get; set; }
         [Required]
         public string MacAddress { get; set; }

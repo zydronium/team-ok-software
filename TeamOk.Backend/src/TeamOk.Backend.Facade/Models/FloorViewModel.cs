@@ -9,6 +9,7 @@ namespace TeamOk.Backend.Facade.Models
     {
         public long Id { get; set; }
         public long LocationId { get; set; }
+        public LocationViewModel Location { get; set; }
         public string Name { get; set; }
         public List<FacilityViewModel> Facilities { get; set; }
         public DateTime Created { get; set; }

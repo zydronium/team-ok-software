@@ -9,6 +9,7 @@ namespace TeamOk.Backend.Facade.Models
     {
         public long Id { get; set; }
         public long FloorId { get; set; }
+        public FloorViewModel Floor { get; set; }
         public string Name { get; set; }
         public bool Claimed { get; set; }
         public DateTime ClaimedUntill { get; set; }
