@@ -11,6 +11,8 @@ namespace TeamOk.Backend.Domain.Entities
         [Required]
         public long ID { get; set; }
         [Required]
+        public long LocationID { get; set; }
+        [Required]
         public long FacilityID { get; set; }
         [Required]
         public Facility FacilityInstance { get; set; }

@@ -13,6 +13,8 @@ namespace TeamOk.Backend.Domain.Entities
         [Required]
         public long LocationID { get; set; }
         [Required]
+        public Location Location { get; set; }
+        [Required]
         public string Name { get; set; }
         public List<FloorFacility> FloorFacilities { get; set; }
         [Required]

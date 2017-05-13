@@ -27,6 +27,7 @@ namespace TeamOk.Backend.Facade.Controllers
             var result = _context.Floors
                 .Include(x => x.FloorFacilities)
                 .ThenInclude(x => x.FacilityInstance)
+                .Include(x => x.Location)
                 .Where(x => x.LocationID == LocationId && x.Deleted == false && x.FloorFacilities.Any(y => y.Deleted == false && y.FacilityInstance.Deleted == false))
                 .OrderBy(x => x.Name)
                 .ToList();
@@ -36,6 +37,7 @@ namespace TeamOk.Backend.Facade.Controllers
             {
                 FloorViewModel localValue = new FloorViewModel();
                 localValue.Created = floor.Created;
+                localValue.LocationId = floor.LocationID;
                 localValue.Id = floor.ID;
                 localValue.Modified = floor.Modified;
                 localValue.Name = floor.Name;
@@ -53,6 +55,19 @@ namespace TeamOk.Backend.Facade.Controllers
                     localValue.Facilities.Add(localFacility);
                 }
 
+                localValue.Location = new LocationViewModel();
+                localValue.Location.Address = floor.Location.Address;
+                localValue.Location.City = floor.Location.City;
+                localValue.Location.Created = floor.Location.Created;
+                localValue.Location.Id = floor.Location.ID;
+                localValue.Location.Latitude = floor.Location.Latitude;
+                localValue.Location.Longitude = floor.Location.Longitude;
+                localValue.Location.Modified = floor.Location.Modified;
+                localValue.Location.Name = floor.Location.Name;
+                localValue.Location.OpeningHours = floor.Location.OpeningHours;
+                localValue.Location.Phonenumber = floor.Location.Phonenumber;
+                localValue.Location.Postcode = floor.Location.Postcode;
+
                 value.Add(localValue);
             }
             return value;
@@ -65,11 +80,13 @@ namespace TeamOk.Backend.Facade.Controllers
             var floor = _context.Floors
                 .Include(x => x.FloorFacilities)
                 .ThenInclude(x => x.FacilityInstance)
+                .Include(x => x.Location)
                 .OrderBy(x => x.Name)
                 .Where(x => x.LocationID == LocationId && x.Deleted == false && x.FloorFacilities.Any(y => y.Deleted == false && y.FacilityInstance.Deleted == false))
                 .SingleOrDefault(x => x.ID == id);
             FloorViewModel localValue = new FloorViewModel();
             localValue.Created = floor.Created;
+            localValue.LocationId = floor.LocationID;
             localValue.Id = floor.ID;
             localValue.Modified = floor.Modified;
             localValue.Name = floor.Name;
@@ -86,6 +103,19 @@ namespace TeamOk.Backend.Facade.Controllers
 
                 localValue.Facilities.Add(localFacility);
             }
+
+            localValue.Location = new LocationViewModel();
+            localValue.Location.Address = floor.Location.Address;
+            localValue.Location.City = floor.Location.City;
+            localValue.Location.Created = floor.Location.Created;
+            localValue.Location.Id = floor.Location.ID;
+            localValue.Location.Latitude = floor.Location.Latitude;
+            localValue.Location.Longitude = floor.Location.Longitude;
+            localValue.Location.Modified = floor.Location.Modified;
+            localValue.Location.Name = floor.Location.Name;
+            localValue.Location.OpeningHours = floor.Location.OpeningHours;
+            localValue.Location.Phonenumber = floor.Location.Phonenumber;
+            localValue.Location.Postcode = floor.Location.Postcode;
 
             return localValue;
         }
