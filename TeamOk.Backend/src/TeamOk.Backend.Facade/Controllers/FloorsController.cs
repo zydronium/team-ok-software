@@ -68,6 +68,17 @@ namespace TeamOk.Backend.Facade.Controllers
                 localValue.Location.Phonenumber = floor.Location.Phonenumber;
                 localValue.Location.Postcode = floor.Location.Postcode;
 
+                var WorkspaceAmountresult = _context.Workspaces
+                    .Include(x => x.WorkspaceFacilities)
+                    .ThenInclude(x => x.FacilityInstance)
+                    .Include(x => x.Floor)
+                    .ThenInclude(x => x.Location)
+                    .Where(x => x.FloorID == floor.ID && x.Deleted == false && x.WorkspaceFacilities.Any(y => y.Deleted == false && y.FacilityInstance.Deleted == false))
+                    .OrderBy(x => x.Name)
+                    .ToList();
+
+                localValue.AmountWorkspaces = WorkspaceAmountresult.Count;
+
                 value.Add(localValue);
             }
             return value;
@@ -116,6 +127,17 @@ namespace TeamOk.Backend.Facade.Controllers
             localValue.Location.OpeningHours = floor.Location.OpeningHours;
             localValue.Location.Phonenumber = floor.Location.Phonenumber;
             localValue.Location.Postcode = floor.Location.Postcode;
+
+            var WorkspaceAmountresult = _context.Workspaces
+                .Include(x => x.WorkspaceFacilities)
+                .ThenInclude(x => x.FacilityInstance)
+                .Include(x => x.Floor)
+                .ThenInclude(x => x.Location)
+                .Where(x => x.FloorID == floor.ID && x.Deleted == false && x.WorkspaceFacilities.Any(y => y.Deleted == false && y.FacilityInstance.Deleted == false))
+                .OrderBy(x => x.Name)
+                .ToList();
+
+            localValue.AmountWorkspaces = WorkspaceAmountresult.Count;
 
             return localValue;
         }

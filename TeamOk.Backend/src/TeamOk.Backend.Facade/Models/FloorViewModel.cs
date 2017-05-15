@@ -11,6 +11,8 @@ namespace TeamOk.Backend.Facade.Models
         public long LocationId { get; set; }
         public LocationViewModel Location { get; set; }
         public string Name { get; set; }
+        public int AmountWorkspaces { get; set; }
+        public int AmountOcupiedWorkspaces { get; set; }
         public List<FacilityViewModel> Facilities { get; set; }
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }
