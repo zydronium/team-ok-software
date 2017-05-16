@@ -18,7 +18,7 @@ export class WerkplekComponent implements OnInit {
   werkplekid: number;
   locatie: any = {};
   verdieping: any = {};
-  werkplek: Werkplek;
+  werkplek: any = {};
 
   constructor(
     private route: ActivatedRoute,
@@ -38,7 +38,6 @@ export class WerkplekComponent implements OnInit {
     this.verdiepingenService.getVerdieping(this.locatieid, this.verdiepingid).subscribe(result => this.verdieping = result);
 
     this.werkplekid = this.route.snapshot.params["werkplekid"];
-    this.werkplek = this.werkplekkenService.getWerkplek(this.werkplekid);
+    this.werkplek = this.werkplekkenService.getWerkplek(this.verdiepingid, this.werkplekid).subscribe(result => this.werkplek = result);
   }
-
 }

@@ -1,24 +1,25 @@
 <ol class="breadcrumb">
   <li class="breadcrumb-item"><a class="breadcrumb-color" href="#">Home </a></li>
   <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties">locaties</a></li>
-  <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties/{{locatie.id}}">{{locatie.naam}}</a></li>
+  <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties/{{locatie.id}}">{{locatie.name}}</a></li>
   <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties/{{locatie.id}}/verdiepingen">Verdiepingen</a></li>
-  <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties/{{locatie.id}}/verdiepingen/{{verdieping.id}}">{{verdieping.naam}}</a></li>
-  <li class="breadcrumb-item">{{werkplek.naam}}</li>
+  <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties/{{locatie.id}}/verdiepingen/{{verdieping.id}}">{{verdieping.name}}</a></li>
+  <li class="breadcrumb-item">{{werkplek.name}}</li>
 </ol>
 <div class="section group">
   <div class="col span_2_of_3">
-    <h2 class="overview-list-title">{{werkplek.naam}}, {{verdieping.naam}}</h2>
+    <h2 class="overview-list-title">{{werkplek.name}}, {{verdieping.name}}</h2>
     <div class="column-text">
-      <p>{{werkplek.zitplaatsen}} zitplaatsen</p>
-      <p>{{werkplek.stopcontacten}} stopcontacten</p>
+      <div *ngFor="let facility of werkplek.facilities">
+        {{facility.value}} {{facility.name}}
+      </div>
     </div>
   </div>
   <div class="col span_1_of_3">
     <h2 class="overview-list-title">Bezetting</h2>
     <div class="column-text center-text">
-      <i *ngIf="!werkplek.bezet" class="fa fa-check workspace-occupied-check" aria-hidden="true"></i>
-      <i *ngIf="werkplek.bezet" class="fa fa-close workspace-occupied-close" aria-hidden="true"></i>
+      <i *ngIf="!werkplek.claimed" class="fa fa-check workspace-occupied-check" aria-hidden="true"></i>
+      <i *ngIf="werkplek.claimed" class="fa fa-close workspace-occupied-close" aria-hidden="true"></i>
     </div>
   </div>
 </div>
