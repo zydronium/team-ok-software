@@ -92,7 +92,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "Voor meer info";
-            ViewData["URL"] = "bit.ly/????";
+            ViewData["URL"] = "goo.gl/jOHd8R";
             return View();
         }
 
