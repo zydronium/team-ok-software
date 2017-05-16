@@ -2,7 +2,7 @@
 .timingfield .timingfield_minutes,
 .timingfield .timingfield_seconds {
   display: inline-block;
-  width: calc(50vw - 45px);
+  width: calc(50vw - 30px);
   height: 80vh;
 }
 
@@ -35,7 +35,7 @@
 .timingfield .timingfield_hours .input-group .input-group-addon,
 .timingfield .timingfield_minutes .input-group .input-group-addon,
 .timingfield .timingfield_seconds .input-group .input-group-addon {
-  width: 75%;
+  width: 60%;
 }
 
 .timingfield .timingfield_hours .timingfield_prev,

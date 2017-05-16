@@ -26,7 +26,8 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             if (MacAddress != null)
             {
                 HttpContext.Session.SetString("MacAddress", MacAddress);
-
+            }
+            if (HttpContext.Session.GetString("MacAddress") != null) {
                 if (getIsBezet(MacAddress) == true)
                 {
                     return View("Bezet");
