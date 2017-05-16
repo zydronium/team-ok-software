@@ -80,15 +80,11 @@ namespace TeamOk.Backend.Facade.Controllers
                 int AmountWorkspaces = 0;
                 int AmountOcupiedWorkspaces = 0;
 
-                Console.WriteLine("count:" + WorkspaceAmountresult.Count);
-
                 foreach (var workspace in WorkspaceAmountresult)
                 {
-                    Console.WriteLine("count:" + workspace.Name);
                     AmountWorkspaces++;
                     if (workspace.Claimed)
                     {
-                        Console.WriteLine("HIT!!!");
                         AmountOcupiedWorkspaces++;
                     }
                 }
