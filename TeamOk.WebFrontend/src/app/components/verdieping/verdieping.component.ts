@@ -6,6 +6,7 @@ import {LocatiesService} from "../../services/locaties.service";
 import {VerdiepingenService} from "../../services/verdiepingen.service";
 import {WerkplekkenService} from "../../services/werkplekken.service";
 import {Werkplek} from "../../models/Werkplek";
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'app-verdieping',
@@ -38,8 +39,6 @@ export class VerdiepingComponent implements OnInit {
     this.verdiepingenService.getVerdieping(this.locatieid, this.verdiepingid).subscribe(result => this.verdieping = result);
 
     this.werkplekkenService.getWerkplekken(this.verdiepingid).subscribe(result => this.laadWerkplekken(result));
-    // this.werkplekken = this.werkplekkenService.getWerkplekken(this.verdiepingid);
-    // this.werkplekkenSelectie = this.werkplekken;
   }
 
   laadWerkplekken(result: any){
@@ -57,6 +56,17 @@ export class VerdiepingComponent implements OnInit {
     }
     else if(filter == "vrij"){
       this.werkplekkenSelectie = this.werkplekken.filter(werkplek => !werkplek.bezet);
+    }
+  }
+
+  getZitplaatsen(facilities : any) : any{
+    let filtered =  facilities.filter(facility => facility.name == 'Zitplaatsen');
+
+    if(filtered.length == 1){
+      return filtered[0].value;
+    }
+    else{
+      return "onbekend aantal";
     }
   }
 }
