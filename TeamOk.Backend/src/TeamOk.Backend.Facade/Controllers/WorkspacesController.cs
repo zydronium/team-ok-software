@@ -40,6 +40,8 @@ namespace TeamOk.Backend.Facade.Controllers
                 localValue.Created = workspace.Created;
                 localValue.FloorId = workspace.FloorID;
                 localValue.Id = workspace.ID;
+                localValue.Claimed = workspace.Claimed;
+                localValue.ClaimedUntill = workspace.ClaimedUntill;
                 localValue.Modified = workspace.Modified;
                 localValue.Name = workspace.Name;
                 localValue.Claimed = false;
@@ -102,6 +104,8 @@ namespace TeamOk.Backend.Facade.Controllers
                 localValue.Created = workspace.Created;
                 localValue.FloorId = workspace.FloorID;
                 localValue.Id = workspace.ID;
+                localValue.Claimed = workspace.Claimed;
+                localValue.ClaimedUntill = workspace.ClaimedUntill;
                 localValue.Modified = workspace.Modified;
                 localValue.Name = workspace.Name;
                 localValue.Claimed = false;
