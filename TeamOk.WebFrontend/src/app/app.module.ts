@@ -20,6 +20,7 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
 import { ZoekComponent } from './components/zoek/zoek.component';
 import {ZoekService} from "./services/zoek.service";
 import { InformatieComponent } from './components/informatie/informatie.component';
+import { InformatiePiComponent } from './components/informatie-pi/informatie-pi.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { InformatieComponent } from './components/informatie/informatie.componen
     VerdiepingComponent,
     WerkplekComponent,
     ZoekComponent,
-    InformatieComponent
+    InformatieComponent,
+    InformatiePiComponent
   ],
   imports: [
     BrowserModule,

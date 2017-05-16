@@ -9,6 +9,7 @@ import {VerdiepingComponent} from "./components/verdieping/verdieping.component"
 import {WerkplekComponent} from "./components/werkplek/werkplek.component";
 import {ZoekComponent} from "./components/zoek/zoek.component";
 import {InformatieComponent} from "./components/informatie/informatie.component";
+import {InformatiePiComponent} from "./components/informatie-pi/informatie-pi.component";
 
 
 export const router: Routes = [
@@ -20,7 +21,8 @@ export const router: Routes = [
   { path: 'locaties/:locatieid/verdiepingen/:verdiepingid', component: VerdiepingComponent},
   { path: 'locaties/:locatieid/verdiepingen/:verdiepingid/:werkplekid', component: WerkplekComponent},
   { path: 'zoek', component: ZoekComponent},
-  { path: 'informatie', component: InformatieComponent }
+  { path: 'informatie', component: InformatieComponent },
+  { path: 'informatie/informatie-pi', component: InformatiePiComponent }
 ]
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);
