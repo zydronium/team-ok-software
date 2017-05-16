@@ -19,15 +19,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
 
 </head>
+
 <body>
 <header>
   <a id="logo"><img class="logobar" id="huLogo" src="assets/images/hu-logo-werpleklocator.svg"></a>
 </header>
-  <ul class="navbar">
-    <li><a class="active" href="/" title="Home"> Home </a></li>
-    <li><a href="/zoek" title="Zoek"> Zoek </a></li>
-    <li><a href="/locaties" title="Locaties"> Locaties </a></li>
+  <ul class="navbar" id="navbar">
+    <li id="zoek"><a class="active" href="/zoek" title="Zoek"> Zoek </a></li>
+    <li id="locaties"><a href="/locaties" title="Locaties"> Locaties </a></li>
+    <li id="info"><a href="/informatie" title="Informatie"> Info </a></li>
   </ul>
+
+
   <!--<app-home>Loading...</app-home>-->
 <div class="component">
   <app-root>Loading...</app-root>
