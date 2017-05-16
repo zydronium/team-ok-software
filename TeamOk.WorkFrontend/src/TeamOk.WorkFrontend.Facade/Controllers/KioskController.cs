@@ -56,8 +56,24 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             return false;
         }
 
-        [HttpPost]
-        public IActionResult reserveerWerkplek(object sender, EventArgs e)
+   
+        public IActionResult geefWerkplekVrij()
+        {
+            var MacAddress = HttpContext.Session.GetString("MacAddress");
+            StatusViewModel modelToPost = new StatusViewModel();
+            StatusViewModel postedModel = new StatusViewModel();
+            if (!getIsBezet(MacAddress))
+            {
+                    StatusViewModel status = new StatusViewModel();
+                    status.ClaimedUntill = DateTime.Now;
+                    status.Claimed = false;
+                    modelToPost = status;
+                    postedModel = _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
+            }
+            return View("Vrij");
+        }
+        
+        public IActionResult reserveerWerkplek()
         {
             var MacAddress = HttpContext.Session.GetString("MacAddress");
             StatusViewModel modelToPost = new StatusViewModel();
@@ -83,10 +99,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
                     postedModel = _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
                 }
             }
-
-
-            return Json(modelToPost);
-
+            return View("Bezet");
         }
 
         public IActionResult About()
