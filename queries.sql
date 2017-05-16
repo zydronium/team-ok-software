@@ -5,3 +5,9 @@ insert into facilities (Created, Deleted, Modified, Name) values (GETDATE(), 0, 
 
 insert into LocationFacilities (Created, Deleted, FacilityID, LocationID, Modified, Value) values (GETDATE(), 0, 1, 1, GETDATE(), 'AANWEZIG');
 insert into LocationFacilities (Created, Deleted, FacilityID, LocationID, Modified, Value) values (GETDATE(), 0, 2, 1, GETDATE(), 'Ja, er zijn voldoende parkeerplaatsen in de omgeving van het gebouw');
+
+insert into Floors (Created, Deleted, LocationID, Modified, Name) values (GETDATE(), 0, 1, GETDATE(), 'Instituutsplein ICT');
+
+insert into facilities (Created, Deleted, Modified, Name) values (GETDATE(), 0, GETDATE(), 'Dummy');
+
+insert into FloorFacilities (Created, Deleted, FacilityID, FloorID, Modified, Value) values (GETDATE(), 0, 3, 1, GETDATE(), 'Een dummy facility');
