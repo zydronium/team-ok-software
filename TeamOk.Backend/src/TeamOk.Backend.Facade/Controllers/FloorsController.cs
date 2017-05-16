@@ -76,8 +76,21 @@ namespace TeamOk.Backend.Facade.Controllers
                     .Where(x => x.FloorID == floor.ID && x.Deleted == false && x.WorkspaceFacilities.Any(y => y.Deleted == false && y.FacilityInstance.Deleted == false))
                     .OrderBy(x => x.Name)
                     .ToList();
+                
+                int AmountWorkspaces = 0;
+                int AmountClaimedWorkspaces = 0;
 
-                localValue.AmountWorkspaces = WorkspaceAmountresult.Count;
+                foreach (var workspace in WorkspaceAmountresult)
+                {
+                    AmountWorkspaces++;
+                    if (workspace.Claimed)
+                    {
+                        AmountClaimedWorkspaces++;
+                    }
+                }
+
+                localValue.AmountWorkspaces = AmountWorkspaces;
+                localValue.AmountWorkspaces = AmountClaimedWorkspaces;
 
                 value.Add(localValue);
             }
