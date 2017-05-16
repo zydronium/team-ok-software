@@ -28,6 +28,16 @@ namespace TeamOk.Backend.Facade.Controllers
                 .Where(x=> x.Deleted == false)
                 .SingleOrDefault(x => x.MacAddress == MacAddress);
 
+            if(workspace.Claimed)
+            {
+                if(workspace.ClaimedUntill < DateTime.Now)
+                {
+                    workspace.Claimed = false;
+                    workspace.ClaimedUntill = DateTime.Now;
+                    _context.SaveChanges();
+                }
+            }
+
             StatusViewModel localValue = new StatusViewModel();
             localValue.Claimed = workspace.Claimed;
             localValue.ClaimedUntill = workspace.ClaimedUntill;
@@ -39,6 +49,25 @@ namespace TeamOk.Backend.Facade.Controllers
         [HttpPost("{MacAddress}")]
         public StatusViewModel PostStatusByMacAddress(string MacAddress, [FromBody]StatusViewModel value)
         {
+            var workspace = _context.Workspaces
+                .Where(x => x.Deleted == false)
+                .SingleOrDefault(x => x.MacAddress == MacAddress);
+
+            if (workspace != null)
+            {
+                if(value.Claimed)
+                {
+                    workspace.Claimed = true;
+                    workspace.ClaimedUntill = value.ClaimedUntill;
+                }
+                else
+                {
+                    workspace.Claimed = false;
+                    workspace.ClaimedUntill = DateTime.Now;
+                }
+                _context.SaveChanges();
+            }
+
             return GetStatusByMacAddress(MacAddress);
         }
     }
