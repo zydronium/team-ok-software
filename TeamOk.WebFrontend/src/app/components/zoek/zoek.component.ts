@@ -18,17 +18,60 @@ export class ZoekComponent implements OnInit {
   ngOnInit() {
   }
 
+  getZitplaatsen(facilities : any) : any{
+    let filtered =  facilities.filter(facility => facility.name == 'Zitplaatsen');
+
+    if(filtered.length == 1){
+      return filtered[0].value;
+    }
+    else{
+      return "onbekend aantal";
+    }
+  }
+
+  getStopcontacten(facilities : any) : any{
+    let filtered =  facilities.filter(facility => facility.name == 'Stopcontacten');
+
+    if(filtered.length == 1){
+      return filtered[0].value;
+    }
+    else{
+      return "onbekend aantal";
+    }
+  }
+
   zoek() {
-    this.werkplekken = this.werkplekkenService.getAlleWerkplekken();
+    this.werkplekkenService.getAlleWerkplekken().subscribe(result => this.processData(result));
+  //   for(var i =0; i < this.werkplekken.length; i++){
+  //     if(this.werkplekken[i].claimed == false){
+  //       this.werkplekken[i].seat = this.getZitplaatsen(this.werkplekken[i].facilities);
+  //       this.werkplekken[i].outlet = this.getStopcontacten(this.werkplekken[i].facilities);
+  //       this.vrijeWerkplekken.push(this.werkplekken[i]);
+  //     }
+  //   }
+  //   for(var i =0; i < this.vrijeWerkplekken.length; i++){
+  //     if(this.vrijeWerkplekken[i].outlet == this.stopcontacten || this.vrijeWerkplekken[i].seat == this.zitplaatsen ){
+  //       this.result.push(this.vrijeWerkplekken[i]);
+  //     }
+  //   }
+  //   console.log("zoek");
+  // }
+}
+
+  processData(result: any){
+    this.result = [];
+  this.werkplekken = result;
+  console.log(result)
     for(var i =0; i < this.werkplekken.length; i++){
       if(this.werkplekken[i].claimed == false){
-        this.werkplekken[i].seat = 1;
+        this.werkplekken[i].seat = this.getZitplaatsen(this.werkplekken[i].facilities);
+        this.werkplekken[i].outlet = this.getStopcontacten(this.werkplekken[i].facilities);
         this.vrijeWerkplekken.push(this.werkplekken[i]);
       }
     }
     for(var i =0; i < this.vrijeWerkplekken.length; i++){
-      if(this.vrijeWerkplekken[i].stop == false){
-        this.vrijeWerkplekken.push(this.werkplekken[i]);
+      if(this.vrijeWerkplekken[i].outlet >= this.stopcontacten || this.vrijeWerkplekken[i].seat >= this.zitplaatsen ){
+        this.result.push(this.vrijeWerkplekken[i]);
       }
     }
     console.log("zoek");
