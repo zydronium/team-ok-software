@@ -37,8 +37,14 @@ export class VerdiepingComponent implements OnInit {
     this.verdiepingid = this.route.snapshot.params["verdiepingid"];
     this.verdiepingenService.getVerdieping(this.locatieid, this.verdiepingid).subscribe(result => this.verdieping = result);
 
-    this.werkplekken = this.werkplekkenService.getWerkplekken(this.verdiepingid);
-    this.werkplekkenSelectie = this.werkplekken;
+    this.werkplekkenService.getWerkplekken(this.verdiepingid).subscribe(result => this.laadWerkplekken(result));
+    // this.werkplekken = this.werkplekkenService.getWerkplekken(this.verdiepingid);
+    // this.werkplekkenSelectie = this.werkplekken;
+  }
+
+  laadWerkplekken(result: any){
+    this.werkplekken = result;
+    this.werkplekkenSelectie = result;
   }
 
   openWerkplek(werkplekid: number){
