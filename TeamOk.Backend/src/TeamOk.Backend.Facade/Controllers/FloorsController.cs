@@ -78,19 +78,19 @@ namespace TeamOk.Backend.Facade.Controllers
                     .ToList();
                 
                 int AmountWorkspaces = 0;
-                int AmountClaimedWorkspaces = 0;
+                int AmountOcupiedWorkspaces = 0;
 
                 foreach (var workspace in WorkspaceAmountresult)
                 {
                     AmountWorkspaces++;
                     if (workspace.Claimed)
                     {
-                        AmountClaimedWorkspaces++;
+                        AmountOcupiedWorkspaces++;
                     }
                 }
 
                 localValue.AmountWorkspaces = AmountWorkspaces;
-                localValue.AmountWorkspaces = AmountClaimedWorkspaces;
+                localValue.AmountOcupiedWorkspaces = AmountOcupiedWorkspaces;
 
                 value.Add(localValue);
             }
@@ -151,19 +151,19 @@ namespace TeamOk.Backend.Facade.Controllers
                 .ToList();
 
             int AmountWorkspaces = 0;
-            int AmountClaimedWorkspaces = 0;
+            int AmountOcupiedWorkspaces = 0;
 
             foreach(var workspace in WorkspaceAmountresult)
             {
                 AmountWorkspaces++;
                 if(workspace.Claimed)
                 {
-                    AmountClaimedWorkspaces++;
+                    AmountOcupiedWorkspaces++;
                 }
             }
 
             localValue.AmountWorkspaces = AmountWorkspaces;
-            localValue.AmountWorkspaces = AmountClaimedWorkspaces;
+            localValue.AmountOcupiedWorkspaces = AmountOcupiedWorkspaces;
 
             return localValue;
         }
