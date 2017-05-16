@@ -40,7 +40,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             return View("Error");
         }
 
-         
+                 
         private bool getIsBezet(string mac)
         {
             StatusViewModel Status;
@@ -71,8 +71,9 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
                     modelToPost = status;
                     postedModel = _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
             }
-            return View("Vrij");
+            return Index(null);
         }
+
         
         public IActionResult reserveerWerkplek()
         {
@@ -99,8 +100,12 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
                     modelToPost = status;
                     postedModel = _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
                 }
+                HttpContext.Session.SetString("ClaimedUntill", modelToPost.ClaimedUntill.Value.ToString("yyyy-MM-dd HH:mm:ss"));
             }
-            return View("Bezet");
+
+            ViewData["time"] = HttpContext.Session.GetString("ClaimedUntill");
+
+            return Index(null);
         }
 
         public IActionResult About()
