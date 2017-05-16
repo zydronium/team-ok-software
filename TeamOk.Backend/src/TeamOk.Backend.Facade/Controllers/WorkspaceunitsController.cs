@@ -29,8 +29,8 @@ namespace TeamOk.Backend.Facade.Controllers
                 .SingleOrDefault(x => x.MacAddress == MacAddress);
 
             StatusViewModel localValue = new StatusViewModel();
-            localValue.Claimed = false;
-            localValue.ClaimedUntill = DateTime.Now;
+            localValue.Claimed = workspace.Claimed;
+            localValue.ClaimedUntill = workspace.ClaimedUntill;
 
             return localValue;
         }
