@@ -29,11 +29,11 @@
             <div class="col-lg-2">
               <div class="input-group">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" id="btn-plus_zitplaatsen"><span class="glyphicon glyphicon-minus"></span></button>
+        <button class="btn btn-default" type="button" id="btn-plus_zitplaatsen" (click)="zitplaatsen = zitplaatsen - 1"><span class="glyphicon glyphicon-minus"></span></button>
       </span>
-                <input type="text" class="form-control" name="qty" id="qty_zitplaatsen" value="1">
+                <input type="text" class="form-control" name="qty" id="qty_zitplaatsen" value="1" [(ngModel)]="zitplaatsen">
                 <span class="input-group-btn">
-        <button class="btn btn-default" type="button" id="btn-minus_zitplaatsen"><span class="glyphicon glyphicon-plus"></span></button>
+        <button class="btn btn-default" type="button" id="btn-minus_zitplaatsen" (click)="zitplaatsen = zitplaatsen + 1"><span class="glyphicon glyphicon-plus"></span></button>
       </span>
               </div>
             </div>
@@ -52,11 +52,11 @@
             <div class="col-lg-2">
               <div class="input-group">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" id="btn-plus_stopcontacten"><span class="glyphicon glyphicon-minus"></span></button>
+        <button class="btn btn-default" type="button" id="btn-plus_stopcontacten" (click)="stopcontacten = stopcontacten - 1"><span class="glyphicon glyphicon-minus"></span></button>
       </span>
-                <input type="text" class="form-control" name="qty" id="qty_stopcontacten" value="1">
+                <input type="text" class="form-control" name="qty" id="qty_stopcontacten" value="1" [(ngModel)]="stopcontacten">
                 <span class="input-group-btn">
-        <button class="btn btn-default" type="button" id="btn-minus_stopcontacten"><span class="glyphicon glyphicon-plus"></span></button>
+        <button class="btn btn-default" type="button" id="btn-minus_stopcontacten" (click)="stopcontacten = stopcontacten + 1"><span class="glyphicon glyphicon-plus"></span></button>
       </span>
               </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
