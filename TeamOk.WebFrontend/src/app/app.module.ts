@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {HttpModule} from '@angular/http';
 
 import { routes } from './app.routes';
 import {RouterModule} from "@angular/router";
@@ -17,6 +17,10 @@ import {LocatiesService} from "./services/locaties.service";
 import {VerdiepingenService} from "./services/verdiepingen.service";
 import {WerkplekkenService} from "./services/werkplekken.service";
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { ZoekComponent } from './components/zoek/zoek.component';
+import {ZoekService} from "./services/zoek.service";
+import { InformatieComponent } from './components/informatie/informatie.component';
+import { InformatiePiComponent } from './components/informatie-pi/informatie-pi.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,10 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     LocatieComponent,
     VerdiepingenComponent,
     VerdiepingComponent,
-    WerkplekComponent
+    WerkplekComponent,
+    ZoekComponent,
+    InformatieComponent,
+    InformatiePiComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,7 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
       apiKey: 'AIzaSyDtoOYq0ogNyyt0_KUusjXo16eqFOrdQPc'
     })
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : '/' }, LocatiesService, WerkplekkenService, VerdiepingenService],
+  providers: [{provide: APP_BASE_HREF, useValue : '/' }, LocatiesService, WerkplekkenService, VerdiepingenService, ZoekService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

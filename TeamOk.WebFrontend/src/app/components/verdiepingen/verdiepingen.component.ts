@@ -12,8 +12,8 @@ import {Locatie} from "../../models/Locatie";
 })
 export class VerdiepingenComponent implements OnInit {
   locatieid: number;
-  locatie: Locatie;
-  verdiepingen: Array<Verdieping> = [];
+  locatie: any = {};
+  verdiepingen: any = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -27,8 +27,8 @@ export class VerdiepingenComponent implements OnInit {
   ngOnInit() {
     this.locatieid = this.route.snapshot.params['locatieid'];
 
-    this.locatie = this.locatiesService.getLocatie(this.locatieid);
-    this.verdiepingen = this.verdiepingenService.getVerdiepingen(this.locatieid);
+    this.locatiesService.getLocatie(this.locatieid).subscribe(result => this.locatie = result);
+    this.verdiepingenService.getVerdiepingen(this.locatieid).subscribe(result => this.verdiepingen = result);
   }
 
   openVerdieping(verdiepingid: number){

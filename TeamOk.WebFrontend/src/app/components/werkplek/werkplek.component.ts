@@ -16,8 +16,8 @@ export class WerkplekComponent implements OnInit {
   locatieid: number;
   verdiepingid: number;
   werkplekid: number;
-  locatie: Locatie;
-  verdieping: Verdieping;
+  locatie: any = {};
+  verdieping: any = {};
   werkplek: Werkplek;
 
   constructor(
@@ -32,10 +32,10 @@ export class WerkplekComponent implements OnInit {
 
   ngOnInit() {
     this.locatieid = this.route.snapshot.params['locatieid'];
-    this.locatie = this.locatiesService.getLocatie(this.locatieid);
+    this.locatiesService.getLocatie(this.locatieid).subscribe(result => this.locatie = result);
 
     this.verdiepingid = this.route.snapshot.params["verdiepingid"];
-    this.verdieping = this.verdiepingenService.getVerdieping(this.verdiepingid);
+    this.verdiepingenService.getVerdieping(this.locatieid, this.verdiepingid).subscribe(result => this.verdieping = result);
 
     this.werkplekid = this.route.snapshot.params["werkplekid"];
     this.werkplek = this.werkplekkenService.getWerkplek(this.werkplekid);

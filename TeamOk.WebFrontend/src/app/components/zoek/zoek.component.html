@@ -1,0 +1,150 @@
+<div class="overview-list" >
+  <h2 class="overview-list-title">Zoek een werkplek</h2>
+
+  <div class="section group">
+    <div class="col span_1_of_4">
+      <!--1 of 4-->
+      <div>
+        <div class="in_wrapper_left">
+          Locaties:
+        </div>
+        <div class="in_wrapper_rightt">
+        <select multiple>
+          <option value="1">Locatie 1</option>
+          <option value="2">Locatie 2</option>
+        </select>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="col span_1_of_4">
+      <!--2 of 4-->
+      <div class="in_wrapper_left">
+        Zitplaatsen:
+      </div>
+      <div class="in_wrapper_right">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2">
+              <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" id="btn-plus_zitplaatsen"><span class="glyphicon glyphicon-minus"></span></button>
+      </span>
+                <input type="text" class="form-control" name="qty" id="qty_zitplaatsen" value="1">
+                <span class="input-group-btn">
+        <button class="btn btn-default" type="button" id="btn-minus_zitplaatsen"><span class="glyphicon glyphicon-plus"></span></button>
+      </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col span_1_of_4">
+      <!--3 of 4-->
+      <div class="in_wrapper_left">
+        Stopcontacten:
+      </div>
+      <div class="in_wrapper_right">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2">
+              <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" id="btn-plus_stopcontacten"><span class="glyphicon glyphicon-minus"></span></button>
+      </span>
+                <input type="text" class="form-control" name="qty" id="qty_stopcontacten" value="1">
+                <span class="input-group-btn">
+        <button class="btn btn-default" type="button" id="btn-minus_stopcontacten"><span class="glyphicon glyphicon-plus"></span></button>
+      </span>
+              </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+          </div><!-- /.row -->
+        </div>
+      </div>
+    </div>
+    <div class="col span_1_of_4">
+      <!--4 of 4-->
+      <input class="button-red button-red-fill-width" type="button" value="Zoek" (click)="zoek()">
+    </div>
+  </div>
+
+
+    <!--<div class="section group">-->
+      <!--<div class="col span_1_of_6">-->
+        <!--&lt;!&ndash;1 of 6&ndash;&gt;-->
+        <!--<select name="locaties">-->
+          <!--<option hidden option disabled>Locaties</option>-->
+          <!--<option value="1">Locatie 1</option>-->
+          <!--<option value="2">Locatie 2</option>-->
+        <!--</select>-->
+      <!--</div>-->
+      <!--<div class="col span_1_of_6">-->
+        <!--<div class="text_in_col_right">-->
+          <!--&lt;!&ndash;2 of 6  &ndash;&gt;-->
+          <!--Zitplaatsen:-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col span_1_of_6">-->
+        <!--&lt;!&ndash;3 of 6  &ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="container">&ndash;&gt;-->
+          <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="col-lg-2">&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="input-group">&ndash;&gt;-->
+      <!--&lt;!&ndash;<span class="input-group-btn">&ndash;&gt;-->
+        <!--&lt;!&ndash;<button class="btn btn-default" type="button" id="btn-plus_zitplaatsen"><span class="glyphicon glyphicon-minus"></span></button>&ndash;&gt;-->
+      <!--&lt;!&ndash;</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;<input type="text" class="form-control" name="qty" id="qty_zitplaatsen" value="1">&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="input-group-btn">&ndash;&gt;-->
+        <!--&lt;!&ndash;<button class="btn btn-default" type="button" id="btn-minus_zitplaatsen"><span class="glyphicon glyphicon-plus"></span></button>&ndash;&gt;-->
+      <!--&lt;!&ndash;</span>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--</div>-->
+      <!--<div class="col span_1_of_6">-->
+        <!--<div class="text_in_col_right">-->
+          <!--&lt;!&ndash;4 of 6&ndash;&gt;-->
+          <!--Stopcontacten:-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col span_1_of_6">-->
+        <!--&lt;!&ndash;5 of 6&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="container">&ndash;&gt;-->
+          <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="col-lg-2">&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="input-group">&ndash;&gt;-->
+      <!--&lt;!&ndash;<span class="input-group-btn">&ndash;&gt;-->
+        <!--&lt;!&ndash;<button class="btn btn-default" type="button" id="btn-plus_stopcontacten"><span class="glyphicon glyphicon-minus"></span></button>&ndash;&gt;-->
+      <!--&lt;!&ndash;</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;<input type="text" class="form-control" name="qty" id="qty_stopcontacten" value="1">&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="input-group-btn">&ndash;&gt;-->
+        <!--&lt;!&ndash;<button class="btn btn-default" type="button" id="btn-minus_stopcontacten"><span class="glyphicon glyphicon-plus"></span></button>&ndash;&gt;-->
+      <!--&lt;!&ndash;</span>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&lt;!&ndash; /input-group &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&lt;!&ndash; /.col-lg-6 &ndash;&gt;&ndash;&gt;-->
+          <!--&lt;!&ndash;</div>&lt;!&ndash; /.row &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--</div>-->
+      <!--<div class="col span_1_of_6">-->
+        <!--&lt;!&ndash;6 of 6&ndash;&gt;-->
+        <!--<input class="button-red button-red-fill-width" type="button" value="Zoek" (click)="openOV()">-->
+      <!--</div>-->
+    <!--</div>-->
+
+</div>
+<div class="overview-list" >
+  <h2 class="overview-list-title">Resultaten</h2>
+  <table class="table-striped overview-list-content" >
+    <tr *ngFor="let locatie of locaties" (click)="openLocatie(locatie)">
+      <td class="overview-list-content-row">
+        <div id="overview-list-content-row-arrow">
+          <h4>{{locatie.naam}}</h4>
+          <p>{{locatie.plaats}}</p>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

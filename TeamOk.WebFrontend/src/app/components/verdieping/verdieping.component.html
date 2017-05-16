@@ -1,12 +1,12 @@
 <ol class="breadcrumb">
   <li class="breadcrumb-item"><a class="breadcrumb-color" href="#">Home </a></li>
   <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties">locaties</a></li>
-  <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties/{{locatie.id}}">{{locatie.naam}}</a></li>
+  <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties/{{locatie.id}}">{{locatie.name}}</a></li>
   <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties/{{locatie.id}}/verdiepingen">Verdiepingen</a></li>
-  <li class="breadcrumb-item">{{verdieping.naam}}</li>
+  <li class="breadcrumb-item">{{verdieping.name}}</li>
 </ol>
 <div class="overview-list" >
-  <h2 class="overview-list-title">Werkplekken {{verdieping.naam}}</h2>
+  <h2 class="overview-list-title">Werkplekken {{verdieping.name}}</h2>
   <select #filter (change)="changeFilter(filter.value)" class="overview-list-filter">
     <option selected value="alle">Alle werkplekken</option>
     <option value="vrij">Vrije werkplekken</option>
