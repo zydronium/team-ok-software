@@ -266,6 +266,33 @@ h4{
   float:right;
 }
 
+text_in_col_right{
+  float: right;
+}
+
+/*  GRID OF FOUR  */
+.span_4_of_4 {
+  width: 100%;
+}
+.span_3_of_4 {
+  width: 74.6%;
+}
+.span_2_of_4 {
+  width: 49.2%;
+}
+.span_1_of_4 {
+  width: 23.8%;
+}
+
+.in_wrapper_left
+{
+  float: left;
+}
+
+.in_wrapper_right{
+  overflow:hidden;
+}
+
 @media only screen and (max-width: 640px)
 {
   .col {
@@ -274,6 +301,8 @@ h4{
   .span_3_of_3, .span_2_of_3, .span_1_of_3 {
     width: 100%;
   }
+  .span_1_of_4, .span_2_of_4, .span_3_of_4, .span_4_of_4 { width: 100%;}
+
   .location-column-left{
     width:100%;
     float:none;
@@ -289,5 +318,8 @@ h4{
   }
   .logobar{
     width:200px;
+  }
+  .in_wrapper_left{
+    float:none;
   }
 }
