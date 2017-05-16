@@ -1,6 +1,9 @@
 ﻿
 // Set the date we're counting down to
-var countDownDate = new Date("Jan 5, 2018 15:37:25").getTime();
+var scripts = document.getElementsByTagName('script');
+var lastScript = scripts[scripts.length-1];
+var scriptName = lastScript;
+var countDownDate = new Date(scriptName.getAttribute('time'));
 // Update the count down every 1 second
 var x = setInterval(function () {
 
