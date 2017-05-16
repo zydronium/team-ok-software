@@ -44,7 +44,6 @@ namespace TeamOk.Backend.Facade.Controllers
                 localValue.ClaimedUntill = workspace.ClaimedUntill;
                 localValue.Modified = workspace.Modified;
                 localValue.Name = workspace.Name;
-                localValue.Claimed = false;
                 localValue.Facilities = new List<FacilityViewModel>();
 
                 foreach (var facilityInstance in workspace.WorkspaceFacilities)
@@ -108,7 +107,6 @@ namespace TeamOk.Backend.Facade.Controllers
                 localValue.ClaimedUntill = workspace.ClaimedUntill;
                 localValue.Modified = workspace.Modified;
                 localValue.Name = workspace.Name;
-                localValue.Claimed = false;
                 localValue.Facilities = new List<FacilityViewModel>();
 
                 foreach (var facilityInstance in workspace.WorkspaceFacilities)
