@@ -19,6 +19,8 @@ namespace TeamOk.Backend.Domain.Entities
         [Required]
         public string MacAddress { get; set; }
         public List<WorkspaceFacility> WorkspaceFacilities { get; set; }
+        public bool Claimed { get; set; }
+        public DateTime ClaimedUntill { get; set; }
         [Required]
         public DateTime Created { get; set; }
         [Required]

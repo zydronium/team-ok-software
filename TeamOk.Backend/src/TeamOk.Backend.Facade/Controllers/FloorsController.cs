@@ -137,7 +137,20 @@ namespace TeamOk.Backend.Facade.Controllers
                 .OrderBy(x => x.Name)
                 .ToList();
 
-            localValue.AmountWorkspaces = WorkspaceAmountresult.Count;
+            int AmountWorkspaces = 0;
+            int AmountClaimedWorkspaces = 0;
+
+            foreach(var workspace in WorkspaceAmountresult)
+            {
+                AmountWorkspaces++;
+                if(workspace.Claimed)
+                {
+                    AmountClaimedWorkspaces++;
+                }
+            }
+
+            localValue.AmountWorkspaces = AmountWorkspaces;
+            localValue.AmountWorkspaces = AmountClaimedWorkspaces;
 
             return localValue;
         }
