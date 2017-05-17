@@ -132,8 +132,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult ChooseTime(ChosenTimeModel model)
+        public IActionResult ChooseTime(ChosenTimeModel model)
         {
             var MacAddress = HttpContext.Session.GetString("MacAddress");
             int hours = model.Hours;
@@ -144,11 +143,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             Response.Cookies.Append("ChosenMinutes", hours.ToString(), options);
             Response.Cookies.Append("ChosenHours", minutes.ToString(), options);
 
-            if (getIsBezet(MacAddress))
-            {
-                return View("Bezet");
-            }
-            else return View("Vrij");
+            return Index(null);
         }
 
     }
