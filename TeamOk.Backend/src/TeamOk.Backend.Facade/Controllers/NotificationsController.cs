@@ -19,9 +19,9 @@ namespace TeamOk.Backend.Facade.Controllers
             _context = context;
         }
 
-        // POST api/values
-        [HttpPost("{WorkSpaceId}")]
-        public void Post(long WorkSpaceId, [FromBody]NotificationViewModel value)
+        // GET api/values
+        [HttpGet("{WorkSpaceId}/{Claimed}")]
+        public void GET(long WorkSpaceId, Boolean Claimed)
         {
         }
     }
