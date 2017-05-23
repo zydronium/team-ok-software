@@ -165,6 +165,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             }
             catch (Microsoft.Rest.HttpOperationException exception)
             {
+                HttpContext.Session.Clear();
                 return false;
             }
             if (!(Status == null))
