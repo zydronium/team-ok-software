@@ -28,7 +28,8 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
                 HttpContext.Session.SetString("MacAddress", MacAddress);
             }
             if (HttpContext.Session.GetString("MacAddress") != null) {
-                if (getIsBezet(MacAddress) == true)
+                MacAddress = HttpContext.Session.GetString("MacAddress");
+                if (getIsBezet(MacAddress))
                 {
                     return View("Bezet");
                 }
@@ -53,25 +54,32 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                return false;
             }
-            return false;
         }
 
    
         public IActionResult geefWerkplekVrij()
         {
-            var MacAddress = HttpContext.Session.GetString("MacAddress");
-            StatusViewModel modelToPost = new StatusViewModel();
-            StatusViewModel postedModel = new StatusViewModel();
-            if (!getIsBezet(MacAddress))
+            try
             {
+                var MacAddress = HttpContext.Session.GetString("MacAddress");
+                StatusViewModel modelToPost = new StatusViewModel();
+                StatusViewModel postedModel = new StatusViewModel();
+                if (getIsBezet(MacAddress))
+                {
                     StatusViewModel status = new StatusViewModel();
                     status.ClaimedUntill = DateTime.Now;
                     status.Claimed = false;
                     modelToPost = status;
                     postedModel = _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
+                }
+                return Index(null);
             }
-            return Index(null);
+            catch(Exception e)
+            {
+                return View("Error");
+            }
         }
 
         
@@ -139,7 +147,6 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             int minutes = model.Minutes;
             CookieOptions options = new CookieOptions();
             options.Expires = DateTime.Now.AddMinutes(10);
-            string s = model.ToString();
             Response.Cookies.Append("ChosenMinutes", hours.ToString(), options);
             Response.Cookies.Append("ChosenHours", minutes.ToString(), options);
 
