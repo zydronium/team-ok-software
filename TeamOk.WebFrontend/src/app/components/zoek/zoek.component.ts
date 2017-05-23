@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WerkplekkenService} from "../../services/werkplekken.service";
 import {Werkplek} from "../../models/Werkplek";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-zoek',
@@ -9,13 +10,14 @@ import {Werkplek} from "../../models/Werkplek";
 })
 export class ZoekComponent implements OnInit {
 
-  constructor(private werkplekkenService: WerkplekkenService) { }
+  constructor(private werkplekkenService: WerkplekkenService, private router: Router) { }
   werkplekken: any = [];
   vrijeWerkplekken: any = [];
   result: any = [];
   zitplaatsen: number = 1;
   stopcontacten: number = 1;
   ngOnInit() {
+    this.werkplekkenService.getAlleWerkplekken().subscribe(result => this.getAlleVrijeWerkplekken(result));
   }
 
   getZitplaatsen(facilities : any) : any{
@@ -40,8 +42,24 @@ export class ZoekComponent implements OnInit {
     }
   }
 
+  openWerkplek(werkplekid: number, floorId : number, locationId : number){
+    this.router.navigate(["/locaties/"+ locationId+"/verdiepingen/"+floorId+"/"+werkplekid]);
+  }
+
+  getAlleVrijeWerkplekken(result: any){
+    for(var i =0; i < result.length; i++){
+      if(result[i].claimed == false){
+        this.result.push(result[i]);
+      }
+    }
+  }
+
   zoek() {
+    this.result = [];
+    this.werkplekken = [];
+    this.vrijeWerkplekken = [];
     this.werkplekkenService.getAlleWerkplekken().subscribe(result => this.processData(result));
+
   //   for(var i =0; i < this.werkplekken.length; i++){
   //     if(this.werkplekken[i].claimed == false){
   //       this.werkplekken[i].seat = this.getZitplaatsen(this.werkplekken[i].facilities);
@@ -59,7 +77,6 @@ export class ZoekComponent implements OnInit {
 }
 
   processData(result: any){
-    this.result = [];
     this.werkplekken = result;
   console.log(result)
     for(var i =0; i < this.werkplekken.length; i++){
@@ -70,7 +87,7 @@ export class ZoekComponent implements OnInit {
       }
     }
     for(var i =0; i < this.vrijeWerkplekken.length; i++){
-      if(this.vrijeWerkplekken[i].outlet >= this.stopcontacten || this.vrijeWerkplekken[i].seat >= this.zitplaatsen ){
+      if(this.vrijeWerkplekken[i].outlet >= this.stopcontacten && this.vrijeWerkplekken[i].seat >= this.zitplaatsen ){
         this.result.push(this.vrijeWerkplekken[i]);
       }
     }
