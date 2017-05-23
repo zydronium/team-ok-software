@@ -60,7 +60,7 @@ export class ZoekComponent implements OnInit {
 
   processData(result: any){
     this.result = [];
-  this.werkplekken = result;
+    this.werkplekken = result;
   console.log(result)
     for(var i =0; i < this.werkplekken.length; i++){
       if(this.werkplekken[i].claimed == false){
