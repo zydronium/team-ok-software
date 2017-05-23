@@ -28,6 +28,11 @@ namespace TeamOk.Backend.Facade.Controllers
                 .Where(x=> x.Deleted == false)
                 .SingleOrDefault(x => x.MacAddress == MacAddress);
 
+            if(workspace == null)
+            {
+                return null;
+            }
+
             if(workspace.Claimed)
             {
                 if(workspace.ClaimedUntill < DateTime.Now)
@@ -52,6 +57,11 @@ namespace TeamOk.Backend.Facade.Controllers
             var workspace = _context.Workspaces
                 .Where(x => x.Deleted == false)
                 .SingleOrDefault(x => x.MacAddress == MacAddress);
+
+            if (workspace == null)
+            {
+                return null;
+            }
 
             if (workspace != null)
             {
