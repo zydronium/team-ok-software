@@ -16,6 +16,7 @@ export class ZoekComponent implements OnInit {
   result: any = [];
   zitplaatsen: number = 1;
   stopcontacten: number = 1;
+
   ngOnInit() {
     this.werkplekkenService.getAlleWerkplekken().subscribe(result => this.getAlleVrijeWerkplekken(result));
   }
