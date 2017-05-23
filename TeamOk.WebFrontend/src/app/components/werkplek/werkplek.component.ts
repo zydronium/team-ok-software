@@ -19,6 +19,7 @@ export class WerkplekComponent implements OnInit {
   locatie: any = {};
   verdieping: any = {};
   werkplek: any = {};
+  notified: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,5 +40,16 @@ export class WerkplekComponent implements OnInit {
 
     this.werkplekid = this.route.snapshot.params["werkplekid"];
     this.werkplek = this.werkplekkenService.getWerkplek(this.verdiepingid, this.werkplekid).subscribe(result => this.werkplek = result);
+  }
+
+  sendNotification(claimed: boolean){
+    this.werkplekkenService.notifyWerkplek(this.werkplekid, claimed).subscribe(
+      data => {
+        this.notified = true;
+      },
+      error => {
+        console.log("Could not notify system:", error
+        )}
+    );
   }
 }

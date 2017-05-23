@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import {Werkplek} from "../models/Werkplek";
 import {Http, Headers} from "@angular/http";
 
 @Injectable()
 export class WerkplekkenService {
 
   private WORKSPACE_URL = "https://backend.werkplek.123apps.net/api/Workspaces";
+  private NOTIFICATION_URL = "https://backend.werkplek.123apps.net/api/Notifications";
 
   constructor(private http : Http) { }
 
@@ -28,5 +28,10 @@ export class WerkplekkenService {
     const result = this.http.get(this.WORKSPACE_URL+"/all", {headers});
     const transformedResult = result.map(result => result.json());
     return transformedResult;
+  }
+
+  notifyWerkplek(werkplekid: number, claimed: boolean):any{
+    var headers = new Headers();
+    return this.http.get(this.NOTIFICATION_URL+"/"+werkplekid+"/"+claimed, {headers});
   }
 }
