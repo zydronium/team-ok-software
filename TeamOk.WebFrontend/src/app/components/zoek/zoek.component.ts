@@ -100,8 +100,16 @@ export class ZoekComponent implements OnInit {
 
     for(var i =0; i < this.vrijeWerkplekken.length; i++){
       let werkplek = this.vrijeWerkplekken[i];
-      if(this.inSelection(werkplek.floor.locationId) && werkplek.outlet >= this.stopcontacten && werkplek.seat >= this.zitplaatsen ){
-        this.result.push(werkplek);
+      
+      if(this.selectedItems.length == 0){
+        if(werkplek.outlet >= this.stopcontacten && werkplek.seat >= this.zitplaatsen ){
+          this.result.push(werkplek);
+        }
+      }
+      else {
+        if (this.inSelection(werkplek.floor.locationId) && werkplek.outlet >= this.stopcontacten && werkplek.seat >= this.zitplaatsen) {
+          this.result.push(werkplek);
+        }
       }
     }
   }
