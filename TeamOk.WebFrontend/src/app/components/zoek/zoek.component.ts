@@ -31,7 +31,7 @@ export class ZoekComponent implements OnInit {
       text:"Selecteer gebouwen",
       selectAllText:'Selecteer alle',
       unSelectAllText:'Selectie wissen',
-      enableSearchFilter: false,
+      enableSearchFilter: true,
       badgeShowLimit: 3
     };
   }
