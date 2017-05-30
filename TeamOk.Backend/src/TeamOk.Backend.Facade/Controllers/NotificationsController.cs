@@ -21,8 +21,9 @@ namespace TeamOk.Backend.Facade.Controllers
 
         // GET api/values
         [HttpGet("{WorkSpaceId}/{Claimed}")]
-        public void GET(long WorkSpaceId, Boolean Claimed)
+        public void ProcessNotification(long WorkSpaceId, Boolean Claimed)
         {
+
         }
     }
 }
