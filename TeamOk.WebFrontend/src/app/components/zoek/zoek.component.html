@@ -29,11 +29,11 @@
             <div class="col-lg-2">
               <div class="input-group">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" id="btn-plus_zitplaatsen"><span class="glyphicon glyphicon-minus"></span></button>
+        <button class="btn btn-default" type="button" id="btn-plus_zitplaatsen" (click)="zitplaatsen = zitplaatsen - 1"><span class="glyphicon glyphicon-minus"></span></button>
       </span>
-                <input type="text" class="form-control" name="qty" id="qty_zitplaatsen" value="1">
+                <input type="text" class="form-control" name="qty" id="qty_zitplaatsen" value="1" [(ngModel)]="zitplaatsen">
                 <span class="input-group-btn">
-        <button class="btn btn-default" type="button" id="btn-minus_zitplaatsen"><span class="glyphicon glyphicon-plus"></span></button>
+        <button class="btn btn-default" type="button" id="btn-minus_zitplaatsen" (click)="zitplaatsen = zitplaatsen + 1"><span class="glyphicon glyphicon-plus"></span></button>
       </span>
               </div>
             </div>
@@ -52,11 +52,11 @@
             <div class="col-lg-2">
               <div class="input-group">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" id="btn-plus_stopcontacten"><span class="glyphicon glyphicon-minus"></span></button>
+        <button class="btn btn-default" type="button" id="btn-plus_stopcontacten" (click)="stopcontacten = stopcontacten - 1"><span class="glyphicon glyphicon-minus"></span></button>
       </span>
-                <input type="text" class="form-control" name="qty" id="qty_stopcontacten" value="1">
+                <input type="text" class="form-control" name="qty" id="qty_stopcontacten" value="1" [(ngModel)]="stopcontacten">
                 <span class="input-group-btn">
-        <button class="btn btn-default" type="button" id="btn-minus_stopcontacten"><span class="glyphicon glyphicon-plus"></span></button>
+        <button class="btn btn-default" type="button" id="btn-minus_stopcontacten" (click)="stopcontacten = stopcontacten + 1"><span class="glyphicon glyphicon-plus"></span></button>
       </span>
               </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
@@ -136,15 +136,26 @@
 
 </div>
 <div class="overview-list" >
-  <h2 class="overview-list-title">Resultaten</h2>
-  <table class="table-striped overview-list-content" >
-    <tr *ngFor="let locatie of locaties" (click)="openLocatie(locatie)">
+  <h2 class="overview-list-title">Resultaten </h2>
+  <!--<select #filter (change)="changeFilter(filter.value)" class="overview-list-filter">-->
+    <!--<option selected value="alle">Alle werkplekken</option>-->
+    <!--<option value="vrij">Vrije werkplekken</option>-->
+  <!--</select>-->
+  <table class="table-striped" class="table-striped overview-list-content">
+    <tr *ngFor="let werkplek of result" (click)="openWerkplek(werkplek.id, werkplek.floorId, werkplek.floor.locationId)">
       <td class="overview-list-content-row">
         <div id="overview-list-content-row-arrow">
-          <h4>{{locatie.naam}}</h4>
-          <p>{{locatie.plaats}}</p>
+          <div class="overview-list-content-row-image">
+            <i *ngIf="!werkplek.claimed" class="fa fa-check overview-list-content-row-check" aria-hidden="true"></i>
+            <i *ngIf="werkplek.claimed" class="fa fa-close overview-list-content-row-close" aria-hidden="true"></i>
+          </div>
+          <div class="overview-list-content-row-image-text">
+            <h4>{{werkplek.name}} - {{werkplek.floor.name}}</h4>
+            <p>{{werkplek.floor.location.name}} {{getZitplaatsen(werkplek.facilities)}} zitplaatsen</p>
+          </div>
         </div>
       </td>
     </tr>
   </table>
 </div>
+

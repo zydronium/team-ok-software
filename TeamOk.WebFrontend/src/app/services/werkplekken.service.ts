@@ -1,43 +1,37 @@
 import { Injectable } from '@angular/core';
-import {Werkplek} from "../models/Werkplek";
+import {Http, Headers} from "@angular/http";
 
 @Injectable()
 export class WerkplekkenService {
 
-  constructor() { }
+  private WORKSPACE_URL = "https://backend.werkplek.123apps.net/api/Workspaces";
+  private NOTIFICATION_URL = "https://backend.werkplek.123apps.net/api/Notifications";
 
-  getWerkplekken(verdiepingid: number) : Array<Werkplek> {
-    let werkplekken : Array<Werkplek> = [
-      {id: 1, naam: "Tafel 1", zitplaatsen: 5, stopcontacten: 2, bezet: true, verdiepingid: 1},
-      {id: 2, naam: "Tafel 2", zitplaatsen: 5, stopcontacten: 0, bezet: false, verdiepingid: 1},
-      {id: 3, naam: "Tafel 3", zitplaatsen: 5, stopcontacten: 3, bezet: true, verdiepingid: 1},
-      {id: 4, naam: "Tafel 1", zitplaatsen: 5, stopcontacten: 2, bezet: true, verdiepingid: 6},
-      {id: 5, naam: "Tafel 2", zitplaatsen: 5, stopcontacten: 0, bezet: false, verdiepingid: 6},
-      {id: 6, naam: "Tafel 3", zitplaatsen: 5, stopcontacten: 3, bezet: true, verdiepingid: 6}
-    ];
+  constructor(private http : Http) { }
 
-    werkplekken = werkplekken.filter(werkplek => werkplek.verdiepingid == verdiepingid);
-
-    return werkplekken
+  getWerkplekken(verdiepingid: number) : any {
+    var headers = new Headers();
+    const result = this.http.get(this.WORKSPACE_URL+"/"+verdiepingid, {headers});
+    const transformedResult = result.map(result => result.json());
+    return transformedResult;
   }
 
-  getWerkplek(werkplekid: number) : Werkplek {
-    let werkplekken : Array<Werkplek> = [
-      {id: 1, naam: "Tafel 1", zitplaatsen: 5, stopcontacten: 2, bezet: true, verdiepingid: 1},
-      {id: 2, naam: "Tafel 2", zitplaatsen: 5, stopcontacten: 0, bezet: false, verdiepingid: 1},
-      {id: 3, naam: "Tafel 3", zitplaatsen: 5, stopcontacten: 3, bezet: true, verdiepingid: 1},
-      {id: 4, naam: "Tafel 1", zitplaatsen: 5, stopcontacten: 2, bezet: true, verdiepingid: 6},
-      {id: 5, naam: "Tafel 2", zitplaatsen: 5, stopcontacten: 0, bezet: false, verdiepingid: 6},
-      {id: 6, naam: "Tafel 3", zitplaatsen: 5, stopcontacten: 3, bezet: true, verdiepingid: 6}
-    ];
+  getWerkplek(verdiepingid: number, werkplekid: number) : any {
+    var headers = new Headers();
+    const result = this.http.get(this.WORKSPACE_URL+"/"+verdiepingid+"/"+werkplekid, {headers});
+    const transformedResult = result.map(result => result.json());
+    return transformedResult;
+  }
 
-    werkplekken = werkplekken.filter(werkplek => werkplek.id == werkplekid);
+  getAlleWerkplekken() : any {
+    var headers = new Headers();
+    const result = this.http.get(this.WORKSPACE_URL+"/all", {headers});
+    const transformedResult = result.map(result => result.json());
+    return transformedResult;
+  }
 
-    if(werkplekken.length == 1){
-      return werkplekken[0];
-    }
-    else {
-      return null;
-    }
+  notifyWerkplek(werkplekid: number, claimed: boolean):any{
+    var headers = new Headers();
+    return this.http.get(this.NOTIFICATION_URL+"/"+werkplekid+"/"+claimed, {headers});
   }
 }
