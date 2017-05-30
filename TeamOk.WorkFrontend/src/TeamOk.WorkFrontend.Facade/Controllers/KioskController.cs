@@ -50,7 +50,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             {
                 Status = _context.ApiWorkspaceunitsByMacAddressGet(mac);
                 bool isClaimed = (bool)Status.Claimed;
-                if (isClaimed) { HttpContext.Session.SetString("ClaimedUntill", Status.ClaimedUntill.Value.ToString("yyyy-MM-dd HH:mm:ss")); }
+                if (isClaimed) { HttpContext.Session.SetString("ClaimedUntill", Status.ClaimedUntill.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss")); }
                 return isClaimed;
             }
             catch (Exception ex)
@@ -111,7 +111,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
                     modelToPost = status;
                     postedModel = _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
                 }
-                HttpContext.Session.SetString("ClaimedUntill", modelToPost.ClaimedUntill.Value.ToString("yyyy-MM-dd HH:mm:ss"));
+                HttpContext.Session.SetString("ClaimedUntill", modelToPost.ClaimedUntill.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss"));
             }
 
             //ViewData["time"] = HttpContext.Session.GetString("ClaimedUntill");
