@@ -21,6 +21,7 @@ import { ZoekComponent } from './components/zoek/zoek.component';
 import {ZoekService} from "./services/zoek.service";
 import { InformatieComponent } from './components/informatie/informatie.component';
 import { InformatiePiComponent } from './components/informatie-pi/informatie-pi.component';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { InformatiePiComponent } from './components/informatie-pi/informatie-pi.
     RouterModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDtoOYq0ogNyyt0_KUusjXo16eqFOrdQPc'
-    })
+    }),
+    AngularMultiSelectModule
   ],
   providers: [{provide: APP_BASE_HREF, useValue : '/' }, LocatiesService, WerkplekkenService, VerdiepingenService, ZoekService],
   bootstrap: [AppComponent]

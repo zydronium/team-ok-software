@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {WerkplekkenService} from "../../services/werkplekken.service";
 import {Werkplek} from "../../models/Werkplek";
 import {Router} from "@angular/router";
+import {LocatiesService} from "../../services/locaties.service";
 
 @Component({
   selector: 'app-zoek',
@@ -10,15 +11,38 @@ import {Router} from "@angular/router";
 })
 export class ZoekComponent implements OnInit {
 
-  constructor(private werkplekkenService: WerkplekkenService, private router: Router) { }
+  constructor(private werkplekkenService: WerkplekkenService, private locatiesService : LocatiesService, private router: Router) { }
   werkplekken: any = [];
   vrijeWerkplekken: any = [];
   result: any = [];
   zitplaatsen: number = 1;
   stopcontacten: number = 1;
 
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings = {};
+
   ngOnInit() {
     this.werkplekkenService.getAlleWerkplekken().subscribe(result => this.getAlleVrijeWerkplekken(result));
+    this.locatiesService.getLocaties().subscribe(result => this.loadLocations(result));
+
+    this.dropdownSettings = {
+      singleSelection: false,
+      text:"Selecteer gebouwen",
+      selectAllText:'Selecteer alle',
+      unSelectAllText:'Selectie wissen',
+      enableSearchFilter: true,
+      badgeShowLimit: 3
+    };
+  }
+
+  loadLocations(result: any){
+    this.dropdownList = [];
+    for(var i = 0; i < result.length; i++){
+      let currentResult = result[i];
+      let location = {id: currentResult.id, itemName: currentResult.name};
+      this.dropdownList.push(location);
+    }
   }
 
   getZitplaatsen(facilities : any) : any{
@@ -60,38 +84,59 @@ export class ZoekComponent implements OnInit {
     this.werkplekken = [];
     this.vrijeWerkplekken = [];
     this.werkplekkenService.getAlleWerkplekken().subscribe(result => this.processData(result));
-
-  //   for(var i =0; i < this.werkplekken.length; i++){
-  //     if(this.werkplekken[i].claimed == false){
-  //       this.werkplekken[i].seat = this.getZitplaatsen(this.werkplekken[i].facilities);
-  //       this.werkplekken[i].outlet = this.getStopcontacten(this.werkplekken[i].facilities);
-  //       this.vrijeWerkplekken.push(this.werkplekken[i]);
-  //     }
-  //   }
-  //   for(var i =0; i < this.vrijeWerkplekken.length; i++){
-  //     if(this.vrijeWerkplekken[i].outlet == this.stopcontacten || this.vrijeWerkplekken[i].seat == this.zitplaatsen ){
-  //       this.result.push(this.vrijeWerkplekken[i]);
-  //     }
-  //   }
-  //   console.log("zoek");
-  // }
 }
 
   processData(result: any){
     this.werkplekken = result;
-  console.log(result)
+
     for(var i =0; i < this.werkplekken.length; i++){
       if(this.werkplekken[i].claimed == false){
         this.werkplekken[i].seat = this.getZitplaatsen(this.werkplekken[i].facilities);
         this.werkplekken[i].outlet = this.getStopcontacten(this.werkplekken[i].facilities);
+
         this.vrijeWerkplekken.push(this.werkplekken[i]);
       }
     }
+
     for(var i =0; i < this.vrijeWerkplekken.length; i++){
-      if(this.vrijeWerkplekken[i].outlet >= this.stopcontacten && this.vrijeWerkplekken[i].seat >= this.zitplaatsen ){
-        this.result.push(this.vrijeWerkplekken[i]);
+      let werkplek = this.vrijeWerkplekken[i];
+      
+      if(this.selectedItems.length == 0){
+        if(werkplek.outlet >= this.stopcontacten && werkplek.seat >= this.zitplaatsen ){
+          this.result.push(werkplek);
+        }
+      }
+      else {
+        if (this.inSelection(werkplek.floor.locationId) && werkplek.outlet >= this.stopcontacten && werkplek.seat >= this.zitplaatsen) {
+          this.result.push(werkplek);
+        }
       }
     }
-    console.log("zoek");
+  }
+
+  inSelection(id: number) : boolean{
+    let filtered =  this.selectedItems.filter(location => location.id == id);
+
+    if(filtered.length == 1){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  onItemSelect(item:any){
+    console.log(item);
+    console.log(this.selectedItems);
+  }
+  OnItemDeSelect(item:any){
+    console.log(item);
+    console.log(this.selectedItems);
+  }
+  onSelectAll(items: any){
+    console.log(items);
+  }
+  onDeSelectAll(items: any){
+    console.log(items);
   }
 }

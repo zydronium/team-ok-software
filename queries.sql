@@ -27,3 +27,6 @@ insert into Workspaces(Claimed, ClaimedUntill, Created, Deleted, FloorID, MacAdd
 insert into WorkspaceFacilities (Created, Deleted, FacilityID, Modified, Value, WorkspaceID) values (GETDATE(), 0, 4, GETDATE(), 2, 2);
 insert into WorkspaceFacilities (Created, Deleted, FacilityID, Modified, Value, WorkspaceID) values (GETDATE(), 0, 5, GETDATE(), 4, 2);
 insert into WorkspaceFacilities (Created, Deleted, FacilityID, Modified, Value, WorkspaceID) values (GETDATE(), 0, 6, GETDATE(), 1, 2);
+
+insert into NotificationType (Created, Deleted, Modified, Name) values (GETDATE(), 0, GETDATE(), 'Claimed');
+insert into NotificationType (Created, Deleted, Modified, Name) values (GETDATE(), 0, GETDATE(), 'Free');
