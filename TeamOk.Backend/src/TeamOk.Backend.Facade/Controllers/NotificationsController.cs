@@ -71,8 +71,16 @@ namespace TeamOk.Backend.Facade.Controllers
 
                     if (workspace != null)
                     {
-                        workspace.Claimed = true;
-                        workspace.ClaimedUntill = DateTime.Now.AddMinutes(30);
+                        if(Claimed)
+                        {
+                            workspace.Claimed = true;
+                            workspace.ClaimedUntill = DateTime.Now.AddMinutes(30);
+                        }
+                        else
+                        {
+                            workspace.Claimed = false;
+                            workspace.ClaimedUntill = DateTime.Now;
+                        }
                         _context.SaveChanges();
                     }
                 }
