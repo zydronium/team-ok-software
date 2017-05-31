@@ -21,6 +21,7 @@ namespace TeamOk.Backend.Domain.DAL
         public DbSet<Workspace> Workspaces { get; set; }
         public DbSet<WorkspaceFacility> WorkspaceFacilities { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<NotificationType> NotificationType { get; set; }
         public DbSet<Occupation> Occupations { get; set; }
         public DbSet<Facility> facilities { get; set; }
     }
