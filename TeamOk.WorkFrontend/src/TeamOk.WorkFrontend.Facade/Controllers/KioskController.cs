@@ -23,7 +23,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
 
         public IActionResult Index([FromQuery] string MacAddress)
         {
-            if (MacAddress != null)
+            if (MacAddress != null && isValideMac(MacAddress))
             {
                 HttpContext.Session.SetString("MacAddress", MacAddress);
             }
@@ -38,6 +38,25 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
                 }
             }
             return View("Error");
+        }
+
+        public Boolean isValideMac(string mac)
+        {
+            StatusViewModel Status = null;
+            try {
+                Status = _context.ApiWorkspaceunitsByMacAddressGet(mac);
+            }
+            catch (Microsoft.Rest.HttpOperationException exception)
+            {
+                HttpContext.Session.Clear();
+                return false;
+                
+            }
+            if (!(Status == null))
+            {
+                return true;
+            }
+            return false;
         }
 
                  
