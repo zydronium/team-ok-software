@@ -18,8 +18,8 @@ export class VerdiepingComponent implements OnInit {
   verdiepingid: number;
   locatie: any = {};
   verdieping: any = {};
-  werkplekken: Array<Werkplek> = [];
-  werkplekkenSelectie: Array<Werkplek> = [];
+  werkplekken: any = [];
+  werkplekkenSelectie: any = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -55,7 +55,7 @@ export class VerdiepingComponent implements OnInit {
       this.werkplekkenSelectie = this.werkplekken;
     }
     else if(filter == "vrij"){
-      this.werkplekkenSelectie = this.werkplekken.filter(werkplek => !werkplek.bezet);
+      this.werkplekkenSelectie = this.werkplekken.filter(werkplek => !werkplek.claimed);
     }
   }
 
