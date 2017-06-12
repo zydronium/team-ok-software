@@ -28,8 +28,10 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
                 HttpContext.Session.SetString("MacAddress", MacAddress);
             }
             if (HttpContext.Session.GetString("MacAddress") != null) {
-                if (getIsBezet(MacAddress) == true)
+                MacAddress = HttpContext.Session.GetString("MacAddress");
+                if (getIsBezet(MacAddress))
                 {
+                    ViewData["time"] = HttpContext.Session.GetString("ClaimedUntill");
                     return View("Bezet");
                 }
                 else
@@ -67,30 +69,38 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             {
                 Status = _context.ApiWorkspaceunitsByMacAddressGet(mac);
                 bool isClaimed = (bool)Status.Claimed;
+                if (isClaimed) { HttpContext.Session.SetString("ClaimedUntill", Status.ClaimedUntill.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss")); }
                 return isClaimed;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                return false;
             }
-            return false;
         }
 
    
         public IActionResult geefWerkplekVrij()
         {
-            var MacAddress = HttpContext.Session.GetString("MacAddress");
-            StatusViewModel modelToPost = new StatusViewModel();
-            StatusViewModel postedModel = new StatusViewModel();
-            if (!getIsBezet(MacAddress))
+            try
             {
+                var MacAddress = HttpContext.Session.GetString("MacAddress");
+                StatusViewModel modelToPost = new StatusViewModel();
+                StatusViewModel postedModel = new StatusViewModel();
+                if (getIsBezet(MacAddress))
+                {
                     StatusViewModel status = new StatusViewModel();
                     status.ClaimedUntill = DateTime.Now;
                     status.Claimed = false;
                     modelToPost = status;
                     postedModel = _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
+                }
+                return Index(null);
             }
-            return Index(null);
+            catch(Exception e)
+            {
+                return View("Error");
+            }
         }
 
         
@@ -103,8 +113,9 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             {
                 double? Minutes = Convert.ToDouble(Request.Cookies["ChosenMinutes"]);
                 double? Hours = Convert.ToDouble(Request.Cookies["ChosenHours"]);
-                if (Minutes != 0 && Hours != 0)
+                if (Minutes != 0 || Hours != 0)
                 {
+
                     StatusViewModel status = new StatusViewModel();
                     status.ClaimedUntill = DateTime.Now.AddMinutes((double) Minutes).AddHours((double) Hours);
                     status.Claimed = true;
@@ -119,10 +130,10 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
                     modelToPost = status;
                     postedModel = _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
                 }
-                HttpContext.Session.SetString("ClaimedUntill", modelToPost.ClaimedUntill.Value.ToString("yyyy-MM-dd HH:mm:ss"));
+                HttpContext.Session.SetString("ClaimedUntill", modelToPost.ClaimedUntill.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss"));
             }
 
-            ViewData["time"] = HttpContext.Session.GetString("ClaimedUntill");
+            //ViewData["time"] = HttpContext.Session.GetString("ClaimedUntill");
 
             return Index(null);
         }
@@ -158,11 +169,29 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             int minutes = model.Minutes;
             CookieOptions options = new CookieOptions();
             options.Expires = DateTime.Now.AddMinutes(10);
-            string s = model.ToString();
-            Response.Cookies.Append("ChosenMinutes", hours.ToString(), options);
-            Response.Cookies.Append("ChosenHours", minutes.ToString(), options);
+            Response.Cookies.Append("ChosenHours", hours.ToString(), options);
+            Response.Cookies.Append("ChosenMinutes", minutes.ToString(), options);
 
             return Index(null);
+        }
+
+        public Boolean isValideMac(string mac)
+        {
+            StatusViewModel Status = null;
+            try
+            {
+                Status = _context.ApiWorkspaceunitsByMacAddressGet(mac);
+            }
+            catch (Microsoft.Rest.HttpOperationException exception)
+            {
+                HttpContext.Session.Clear();
+                return false;
+            }
+            if (!(Status == null))
+            {
+                return true;
+            }
+            return false;
         }
 
     }
