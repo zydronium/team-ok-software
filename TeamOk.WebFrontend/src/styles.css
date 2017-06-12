@@ -292,6 +292,19 @@ text_in_col_right{
 .in_wrapper_right{
   overflow:hidden;
 }
+@media only screen and (max-width: 1250px)
+{
+  .in_wrapper_left
+  {
+    float: none
+  }
+
+  .in_wrapper_right{
+    float:left;
+    width:100px;
+  }
+
+}
 
 @media only screen and (max-width: 640px)
 {
@@ -321,5 +334,6 @@ text_in_col_right{
   }
   .in_wrapper_left{
     float:none;
+    width:100%
   }
 }
