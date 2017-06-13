@@ -175,24 +175,5 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             return Index(null);
         }
 
-        public Boolean isValideMac(string mac)
-        {
-            StatusViewModel Status = null;
-            try
-            {
-                Status = _context.ApiWorkspaceunitsByMacAddressGet(mac);
-            }
-            catch (Microsoft.Rest.HttpOperationException exception)
-            {
-                HttpContext.Session.Clear();
-                return false;
-            }
-            if (!(Status == null))
-            {
-                return true;
-            }
-            return false;
-        }
-
     }
 }
