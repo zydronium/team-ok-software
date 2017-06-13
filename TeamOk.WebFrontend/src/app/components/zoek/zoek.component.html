@@ -2,7 +2,7 @@
   <h2 class="overview-list-title">Zoek een werkplek</h2>
 
   <div class="section group">
-    <div class="col span_1_of_4" style="background-color: chartreuse">
+    <div class="col span_1_of_4">
       <!--1 of 4-->
       <div>
         <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems"
@@ -13,7 +13,7 @@
                                 (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect>
       </div>
     </div>
-    <div class="col span_1_of_4" style="background-color: blueviolet">
+    <div class="col span_1_of_4">
       <!--2 of 4-->
       <div class="in_wrapper_left">
         Zitplaatsen:
@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div class="col span_1_of_4" style="background-color: crimson">
+    <div class="col span_1_of_4">
       <!--3 of 4-->
       <div class="in_wrapper_left">
         Stopcontacten:
@@ -61,7 +61,7 @@
     </div>
     <div class="col span_1_of_4">
       <!--4 of 4-->
-      <input class="button-red button-red-fill-width" type="button" value="Zoek" (click)="zoek()">
+      <input class="button-red button-red-fill-width search_bar_span" type="button" value="Zoek" (click)="zoek()">
     </div>
   </div>
 </div>
