@@ -61,7 +61,7 @@
     </div>
     <div class="col span_1_of_4">
       <!--4 of 4-->
-      <input class="button-red button-red-fill-width" type="button" value="Zoek" (click)="zoek()">
+      <input class="button-red button-red-fill-width search_bar_span" type="button" value="Zoek" (click)="zoek()">
     </div>
   </div>
 </div>
@@ -71,10 +71,6 @@
     <tr *ngFor="let werkplek of result" (click)="openWerkplek(werkplek.id, werkplek.floorId, werkplek.floor.locationId)">
       <td class="overview-list-content-row">
         <div id="overview-list-content-row-arrow">
-          <div class="overview-list-content-row-image">
-            <i *ngIf="!werkplek.claimed" class="fa fa-check overview-list-content-row-check" aria-hidden="true"></i>
-            <i *ngIf="werkplek.claimed" class="fa fa-close overview-list-content-row-close" aria-hidden="true"></i>
-          </div>
           <div class="overview-list-content-row-image-text">
             <h4>{{werkplek.name}} - {{werkplek.floor.name}}</h4>
             <p>{{werkplek.floor.location.name}} {{getZitplaatsen(werkplek.facilities)}} zitplaatsen</p>
