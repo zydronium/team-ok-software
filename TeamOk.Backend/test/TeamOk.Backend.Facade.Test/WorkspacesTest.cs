@@ -259,18 +259,32 @@ namespace TeamOk.Backend.Facade.Test
                 {
                     throw;
                 }
-                var target = new LocationsController(context);
-                var result = target.GetLocationById(location.ID);
-                Assert.AreEqual(location.Name, result.Name);
-                Assert.AreEqual(location.City, result.City);
-                Assert.AreEqual(location.Address, result.Address);
-                Assert.AreEqual(location.Latitude, result.Latitude);
-                Assert.AreEqual(location.Longitude, result.Longitude);
-                Assert.AreEqual(location.OpeningHours, result.OpeningHours);
-                Assert.AreEqual(location.Phonenumber, result.Phonenumber);
-                Assert.AreEqual(location.Postcode, result.Postcode);
-                Assert.AreEqual(location.Created, result.Created);
-                Assert.AreEqual(location.Modified, result.Modified);
+                Workspace workspace = new Workspace();
+                workspace.WorkspaceFacilities = new List<WorkspaceFacility>();
+                workspace.WorkspaceFacilities.Add(workspaceFacility);
+                workspace.Name = "test";
+                workspace.Floor = floor;
+                workspace.Claimed = true;
+                workspace.ClaimedUntill = DateTime.Now.AddHours(2.0);
+                workspace.Created = DateTime.Now;
+                workspace.Modified = DateTime.Now;
+
+                context.Workspaces.Add(workspace);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                var target = new WorkspacesController(context);
+                var result = target.GetWorkspaceById(floor.ID, workspace.ID);
+                Assert.AreEqual(workspace.Name, result.Name);
+                Assert.AreEqual(workspace.Claimed, result.Claimed);
+                Assert.AreEqual(workspace.ClaimedUntill, result.ClaimedUntill);
+                Assert.AreEqual(workspace.Created, result.Created);
+                Assert.AreEqual(workspace.Modified, result.Modified);
             }
         }
     }
