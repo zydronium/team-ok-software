@@ -26,7 +26,7 @@ namespace TeamOk.Backend.Facade.Test
         }
 
         [TestMethod]
-        public void getLocationsTest()
+        public void getNotificationTest()
         {
             var option = CreateNewContextOptions();
             using (var context = new BackendDBContext(option))
@@ -60,6 +60,38 @@ namespace TeamOk.Backend.Facade.Test
                 {
                     throw;
                 }
+                FloorFacility floorFacility = new FloorFacility();
+                floorFacility.FacilityID = facility.ID;
+                floorFacility.FacilityInstance = facility;
+                floorFacility.Created = DateTime.Now;
+                floorFacility.Modified = DateTime.Now;
+                floorFacility.Value = "Test";
+
+                context.FloorFacilities.Add(floorFacility);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                WorkspaceFacility workspaceFacility = new WorkspaceFacility();
+                workspaceFacility.FacilityID = facility.ID;
+                workspaceFacility.FacilityInstance = facility;
+                workspaceFacility.Created = DateTime.Now;
+                workspaceFacility.Modified = DateTime.Now;
+                workspaceFacility.Value = "Test";
+
+                context.WorkspaceFacilities.Add(workspaceFacility);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
                 Location location = new Location();
                 location.LocationFacilities = new List<LocationFacility>();
                 location.LocationFacilities.Add(locationFacility);
@@ -81,15 +113,82 @@ namespace TeamOk.Backend.Facade.Test
                 {
                     throw;
                 }
-                var target = new LocationsController(context);
-                var result = target.GetLocations();
+                Floor floor = new Floor();
+                floor.FloorFacilities = new List<FloorFacility>();
+                floor.FloorFacilities.Add(floorFacility);
+                floor.Name = "test";
+                floor.Location = location;
+                floor.Created = DateTime.Now;
+                floor.Modified = DateTime.Now;
+
+                context.Floors.Add(floor);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                Workspace workspace = new Workspace();
+                workspace.WorkspaceFacilities = new List<WorkspaceFacility>();
+                workspace.WorkspaceFacilities.Add(workspaceFacility);
+                workspace.Name = "test";
+                workspace.Floor = floor;
+                workspace.Claimed = false;
+                workspace.ClaimedUntill = DateTime.Now.AddHours(2.0);
+                workspace.Created = DateTime.Now;
+                workspace.Modified = DateTime.Now;
+
+                context.Workspaces.Add(workspace);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                NotificationType notificationType = new NotificationType();
+                notificationType.Name = "Claimed";
+                notificationType.Created = DateTime.Now;
+                notificationType.Modified = DateTime.Now;
+
+                context.NotificationType.Add(notificationType);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+
+                string type = "Claimed";
+
+                var Type = context.NotificationType
+                    .Where(x => x.Deleted == false)
+                    .SingleOrDefault(x => x.Name == type);
+                var target = new NotificationsController(context);
+
+                target.ProcessNotification(workspace.ID, true);
+
+                var result = context.Notifications
+                    .Include(x => x.Type)
+                    .Where(x => x.WorkspaceID == workspace.ID && x.Deleted == false && x.TypeID == Type.ID && x.Created > DateTime.Now.AddMinutes(-15))
+                    .ToList();
+
                 int count = 1;
                 Assert.AreEqual(count, result.Count());
+
+                var target2 = new WorkspaceunitsController(context);
+                var result2 = target2.GetStatusByMacAddress(workspace.MacAddress);
+                Assert.AreEqual(result2.Claimed, false);
             }
         }
 
         [TestMethod]
-        public void getLocationByIdTest()
+        public void getNotificationTwoNotificationsTest()
         {
             var option = CreateNewContextOptions();
             using (var context = new BackendDBContext(option))
@@ -123,12 +222,42 @@ namespace TeamOk.Backend.Facade.Test
                 {
                     throw;
                 }
+                FloorFacility floorFacility = new FloorFacility();
+                floorFacility.FacilityID = facility.ID;
+                floorFacility.FacilityInstance = facility;
+                floorFacility.Created = DateTime.Now;
+                floorFacility.Modified = DateTime.Now;
+                floorFacility.Value = "Test";
+
+                context.FloorFacilities.Add(floorFacility);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                WorkspaceFacility workspaceFacility = new WorkspaceFacility();
+                workspaceFacility.FacilityID = facility.ID;
+                workspaceFacility.FacilityInstance = facility;
+                workspaceFacility.Created = DateTime.Now;
+                workspaceFacility.Modified = DateTime.Now;
+                workspaceFacility.Value = "Test";
+
+                context.WorkspaceFacilities.Add(workspaceFacility);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
                 Location location = new Location();
                 location.LocationFacilities = new List<LocationFacility>();
                 location.LocationFacilities.Add(locationFacility);
                 location.Name = "test";
-                location.City = "test";
-                location.Address = "test";
                 location.Latitude = 1.10;
                 location.Longitude = 1.10;
                 location.OpeningHours = "test";
@@ -146,18 +275,245 @@ namespace TeamOk.Backend.Facade.Test
                 {
                     throw;
                 }
-                var target = new LocationsController(context);
-                var result = target.GetLocationById(location.ID);
-                Assert.AreEqual(location.Name, result.Name);
-                Assert.AreEqual(location.City, result.City);
-                Assert.AreEqual(location.Address, result.Address);
-                Assert.AreEqual(location.Latitude, result.Latitude);
-                Assert.AreEqual(location.Longitude, result.Longitude);
-                Assert.AreEqual(location.OpeningHours, result.OpeningHours);
-                Assert.AreEqual(location.Phonenumber, result.Phonenumber);
-                Assert.AreEqual(location.Postcode, result.Postcode);
-                Assert.AreEqual(location.Created, result.Created);
-                Assert.AreEqual(location.Modified, result.Modified);
+                Floor floor = new Floor();
+                floor.FloorFacilities = new List<FloorFacility>();
+                floor.FloorFacilities.Add(floorFacility);
+                floor.Name = "test";
+                floor.Location = location;
+                floor.Created = DateTime.Now;
+                floor.Modified = DateTime.Now;
+
+                context.Floors.Add(floor);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                Workspace workspace = new Workspace();
+                workspace.WorkspaceFacilities = new List<WorkspaceFacility>();
+                workspace.WorkspaceFacilities.Add(workspaceFacility);
+                workspace.Name = "test";
+                workspace.Floor = floor;
+                workspace.Claimed = false;
+                workspace.ClaimedUntill = DateTime.Now.AddHours(2.0);
+                workspace.Created = DateTime.Now;
+                workspace.Modified = DateTime.Now;
+
+                context.Workspaces.Add(workspace);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                NotificationType notificationType = new NotificationType();
+                notificationType.Name = "Claimed";
+                notificationType.Created = DateTime.Now;
+                notificationType.Modified = DateTime.Now;
+
+                context.NotificationType.Add(notificationType);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+
+                string type = "Claimed";
+
+                var Type = context.NotificationType
+                    .Where(x => x.Deleted == false)
+                    .SingleOrDefault(x => x.Name == type);
+                var target = new NotificationsController(context);
+
+                target.ProcessNotification(workspace.ID, true);
+
+                target.ProcessNotification(workspace.ID, true);
+
+                var result = context.Notifications
+                    .Include(x => x.Type)
+                    .Where(x => x.WorkspaceID == workspace.ID && x.Deleted == false && x.TypeID == Type.ID && x.Created > DateTime.Now.AddMinutes(-15))
+                    .ToList();
+
+                int count = 2;
+                Assert.AreEqual(count, result.Count());
+
+                var target2 = new WorkspaceunitsController(context);
+                var result2 = target2.GetStatusByMacAddress(workspace.MacAddress);
+                Assert.AreEqual(result2.Claimed, false);
+            }
+        }
+
+        [TestMethod]
+        public void getNotificationThreeNotificationsTest()
+        {
+            var option = CreateNewContextOptions();
+            using (var context = new BackendDBContext(option))
+            {
+                Facility facility = new Facility();
+                facility.Name = "test";
+                facility.Created = DateTime.Now;
+                facility.Modified = DateTime.Now;
+                context.facilities.Add(facility);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                LocationFacility locationFacility = new LocationFacility();
+                locationFacility.FacilityID = facility.ID;
+                locationFacility.FacilityInstance = facility;
+                locationFacility.Created = DateTime.Now;
+                locationFacility.Modified = DateTime.Now;
+                locationFacility.Value = "Test";
+
+                context.LocationFacilities.Add(locationFacility);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                FloorFacility floorFacility = new FloorFacility();
+                floorFacility.FacilityID = facility.ID;
+                floorFacility.FacilityInstance = facility;
+                floorFacility.Created = DateTime.Now;
+                floorFacility.Modified = DateTime.Now;
+                floorFacility.Value = "Test";
+
+                context.FloorFacilities.Add(floorFacility);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                WorkspaceFacility workspaceFacility = new WorkspaceFacility();
+                workspaceFacility.FacilityID = facility.ID;
+                workspaceFacility.FacilityInstance = facility;
+                workspaceFacility.Created = DateTime.Now;
+                workspaceFacility.Modified = DateTime.Now;
+                workspaceFacility.Value = "Test";
+
+                context.WorkspaceFacilities.Add(workspaceFacility);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                Location location = new Location();
+                location.LocationFacilities = new List<LocationFacility>();
+                location.LocationFacilities.Add(locationFacility);
+                location.Name = "test";
+                location.Latitude = 1.10;
+                location.Longitude = 1.10;
+                location.OpeningHours = "test";
+                location.Phonenumber = "test";
+                location.Postcode = "test";
+                location.Created = DateTime.Now;
+                location.Modified = DateTime.Now;
+
+                context.Locations.Add(location);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                Floor floor = new Floor();
+                floor.FloorFacilities = new List<FloorFacility>();
+                floor.FloorFacilities.Add(floorFacility);
+                floor.Name = "test";
+                floor.Location = location;
+                floor.Created = DateTime.Now;
+                floor.Modified = DateTime.Now;
+
+                context.Floors.Add(floor);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                Workspace workspace = new Workspace();
+                workspace.WorkspaceFacilities = new List<WorkspaceFacility>();
+                workspace.WorkspaceFacilities.Add(workspaceFacility);
+                workspace.Name = "test";
+                workspace.Floor = floor;
+                workspace.Claimed = false;
+                workspace.ClaimedUntill = DateTime.Now.AddHours(2.0);
+                workspace.Created = DateTime.Now;
+                workspace.Modified = DateTime.Now;
+
+                context.Workspaces.Add(workspace);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                NotificationType notificationType = new NotificationType();
+                notificationType.Name = "Claimed";
+                notificationType.Created = DateTime.Now;
+                notificationType.Modified = DateTime.Now;
+
+                context.NotificationType.Add(notificationType);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+
+                string type = "Claimed";
+
+                var Type = context.NotificationType
+                    .Where(x => x.Deleted == false)
+                    .SingleOrDefault(x => x.Name == type);
+                var target = new NotificationsController(context);
+
+                target.ProcessNotification(workspace.ID, true);
+
+                target.ProcessNotification(workspace.ID, true);
+
+                target.ProcessNotification(workspace.ID, true);
+
+                var result = context.Notifications
+                    .Include(x => x.Type)
+                    .Where(x => x.WorkspaceID == workspace.ID && x.Deleted == false && x.TypeID == Type.ID && x.Created > DateTime.Now.AddMinutes(-15))
+                    .ToList();
+
+                int count = 3;
+                Assert.AreEqual(count, result.Count());
+
+                var target2 = new WorkspaceunitsController(context);
+                var result2 = target2.GetStatusByMacAddress(workspace.MacAddress);
+                Assert.AreEqual(result2.Claimed, true);
             }
         }
     }
