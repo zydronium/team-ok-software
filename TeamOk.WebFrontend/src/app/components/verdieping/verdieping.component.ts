@@ -20,6 +20,8 @@ export class VerdiepingComponent implements OnInit {
   verdieping: any = {};
   werkplekken: any = [];
   werkplekkenSelectie: any = [];
+  loading : boolean = true;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -44,6 +46,7 @@ export class VerdiepingComponent implements OnInit {
   laadWerkplekken(result: any){
     this.werkplekken = result;
     this.werkplekkenSelectie = result;
+    this.loading = false;
   }
 
   openWerkplek(werkplekid: number){

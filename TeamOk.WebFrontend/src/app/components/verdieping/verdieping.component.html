@@ -11,6 +11,7 @@
     <option selected value="alle">Alle werkplekken</option>
     <option value="vrij">Vrije werkplekken</option>
   </select>
+  <h2 class="no-content-found" *ngIf="werkplekkenSelectie.length == 0 && !loading">Geen werkplekken gevonden </h2>
   <table class="table-striped" class="table-striped overview-list-content">
     <tr *ngFor="let werkplek of werkplekkenSelectie" (click)="openWerkplek(werkplek.id)">
       <td class="overview-list-content-row">

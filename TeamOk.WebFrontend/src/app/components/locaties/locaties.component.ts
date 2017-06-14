@@ -8,11 +8,18 @@ import {Router} from "@angular/router";
   styleUrls: ['./locaties.component.css']
 })
 export class LocatiesComponent implements OnInit {
-   locaties: any;
+   locaties : any = [];
+   loading : boolean = true;
+
    constructor(private locatiesService : LocatiesService, private router: Router) { }
 
   ngOnInit() {
-    this.locatiesService.getLocaties().subscribe(result => this.locaties = result);
+    this.locatiesService.getLocaties().subscribe(result => this.processResult(result));
+  }
+
+  processResult(result : any){
+    this.locaties = result
+    this.loading = false;
   }
 
   openLocatie(locatie){
