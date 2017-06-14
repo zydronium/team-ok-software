@@ -6,6 +6,7 @@
 </ol>
 <div class="overview-list" >
   <h2 class="overview-list-title">Verdiepingen {{locatie.name}}</h2>
+  <h2 class="no-content-found" *ngIf="verdiepingen.length == 0 && !loading">Geen verdiepingen gevonden </h2>
   <table class="table-striped" class="table-striped overview-list-content">
     <tr *ngFor="let verdieping of verdiepingen" (click)="openVerdieping(verdieping.id)">
       <td class="overview-list-content-row">

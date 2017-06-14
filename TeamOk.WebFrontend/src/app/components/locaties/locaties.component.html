@@ -4,6 +4,7 @@
 </ol>
 <div class="overview-list" >
   <h2 class="overview-list-title">Locaties</h2>
+  <h2 class="no-content-found" *ngIf="locaties.length == 0 && !loading">Geen locaties gevonden </h2>
   <table class="table-striped overview-list-content" >
     <tr *ngFor="let locatie of locaties" (click)="openLocatie(locatie)">
       <td class="overview-list-content-row">
