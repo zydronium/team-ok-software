@@ -26,7 +26,7 @@ namespace TeamOk.Backend.Facade.Test
         }
 
         [TestMethod]
-        public void getLocationsTest()
+        public void getWorkspacesTest()
         {
             var option = CreateNewContextOptions();
             using (var context = new BackendDBContext(option))
@@ -60,6 +60,38 @@ namespace TeamOk.Backend.Facade.Test
                 {
                     throw;
                 }
+                FloorFacility floorFacility = new FloorFacility();
+                floorFacility.FacilityID = facility.ID;
+                floorFacility.FacilityInstance = facility;
+                floorFacility.Created = DateTime.Now;
+                floorFacility.Modified = DateTime.Now;
+                floorFacility.Value = "Test";
+
+                context.FloorFacilities.Add(floorFacility);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                WorkspaceFacility workspaceFacility = new WorkspaceFacility();
+                workspaceFacility.FacilityID = facility.ID;
+                workspaceFacility.FacilityInstance = facility;
+                workspaceFacility.Created = DateTime.Now;
+                workspaceFacility.Modified = DateTime.Now;
+                workspaceFacility.Value = "Test";
+
+                context.WorkspaceFacilities.Add(workspaceFacility);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
                 Location location = new Location();
                 location.LocationFacilities = new List<LocationFacility>();
                 location.LocationFacilities.Add(locationFacility);
@@ -81,15 +113,49 @@ namespace TeamOk.Backend.Facade.Test
                 {
                     throw;
                 }
-                var target = new LocationsController(context);
-                var result = target.GetLocations();
+                Floor floor = new Floor();
+                floor.FloorFacilities = new List<FloorFacility>();
+                floor.FloorFacilities.Add(floorFacility);
+                floor.Name = "test";
+                floor.Location = location;
+                floor.Created = DateTime.Now;
+                floor.Modified = DateTime.Now;
+
+                context.Floors.Add(floor);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                Workspace workspace = new Workspace();
+                workspace.WorkspaceFacilities = new List<WorkspaceFacility>();
+                workspace.WorkspaceFacilities.Add(workspaceFacility);
+                workspace.Name = "test";
+                workspace.Floor = floor;
+                workspace.Created = DateTime.Now;
+                workspace.Modified = DateTime.Now;
+
+                context.Workspaces.Add(workspace);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                var target = new WorkspacesController(context);
+                var result = target.GetWorkspaces(floor.ID);
                 int count = 1;
                 Assert.AreEqual(count, result.Count());
             }
         }
 
         [TestMethod]
-        public void getLocationByIdTest()
+        public void getWorkspaceByIdTest()
         {
             var option = CreateNewContextOptions();
             using (var context = new BackendDBContext(option))
@@ -123,12 +189,42 @@ namespace TeamOk.Backend.Facade.Test
                 {
                     throw;
                 }
+                FloorFacility floorFacility = new FloorFacility();
+                floorFacility.FacilityID = facility.ID;
+                floorFacility.FacilityInstance = facility;
+                floorFacility.Created = DateTime.Now;
+                floorFacility.Modified = DateTime.Now;
+                floorFacility.Value = "Test";
+
+                context.FloorFacilities.Add(floorFacility);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                WorkspaceFacility workspaceFacility = new WorkspaceFacility();
+                workspaceFacility.FacilityID = facility.ID;
+                workspaceFacility.FacilityInstance = facility;
+                workspaceFacility.Created = DateTime.Now;
+                workspaceFacility.Modified = DateTime.Now;
+                workspaceFacility.Value = "Test";
+
+                context.WorkspaceFacilities.Add(workspaceFacility);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
                 Location location = new Location();
                 location.LocationFacilities = new List<LocationFacility>();
                 location.LocationFacilities.Add(locationFacility);
                 location.Name = "test";
-                location.City = "test";
-                location.Address = "test";
                 location.Latitude = 1.10;
                 location.Longitude = 1.10;
                 location.OpeningHours = "test";
@@ -138,6 +234,23 @@ namespace TeamOk.Backend.Facade.Test
                 location.Modified = DateTime.Now;
 
                 context.Locations.Add(location);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                Floor floor = new Floor();
+                floor.FloorFacilities = new List<FloorFacility>();
+                floor.FloorFacilities.Add(floorFacility);
+                floor.Name = "test";
+                floor.Location = location;
+                floor.Created = DateTime.Now;
+                floor.Modified = DateTime.Now;
+
+                context.Floors.Add(floor);
                 try
                 {
                     context.SaveChanges();

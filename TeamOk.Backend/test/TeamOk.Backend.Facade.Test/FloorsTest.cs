@@ -26,7 +26,7 @@ namespace TeamOk.Backend.Facade.Test
         }
 
         [TestMethod]
-        public void getLocationsTest()
+        public void getFloorsTest()
         {
             var option = CreateNewContextOptions();
             using (var context = new BackendDBContext(option))
@@ -52,6 +52,22 @@ namespace TeamOk.Backend.Facade.Test
                 locationFacility.Value = "Test";
 
                 context.LocationFacilities.Add(locationFacility);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                FloorFacility floorFacility = new FloorFacility();
+                floorFacility.FacilityID = facility.ID;
+                floorFacility.FacilityInstance = facility;
+                floorFacility.Created = DateTime.Now;
+                floorFacility.Modified = DateTime.Now;
+                floorFacility.Value = "Test";
+
+                context.FloorFacilities.Add(floorFacility);
                 try
                 {
                     context.SaveChanges();
@@ -81,15 +97,32 @@ namespace TeamOk.Backend.Facade.Test
                 {
                     throw;
                 }
-                var target = new LocationsController(context);
-                var result = target.GetLocations();
+                Floor floor = new Floor();
+                floor.FloorFacilities = new List<FloorFacility>();
+                floor.FloorFacilities.Add(floorFacility);
+                floor.Name = "test";
+                floor.Location = location;
+                floor.Created = DateTime.Now;
+                floor.Modified = DateTime.Now;
+
+                context.Floors.Add(floor);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                var target = new FloorsController(context);
+                var result = target.GetFloors(location.ID);
                 int count = 1;
                 Assert.AreEqual(count, result.Count());
             }
         }
 
         [TestMethod]
-        public void getLocationByIdTest()
+        public void getFloorByIdTest()
         {
             var option = CreateNewContextOptions();
             using (var context = new BackendDBContext(option))
@@ -115,6 +148,22 @@ namespace TeamOk.Backend.Facade.Test
                 locationFacility.Value = "Test";
 
                 context.LocationFacilities.Add(locationFacility);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                FloorFacility floorFacility = new FloorFacility();
+                floorFacility.FacilityID = facility.ID;
+                floorFacility.FacilityInstance = facility;
+                floorFacility.Created = DateTime.Now;
+                floorFacility.Modified = DateTime.Now;
+                floorFacility.Value = "Test";
+
+                context.FloorFacilities.Add(floorFacility);
                 try
                 {
                     context.SaveChanges();
@@ -146,18 +195,29 @@ namespace TeamOk.Backend.Facade.Test
                 {
                     throw;
                 }
-                var target = new LocationsController(context);
-                var result = target.GetLocationById(location.ID);
-                Assert.AreEqual(location.Name, result.Name);
-                Assert.AreEqual(location.City, result.City);
-                Assert.AreEqual(location.Address, result.Address);
-                Assert.AreEqual(location.Latitude, result.Latitude);
-                Assert.AreEqual(location.Longitude, result.Longitude);
-                Assert.AreEqual(location.OpeningHours, result.OpeningHours);
-                Assert.AreEqual(location.Phonenumber, result.Phonenumber);
-                Assert.AreEqual(location.Postcode, result.Postcode);
-                Assert.AreEqual(location.Created, result.Created);
-                Assert.AreEqual(location.Modified, result.Modified);
+                Floor floor = new Floor();
+                floor.FloorFacilities = new List<FloorFacility>();
+                floor.FloorFacilities.Add(floorFacility);
+                floor.Name = "test";
+                floor.Location = location;
+                floor.Created = DateTime.Now;
+                floor.Modified = DateTime.Now;
+
+                context.Floors.Add(floor);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    throw;
+                }
+                var target = new FloorsController(context);
+                var result = target.GetFloorById(location.ID, floor.ID);
+                Assert.AreEqual(floor.Name, result.Name);
+                Assert.AreEqual(location.ID, result.LocationId);
+                Assert.AreEqual(floor.Created, result.Created);
+                Assert.AreEqual(floor.Modified, result.Modified);
             }
         }
     }
