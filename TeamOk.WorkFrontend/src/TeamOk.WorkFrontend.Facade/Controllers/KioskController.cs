@@ -31,7 +31,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
                 MacAddress = HttpContext.Session.GetString("MacAddress");
                 if (getIsBezet(MacAddress))
                 {
-                   ViewData["localtime"] = HttpContext.Session.GetString("ClaimedUntill") + "now: " + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
+                   //ViewData["localtime"] = HttpContext.Session.GetString("ClaimedUntill") + "now: " + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
                     ViewData["time"] = HttpContext.Session.GetString("ClaimedUntill");
                     return View("Bezet");
                 }
