@@ -24,8 +24,5 @@ var x = setInterval(function () {
     + minutes + "m " + seconds + "s tot uw reservering vervalt of <br/><b> Geef uw werkplek vrij </b> ";
 
     // If the count down is finished, write some text 
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("demo").innerHTML = "EXPIRED";
-    }
+
 }, 1000);
