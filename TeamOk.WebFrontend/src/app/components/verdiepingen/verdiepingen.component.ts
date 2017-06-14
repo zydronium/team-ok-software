@@ -14,6 +14,7 @@ export class VerdiepingenComponent implements OnInit {
   locatieid: number;
   locatie: any = {};
   verdiepingen: any = [];
+  loading : boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +29,12 @@ export class VerdiepingenComponent implements OnInit {
     this.locatieid = this.route.snapshot.params['locatieid'];
 
     this.locatiesService.getLocatie(this.locatieid).subscribe(result => this.locatie = result);
-    this.verdiepingenService.getVerdiepingen(this.locatieid).subscribe(result => this.verdiepingen = result);
+    this.verdiepingenService.getVerdiepingen(this.locatieid).subscribe(result => this.processVerdiepingen(result));
+  }
+
+  processVerdiepingen(result : any){
+    this.verdiepingen = result;
+    this.loading = false;
   }
 
   openVerdieping(verdiepingid: number){

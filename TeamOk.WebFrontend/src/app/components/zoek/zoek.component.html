@@ -68,6 +68,7 @@
 <div class="overview-list" >
   <h2 class="overview-list-title">Resultaten </h2>
   <table class="table-striped" class="table-striped overview-list-content">
+    <h2 class="no-content-found" *ngIf="result.length == 0 && !loading">Geen resultaten gevonden </h2>
     <tr *ngFor="let werkplek of result" (click)="openWerkplek(werkplek.id, werkplek.floorId, werkplek.floor.locationId)">
       <td class="overview-list-content-row">
         <div id="overview-list-content-row-arrow">
