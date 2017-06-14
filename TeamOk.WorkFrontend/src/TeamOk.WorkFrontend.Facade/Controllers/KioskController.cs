@@ -31,7 +31,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
                 MacAddress = HttpContext.Session.GetString("MacAddress");
                 if (getIsBezet(MacAddress))
                 {
-                    ViewData["localtime"] = HttpContext.Session.GetString("ClaimedUntill") + "now: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                   ViewData["localtime"] = HttpContext.Session.GetString("ClaimedUntill") + "now: " + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
                     ViewData["time"] = HttpContext.Session.GetString("ClaimedUntill");
                     return View("Bezet");
                 }
@@ -70,7 +70,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             {
                 Status = _context.ApiWorkspaceunitsByMacAddressGet(mac);
                 bool isClaimed = (bool)Status.Claimed;
-                if (isClaimed) { HttpContext.Session.SetString("ClaimedUntill", Status.ClaimedUntill.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss")); }
+                if (isClaimed) { HttpContext.Session.SetString("ClaimedUntill", Status.ClaimedUntill.Value.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss")); }
                 return isClaimed;
             }
             catch (Exception ex)
@@ -91,7 +91,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
                 if (getIsBezet(MacAddress))
                 {
                     StatusViewModel status = new StatusViewModel();
-                    status.ClaimedUntill = DateTime.Now;
+                    status.ClaimedUntill = DateTime.Now.ToUniversalTime();
                     status.Claimed = false;
                     modelToPost = status;
                     postedModel = _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
@@ -118,7 +118,7 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
                 {
 
                     StatusViewModel status = new StatusViewModel();
-                    status.ClaimedUntill = DateTime.Now.AddMinutes((double) Minutes).AddHours((double) Hours);
+                    status.ClaimedUntill = DateTime.Now.ToUniversalTime().AddMinutes((double) Minutes).AddHours((double) Hours);
                     status.Claimed = true;
                     modelToPost = status;
                     postedModel = _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
@@ -126,12 +126,12 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
                 else
                 {
                     StatusViewModel status = new StatusViewModel();
-                    status.ClaimedUntill = DateTime.Now.AddMinutes(30).AddHours(0);
+                    status.ClaimedUntill = DateTime.Now.ToUniversalTime().AddMinutes(30).AddHours(0);
                     status.Claimed = true;
                     modelToPost = status;
                     postedModel = _context.ApiWorkspaceunitsByMacAddressPost(MacAddress, status);
                 }
-                HttpContext.Session.SetString("ClaimedUntill", modelToPost.ClaimedUntill.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss"));
+                HttpContext.Session.SetString("ClaimedUntill", modelToPost.ClaimedUntill.Value.ToString("yyyy-MM-dd HH:mm:ss"));
                 
             }
             return Index(null);
@@ -167,7 +167,6 @@ namespace TeamOk.WorkFrontend.Facade.Controllers
             int hours = model.Hours;
             int minutes = model.Minutes;
             CookieOptions options = new CookieOptions();
-            options.Expires = DateTime.Now.AddMinutes(10);
             Response.Cookies.Append("ChosenHours", hours.ToString(), options);
             Response.Cookies.Append("ChosenMinutes", minutes.ToString(), options);
 

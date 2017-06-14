@@ -3,12 +3,13 @@
 var scripts = document.getElementsByTagName('script');
 var lastScript = scripts[scripts.length-1];
 var scriptName = lastScript;
-var countDownDate = new Date(scriptName.getAttribute('time'));
+var countDownDate = new Date(scriptName.getAttribute('time')).getTime();
 // Update the count down every 1 second
 var x = setInterval(function () {
-
+    var nowlocal = new Date();
     // Get todays date and time
-    var now = new Date().getTime();
+    var now = new Date(nowlocal.getUTCFullYear(), nowlocal.getUTCMonth(), nowlocal.getUTCDate(), nowlocal.getUTCHours(), nowlocal.getUTCMinutes(), nowlocal.getUTCSeconds()).getTime();
+    
 
     // Find the distance between now an the count down date
     var distance = countDownDate - now;
