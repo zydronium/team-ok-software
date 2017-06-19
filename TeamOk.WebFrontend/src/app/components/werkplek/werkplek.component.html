@@ -1,0 +1,40 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a class="breadcrumb-color" href="#">Home </a></li>
+  <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties">locaties</a></li>
+  <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties/{{locatie.id}}">{{locatie.name}}</a></li>
+  <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties/{{locatie.id}}/verdiepingen">Verdiepingen</a></li>
+  <li class="breadcrumb-item"><a class="breadcrumb-color" href="locaties/{{locatie.id}}/verdiepingen/{{verdieping.id}}">{{verdieping.name}}</a></li>
+  <li class="breadcrumb-item">{{werkplek.name}}</li>
+</ol>
+<div class="section group">
+  <div class="col span_2_of_3">
+    <h2 class="overview-list-title">{{werkplek.name}}, {{verdieping.name}}</h2>
+    <div class="column-text">
+      <div *ngFor="let facility of werkplek.facilities">
+        {{facility.value}} {{facility.name}}
+      </div>
+    </div>
+  </div>
+  <div class="col span_1_of_3">
+    <h2 class="overview-list-title">Bezetting</h2>
+    <div class="column-text center-text">
+      <i *ngIf="!werkplek.claimed" class="fa fa-check workspace-occupied-check" aria-hidden="true"></i>
+      <i *ngIf="werkplek.claimed" class="fa fa-close workspace-occupied-close" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>
+<div class="section group">
+  <div class="col span_3_of_3">
+    <h2 class="overview-list-title">Help ons om de bezetting up-to-date te houden</h2>
+      <div class="column-text" *ngIf="!notified">
+        In werkelijkheid is deze tafel momenteel:
+      </div>
+    <div class="column-text" *ngIf="notified">
+      Bedankt voor de feedback!
+    </div>
+    <div class="melding-button-bar" *ngIf="!notified">
+      <input class="button-red button-red-spacing-right button-red-small" type="button" value="Bezet"  (click)="sendNotification(true)">
+      <input class="button-red button-red-small" type="button" value="Vrij" (click)="sendNotification(false)">
+    </div>
+  </div>
+</div>

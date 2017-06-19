@@ -1,0 +1,18 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a class="breadcrumb-color" href="#">Home</a></li>
+  <li class="breadcrumb-item active">Locaties</li>
+</ol>
+<div class="overview-list" >
+  <h2 class="overview-list-title">Locaties</h2>
+  <h2 class="no-content-found" *ngIf="locaties.length == 0 && !loading">Geen locaties gevonden </h2>
+  <table class="table-striped overview-list-content" >
+    <tr *ngFor="let locatie of locaties" (click)="openLocatie(locatie)">
+      <td class="overview-list-content-row">
+        <div id="overview-list-content-row-arrow">
+          <h4>{{locatie.name}}</h4>
+          <p>{{locatie.city}}</p>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

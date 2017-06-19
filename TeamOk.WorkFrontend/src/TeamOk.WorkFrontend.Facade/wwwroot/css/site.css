@@ -1,13 +1,74 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 0px;
     padding-bottom: 20px;
+    overflow:hidden;
+    height:auto;
+}
+
+.btn-block-styling{
+    height: 100vh;
+    position:absolute;
+}
+
+.claimwerkplekbutton{
+    position: relative;
+}
+
+.container.body-content {
+    width: 100vw;
+    padding-left: 0px;  
+    padding-right: 65px;
+    margin-left: 0px;
+    margin-right: 0px;
+    text-align:center;
+}
+
+.scaleable{
+    width: 100vw;
+    height:100vh;
 }
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+
+
+.navigation-bar{
+    float:right;
+}
+
+@media screen and (min-height: 300px) {
+    a {
+        color: grey!important;
+        text-align: center;
+        padding: 16.65vh 15px 16.65vh 15px !important;
+    }
+}
+@media screen and (max-height: 299px) {
+    a {
+        color: grey!important;
+        text-align: center;
+        padding: 10.0vh 15px 7.5vh 15px !important;
+    }
+}
+
+.list{
+    color:grey;
+    height:33.33vh;
+}
+
+.navigation-items{
+    float:right
+}
+
+
+.center-text{
+    position:relative;
+    text-align:center;
+}
+
+.center-image{
+    height:25em;
+    width:100vh;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -36,3 +97,18 @@ textarea {
     display: none
   }
 }
+@media all and (max-width: 1200px) { /* screen size until 1200px */
+    body {
+        font-size: 1.8em; /* 1.5x default size */
+    }
+}
+@media all and (max-width: 1000px) { /* screen size until 1000px */
+    body {
+        font-size: 1.5em; /* 1.2x default size */
+        }
+    }
+@media all and (max-width: 500px) { /* screen size until 500px */
+    body {
+        font-size: 1.2em; /* 0.8x default size */
+        }
+    }

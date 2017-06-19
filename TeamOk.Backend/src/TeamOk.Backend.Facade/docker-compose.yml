@@ -17,7 +17,7 @@ services:
     depends_on:
       - teamok.backend.db
     environment:
-      'ConnectionStrings:SQLServer': 'Server=database;Database=database;User Id=sa;Password=Pass_w0rd;'
+      'ConnectionStrings:SQLServer': 'Server=database;Database=werkplek;User Id=sa;Password=Pass_w0rd;'
     links:
       - "teamok.backend.db:database"
     ports:

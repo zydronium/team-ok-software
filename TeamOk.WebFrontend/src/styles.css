@@ -1,1 +1,373 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+  background: #ececec;
+}
+.component{
+  background: #ececec;
+  height: auto;
+}
+
+.breadcrumb{
+  border-radius: 0px;
+  background: #ececec;
+}
+
+.breadcrumb-item{
+  color: #00a1e2!important;
+  text-transform: uppercase;
+}
+
+.breadcrumb>li+li:before{
+  font-family: fontAwesome;
+  content: "\f178";
+  color: #e72e2a;
+}
+
+.breadcrumb-color{
+  color: #00a1e2!important;
+}
+
+header{
+  overflow: visible;
+  padding: 0.5em 2em 1.3em;
+  min-height: 7em;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.logobar {
+ max-width: 300px;
+  padding: 2.5em 2em 1.3em;
+  min-height: 7em;
+}
+
+ul.navbar {
+  list-style-type: none;
+  margin-bottom: 0px;
+  overflow: hidden;
+  background: #00a1e1;
+  border-radius: 0px;
+  min-height: 0px;
+  border:0px;
+  font-size: 1.2em;
+  font-family: 'myfont';
+  letter-spacing: 1px;
+}
+
+ul.navbar li {float: left;
+  border:20px;}
+
+ul.navbar li a {
+  display: block;
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  padding: .5em .6em;
+  text-transform: uppercase;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+ul.navbar li a:hover:not(.active) {background-color: #e72e2a;}
+
+ul.navbar li a.active {background-color: #e72e2a;}
+
+.overview-list{
+  border:solid 1.5px white;
+  margin:10px;
+  background-color:white;
+  padding-left: 1.2em;
+  padding-bottom: 1.2em;
+  padding-right: 1.2em;
+}
+
+.overview-list-title{
+  padding-left:10px;
+  border-bottom:1px solid #bebebe;
+  color:#00a1e2;
+  font-family: 'myfont';
+}
+
+.overview-list-filter{
+  float: right;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.overview-list-content{
+  width:100%;
+  overflow:scroll;
+  /*height:100px;*/
+}
+
+.overview-list-content-row{
+  padding:10px;
+  cursor: pointer;
+}
+
+.overview-list-content-row:hover{
+  background-color: #ececec;
+}
+
+.overview-list-content-row-image{
+  display:inline-block;
+  vertical-align:top;
+  width: 55px;
+}
+
+.overview-list-content-row-image-text{
+  display:inline-block;
+  margin-left: 10px;
+}
+
+.overview-list-content-row-check{
+  font-size: 4.5em;
+  color: limegreen;
+}
+
+.overview-list-content-row-close{
+  font-size: 5.0em;
+  color: #e72e2a;
+}
+
+#overview-list-content-row-arrow::after{
+  font-family: fontAwesome;
+  content: "\f054";
+  width: 1em;
+  height: 1em;
+  font-weight: bold;
+  display: block;
+  color: #e72e2a!important;
+  position: absolute;
+  right: 40px;
+  margin-top: -40px;
+  cursor: pointer;
+}
+
+.workspace-occupied-check{
+  font-size: 10.0em;
+  color: limegreen;
+}
+
+.workspace-occupied-close{
+  font-size: 10.0em;
+  color: #e72e2a;
+}
+
+.melding-button-bar{
+  padding: 10px;
+}
+
+.button-red{
+  border: 0px;
+  background-color: #e72e2a;
+  color: white;
+  font-size: 1.2em;
+  font-family: 'myfont';
+  letter-spacing: 1px;
+  padding: 10px;
+}
+
+.button-red-spacing-right{
+  margin-right: 15px;
+}
+
+.button-red-small{
+  width: 100px;
+}
+
+.button-red-fill-width{
+  width: 100%;
+}
+
+.icon-red{
+  color:red;
+}
+
+.icon-green{
+  color:green;
+}
+
+.center-text{
+  text-align: center!important;
+}
+
+h4{
+  color: #00a1e2;
+  font-weight:bold;
+}
+
+@font-face {
+  font-family: "myfont";
+  src: url("assets/fonts/husans-normal-webfont.woff") format('woff');
+}
+
+/*  GRID OF THREE  */
+.span_3_of_3 {
+  width: 100%;
+  border:solid 1.5px white;
+  padding:1.2em;
+  padding-top:0em;
+  background-color:white;
+}
+
+.span_2_of_3 {
+  width: 66.13%;
+  border:solid 1.5px white;
+  padding:1.2em;
+  padding-top:0em;
+  background-color:white;
+}
+
+.span_1_of_3 {
+  width: 32.26%;
+  border:solid 1.5px white;
+  padding:1.2em;
+  padding-top:0em;
+  background-color:white;
+}
+
+/*  SECTIONS  */
+.section {
+  clear: both;
+  padding: 0px;
+  margin: 1.2em;
+}
+
+/*  COLUMN SETUP  */
+.col {
+  display: block;
+  float:left;
+  margin: 1% 0 1% 1.6%;
+}
+.col:first-child { margin-left: 0; }
+
+/*  GROUPING  */
+.group:before,
+.group:after { content:""; display:table; }
+.group:after { clear:both;}
+.group { zoom:1; /* For IE 6/7 */ }
+
+.column-text{
+  padding:10px;
+  text-align: justify;
+}
+
+.location-column-left{
+  width:50%;
+  float:left;
+}
+
+.location-column-right{
+  width: 50%;
+  overflow:hidden;
+}
+
+.location-column-right-inner{
+  float:right;
+}
+
+text_in_col_right{
+  float: right;
+}
+
+/*  GRID OF FOUR  */
+.span_4_of_4 {
+  width: 100%;
+}
+.span_3_of_4 {
+  width: 74.6%;
+}
+.span_2_of_4 {
+  width: 49.2%;
+}
+.span_1_of_4 {
+  width: 23.8%;
+}
+
+.in_wrapper_left
+{
+  float: left;
+}
+
+.in_wrapper_right{
+  overflow:hidden;
+}
+
+.logobar{
+  width:200px;
+}
+header{
+  padding:0px;
+}
+
+@media only screen and (max-width: 1250px)
+{
+  .in_wrapper_left
+  {
+    float: none
+  }
+
+  .in_wrapper_right{
+    float:left;
+
+  }
+
+}
+@media only screen and (max-width: 850px)
+{
+  .col {
+    float: none;
+    width: 100%;
+    margin: 1% 0 1% 0%;
+  }
+
+  .search_bar_span{
+    margin-top: 15px;
+  }
+}
+
+@media only screen and (max-width: 640px)
+{
+  .col {
+    margin: 1% 0 1% 0%;
+  }
+  .span_3_of_3, .span_2_of_3, .span_1_of_3 {
+    width: 100%;
+  }
+  .span_1_of_4, .span_2_of_4, .span_3_of_4, .span_4_of_4 { width: 100%;}
+
+  .location-column-left{
+    width:100%;
+    float:none;
+  }
+  .location-column-right{
+    width: 100%;
+  }
+  .breadcrumb{
+    display:none;
+  }
+  header{
+    padding:0px;
+  }
+  .logobar{
+    width:200px;
+  }
+  .in_wrapper_left{
+    float:none;
+    width:100%
+  }
+}
+
+.dropdown-list { z-index: 999; }
+.span_1_of_4 { padding: 10px 0px 10px 0px; }
+.in_wrapper_left { line-height: 33px; }
+
+@media only screen and (min-width: 768px) { .container { width: 100%; } }
+@media only screen and (min-width: 1200px) { .container { width: 1170px; } }
+
+.no-content-found{
+  text-align: center;
+  padding-left:10px;
+  color:#00a1e2;
+  font-family: 'myfont';
+}

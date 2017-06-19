@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using TeamOk.WorkFrontend.Facade;
 
 namespace TeamOk.WorkFrontend.Facade
 {
@@ -37,6 +39,13 @@ namespace TeamOk.WorkFrontend.Facade
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
+            services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
+            services.AddSession();
+
+            services.AddScoped<IWerkplekkenBackend>(container =>
+            {
+                return new WerkplekkenBackend(baseUri: new Uri("https://backend.werkplek.123apps.net"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,13 +69,14 @@ namespace TeamOk.WorkFrontend.Facade
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
+            app.UseSession();
+            app.UseMvc(configureRoutes);
+        }
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+        private void configureRoutes(IRouteBuilder routeBuilder)
+        {
+            routeBuilder.MapRoute(name: "default",template: "{controller=Kiosk}/{action=Index}/{id?}");
+            //routeBuilder.MapPost("reserveerWerkplek", );
         }
     }
 }

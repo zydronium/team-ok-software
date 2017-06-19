@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.Swagger.Model;
+using TeamOk.Backend.Domain.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace TeamOk.Backend.Facade
 {
@@ -34,10 +37,34 @@ namespace TeamOk.Backend.Facade
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureSwaggerGen(options =>
+            {
+                options.SingleApiVersion(new Info
+                {
+                    Version = "v1",
+                    Title = "WerkplekkenBackend",
+                    Description = "A RESTfull service for Werkplekken",
+                    TermsOfService = "None"
+                });
+            });
+            services.AddSwaggerGen();
+
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
+
+            services.AddDbContext<BackendDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SQLServer")), ServiceLifetime.Transient);
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AnyOrigin", builder =>
+                {
+                    builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod();
+                });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
@@ -51,6 +78,11 @@ namespace TeamOk.Backend.Facade
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseMvc();
+
+            app.UseSwagger();
+            app.UseSwaggerUi();
+
+            app.UseCors("AnyOrigin");
         }
     }
 }
