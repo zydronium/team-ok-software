@@ -17,6 +17,7 @@ export class ZoekComponent implements OnInit {
   result: any = [];
   zitplaatsen: number = 1;
   stopcontacten: number = 1;
+  loading : boolean = true;
 
   dropdownList = [];
   selectedItems = [];
@@ -77,9 +78,11 @@ export class ZoekComponent implements OnInit {
         this.result.push(result[i]);
       }
     }
+    this.loading = false;
   }
 
   zoek() {
+    this.loading = true;
     this.result = [];
     this.werkplekken = [];
     this.vrijeWerkplekken = [];
@@ -112,6 +115,8 @@ export class ZoekComponent implements OnInit {
         }
       }
     }
+
+    this.loading = false;
   }
 
   inSelection(id: number) : boolean{
